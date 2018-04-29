@@ -3,20 +3,22 @@ package com.gdx.game.model;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.view.TextureFactory;
+import com.gdx.game.model.Block;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Maze implements Iterable<GameElement> {
 	private World _world;
-	private final int _width;
-	private final int _height;
+	private int _width;
+	private int _height;
 
-	Texture block=TextureFactory.getInstance().getTextureBloc();
-	Texture pacGomme=TextureFactory.getInstance().getTexturePacGom();
-	Texture pacPower=TextureFactory.getInstance().getTexturePacPower();
-	Texture dark=TextureFactory.getInstance().getTextureDark();
-	Texture pacman = TextureFactory.getInstance().getTexturePacman();
+	Texture block=TextureFactory.getInstance().getTexture(Block.class);
+	Texture pacGomme=TextureFactory.getInstance().getTexture(Gom.class);
+	Texture pacPower=TextureFactory.getInstance().getTexture(SuperGom.class);
+	Texture dark=TextureFactory.getInstance().getTexture(Dark.class);
+	Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
 
-	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes */
+	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes 4 : pacman*/
 	private int[][] _laby1 = new int[][] {
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			{0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0},
@@ -68,7 +70,7 @@ public class Maze implements Iterable<GameElement> {
 		int x = 0,y = 0;
 		for(int[] t : _laby1) {
 			for(int elementType : t) {
-				GameElement element = MazeCOR.getCOR ().build (
+				GameElement element = MazeCOR.getCOR().build (
 						this._world,
 						elementType,
 						x,
