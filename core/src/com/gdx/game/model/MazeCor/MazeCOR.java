@@ -30,9 +30,6 @@ public abstract class MazeCOR {
 
     public abstract GameElement buildSpecifique(World w, int ElementType, int x, int y);
 
-
-
-
     public GameElement build (World w, int ElementType, int x, int y)
     {
         GameElement ge = buildSpecifique(w, ElementType, x, y);

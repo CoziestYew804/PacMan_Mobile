@@ -14,11 +14,11 @@ public class TextureFactory
     private TextureFactory()
     {
         _textures = new HashMap<Class<?>, Texture>();
-        _textures.put(Pacman.class, new Texture(Gdx.files.internal("pacmanRight.png")));
-        _textures.put(Block.class, new Texture(Gdx.files.internal("bloc.png")));
-        _textures.put(Gom.class, new Texture(Gdx.files.internal("pellet.png")));
-        _textures.put(SuperGom.class, new Texture(Gdx.files.internal("superpellet.png")));
-        _textures.put(Dark.class, new Texture(Gdx.files.internal("dark.png")));
+        _textures.put(Pacman.class, new Texture(Gdx.files.internal("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/pacmanRight.png")));
+        _textures.put(Block.class, new Texture(Gdx.files.internal("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/bloc.png")));
+        _textures.put(Gom.class, new Texture(Gdx.files.internal("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/pellet.png")));
+        _textures.put(SuperGom.class, new Texture(Gdx.files.internal("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/superpellet.png")));
+        _textures.put(Dark.class, new Texture(Gdx.files.internal("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/dark.png")));
     }
 
     private static TextureFactory instance = null;

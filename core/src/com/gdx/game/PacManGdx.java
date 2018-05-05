@@ -18,10 +18,10 @@ public class PacManGdx extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		block = new Texture("bloc.png");
-		pacGomme = new Texture("pellet.png");
-		pacPower = new Texture("superpellet.png");
-		dark = new Texture("dark.png");
+		block = new Texture("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/bloc.png");
+		pacGomme = new Texture("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/pellet.png");
+		pacPower = new Texture("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/superpellet.png");
+		dark = new Texture("/Users/aminuniversita/IdeaProjects/PacMan_Mobile/core/assets/dark.png");
 		//wut = new Maze(block, pacGomme, pacPower, dark);
 		wut = new Maze();
 	}

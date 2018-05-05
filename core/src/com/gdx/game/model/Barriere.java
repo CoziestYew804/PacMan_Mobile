@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.gdx.game.view.TextureFactory;
 
-public class Gom extends Dark{
+public class Barriere extends GameElement{
     public static final float size=48;
 
-    public Gom(Vector2 position, World monde) {
+    public Barriere(Vector2 position, World monde) {
         super(position, monde);
     }
 

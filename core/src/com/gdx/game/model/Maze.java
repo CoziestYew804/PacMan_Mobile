@@ -2,12 +2,14 @@ package com.gdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gdx.game.model.MazeCor.MazeCOR;
 import com.gdx.game.view.TextureFactory;
 import com.gdx.game.model.Block;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Maze implements Iterable<GameElement> {
+	private MazeCOR MazeCOR;
 	private World _world;
 	private int _width;
 	private int _height;
