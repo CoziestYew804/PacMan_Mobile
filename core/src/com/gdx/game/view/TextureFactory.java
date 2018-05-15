@@ -19,6 +19,10 @@ public class TextureFactory
         _textures.put(Gom.class, new Texture(Gdx.files.internal("core/assets/pellet.png")));
         _textures.put(SuperGom.class, new Texture(Gdx.files.internal("core/assets/superpellet.png")));
         _textures.put(Dark.class, new Texture(Gdx.files.internal("core/assets/dark.png")));
+        _textures.put(RedGhost.class, new Texture(Gdx.files.internal("core/assets/ghost1.png")));
+        _textures.put(RoseGhost.class, new Texture(Gdx.files.internal("core/assets/ghost2.png")));
+        _textures.put(BlueGhost.class, new Texture(Gdx.files.internal("core/assets/ghost3.png")));
+        _textures.put(YellowGhost.class, new Texture(Gdx.files.internal("core/assets/ghost4.png")));
     }
 
     private static TextureFactory instance = null;

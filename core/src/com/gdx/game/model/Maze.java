@@ -19,8 +19,12 @@ public class Maze implements Iterable<GameElement> {
 	Texture pacPower=TextureFactory.getInstance().getTexture(SuperGom.class);
 	Texture dark=TextureFactory.getInstance().getTexture(Dark.class);
 	Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
+	Texture redGhost = TextureFactory.getInstance().getTexture(RedGhost.class);
+	Texture roseGhost = TextureFactory.getInstance().getTexture(RoseGhost.class);
+	Texture blueGhost = TextureFactory.getInstance().getTexture(BlueGhost.class);
+	Texture yellowGhost = TextureFactory.getInstance().getTexture(YellowGhost.class);
 
-	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes 4 : pacman*/
+	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere,4 : pacman ,5 : rouge, 6:rose,7:bleu,8:jaune*/
 	private int[][] _laby1 = new int[][] {
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			{0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0},
@@ -36,7 +40,7 @@ public class Maze implements Iterable<GameElement> {
 			{0,0,0,0,0,0,2,0,0,2,2,2,2,2,2,2,2,2,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,2,0,0,0,1,1,0,0,0,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,2,0,1,1,1,1,1,1,0,2,0,0,2,0,0,0,0,0,0},
-			{2,2,2,2,2,2,2,2,2,2,0,1,1,1,1,1,1,0,2,2,2,2,2,2,2,2,2,2},
+			{2,2,2,2,2,2,2,2,2,2,0,1,5,6,7,8,1,0,2,2,2,2,2,2,2,2,2,2},
 			{0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,2,2,2,2,2,4,2,2,2,2,0,0,2,0,0,0,0,0,0},
@@ -104,6 +108,11 @@ public class Maze implements Iterable<GameElement> {
 		draw(batch, pacGomme, 2);
 		draw(batch, pacPower, 3);
 		draw(batch, pacman, 4);
+		draw(batch,redGhost,5);
+		draw(batch,roseGhost,6);
+		draw(batch,blueGhost,7);
+		draw(batch,yellowGhost,8);
+
 
 	}
 
