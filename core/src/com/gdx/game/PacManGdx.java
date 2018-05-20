@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.model.Maze;
+import com.gdx.game.screens.GameScreen;
 
 public class PacManGdx extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -14,6 +15,7 @@ public class PacManGdx extends ApplicationAdapter {
 	Texture pacPower;
 	Texture dark;
 	Maze wut;
+	GameScreen gs;
 	
 	@Override
 	public void create () {
@@ -24,6 +26,7 @@ public class PacManGdx extends ApplicationAdapter {
 		dark = new Texture("core/assets/dark.png");
 		//wut = new Maze(block, pacGomme, pacPower, dark);
 		wut = new Maze();
+		gs = new GameScreen();
 	}
 
 	@Override

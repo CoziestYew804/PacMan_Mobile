@@ -7,7 +7,8 @@ public class World implements Iterable<GameElement> {
     private Maze _maze;
     private Pacman _pacman;
 
-    public World() {
+    public World()
+    {
         this._pacman = new Pacman(new Vector2(1, 1), this);
         this._maze = new Maze(this);
     }

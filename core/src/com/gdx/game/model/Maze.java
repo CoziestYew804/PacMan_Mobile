@@ -2,14 +2,14 @@ package com.gdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.gdx.game.model.MazeCor.MazeCOR;
+import com.gdx.game.model.MazeCor.*;
 import com.gdx.game.view.TextureFactory;
 import com.gdx.game.model.Block;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Maze implements Iterable<GameElement> {
-	private MazeCOR MazeCOR;
+	private MazeCOR _MazeCOR;
 	private World _world;
 	private int _width;
 	private int _height;
@@ -62,10 +62,7 @@ public class Maze implements Iterable<GameElement> {
 
 	public Maze() {}
 
-	public Maze(World w) {
-		_world = w;
-		this.init();
-	}
+
 
 	private void init ()
 	{
@@ -73,10 +70,24 @@ public class Maze implements Iterable<GameElement> {
 		this._width  = _laby1[0].length;
 		this._laby2 = new GameElement[this._height][this._width];
 
+		_MazeCOR = new ExpertBlock();
+		MazeCOR dark = new ExpertDark();
+		MazeCOR inter = new ExpertIntersection();
+		MazeCOR barriere = new ExpertBarriere();
+		MazeCOR pacman = new ExpertPacman();
+
+		_MazeCOR.setSuivant(dark);
+		dark.setSuivant(inter);
+		inter.setSuivant(barriere);
+		barriere.setSuivant(pacman);
+
 		int x = 0,y = 0;
 		for(int[] t : _laby1) {
+			System.out.println("t: "+t);
 			for(int elementType : t) {
-				GameElement element = MazeCOR.getCOR().build (
+				System.out.println("elementType: "+elementType);
+
+				GameElement element = _MazeCOR.build (
 						this._world,
 						elementType,
 						x,
@@ -88,6 +99,10 @@ public class Maze implements Iterable<GameElement> {
 		}
 	}
 
+	public Maze(World w) {
+		_world = w;
+		this.init();
+	}
 	public GameElement get(int x, int y) { return this._laby2[x][y]; }
 
 	public int getHeight() { return _height; }
@@ -141,6 +156,11 @@ public class Maze implements Iterable<GameElement> {
 	@Override
 	public Iterator<GameElement> iterator() {
 		return new MazeIterator(this);
+	}
+
+	public void loadDemoLevel()
+	{
+
 	}
 }
 

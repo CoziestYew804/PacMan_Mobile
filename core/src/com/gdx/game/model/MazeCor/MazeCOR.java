@@ -7,22 +7,7 @@ public abstract class MazeCOR {
     private MazeCOR suivant;
 
 
-    public MazeCOR getCOR()
-    {
-        MazeCOR expertBlock = new ExpertBlock();
-        MazeCOR expertDark = new ExpertDark();
-        MazeCOR expertIntersection = new ExpertIntersection();
-        MazeCOR expertBarriere = new ExpertBarriere();
-        MazeCOR expertPacman = new ExpertPacman();
 
-        expertBlock.setSuivant(expertDark);
-        expertDark.setSuivant(expertIntersection);
-        expertIntersection.setSuivant(expertBarriere);
-        expertBarriere.setSuivant(expertPacman);
-        expertPacman.setSuivant(null);
-
-        return expertBlock;
-    }
     public void setSuivant(MazeCOR psuivant)
     {
         suivant = psuivant;
@@ -32,6 +17,7 @@ public abstract class MazeCOR {
 
     public GameElement build (World w, int ElementType, int x, int y)
     {
+        System.out.println("Je suis dans la méthode ! ");
         GameElement ge = buildSpecifique(w, ElementType, x, y);
 
         if(ge != null) return ge;

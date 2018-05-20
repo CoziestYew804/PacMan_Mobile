@@ -1,5 +1,6 @@
 package com.gdx.game.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.model.GameElement;
 import com.gdx.game.model.World;
@@ -44,5 +45,10 @@ public class WorldRenderer {
             );
         }
         this.spriteBatch.end();
+
+        if(Gdx.input.isTouched())
+        {
+            System.out.println("Wesh");
+        }
     }
 }
