@@ -9,7 +9,7 @@ public class World implements Iterable<GameElement> {
 
     public World()
     {
-        this._pacman = new Pacman(new Vector2(1, 1), this);
+        this._pacman = new Pacman(new Vector2(14, 14), this);
         this._maze = new Maze(this);
     }
 

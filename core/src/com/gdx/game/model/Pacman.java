@@ -30,4 +30,67 @@ public class Pacman extends GameElement{
     {
 
     }
+    
+    public void changeOrientationPacman(int x, int y)
+    {
+        if(x >= 150 && x <= 350)
+        {
+            if(y >= 0 && y <= 225)
+            {
+                System.out.println("Le pacman va vers le haut !");
+                this.setPosition(new Vector2(this.getPosition().x, this.getPosition().y+1));
+            }
+
+            else if (y > 225 && y <= 500)
+            {
+                System.out.println("Le pacman va vers le bas");
+                this.setPosition(new Vector2(this.getPosition().x, this.getPosition().y-1));
+            }
+        }
+
+        else if(x >=0 && x < 150)
+        {
+            System.out.println("Le pacman va vers la gauche");
+            this.setPosition(new Vector2(this.getPosition().x-1, this.getPosition().y));
+
+
+            if(x < 0)
+            {
+                this.setPosition(new Vector2(0,this.getPosition().y));
+            }
+        }
+
+        else
+        {
+            System.out.println("Le pacman va à droite");
+
+            this.setPosition(new Vector2(this.getPosition().x+1, this.getPosition().y));
+
+            if(x > 500)
+            {
+                this.setPosition(new Vector2(500, this.getPosition().y));
+            }
+        }
+
+        if(this.getPosition().y < 0)
+        {
+            this.setPosition(new Vector2(this.getPosition().x, 0));
+        }
+
+        if(this.getPosition().y > 480)
+        {
+            this.setPosition(new Vector2(this.getPosition().x, 480));
+        }
+
+        if(this.getPosition().x < 0)
+        {
+            this.setPosition(new Vector2(0, this.getPosition().y));
+        }
+
+        if(this.getPosition().x > 431)
+        {
+            this.setPosition(new Vector2(431, this.getPosition().y));
+        }
+
+    }
 }

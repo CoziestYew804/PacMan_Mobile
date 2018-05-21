@@ -101,7 +101,7 @@ public class Maze implements Iterable<GameElement> {
 		_world = w;
 		this.init();
 	}
-	public GameElement get(int x, int y) { return this._laby2[x][y]; }
+	public GameElement get(int x, int y) { return this._laby2[y][x]; }
 
 	public int getHeight() { return _height; }
 
