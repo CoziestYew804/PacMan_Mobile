@@ -37,14 +37,19 @@ public class PacManGdx extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		wut.drawMaze(batch);
-		//Vector2 posPacman = this.gs.getMonde().getPacman().getPosition();
+		batch.begin();
+			batch.draw(this.gs.getMonde().getPacman().getTexture(),
+						this.gs.getMonde().getPacman().getPosition().x,
+						this.gs.getMonde().getPacman().getPosition().y);
+		batch.end();
+
+				//Vector2 posPacman = this.gs.getMonde().getPacman().getPosition();
 
 		if(Gdx.input.isTouched())
 		{
 
 
 
-			System.out.println(this.gs.getMonde().getMaze().get(14,17).getClass());
 
 
 			this.gs.getMonde().getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
