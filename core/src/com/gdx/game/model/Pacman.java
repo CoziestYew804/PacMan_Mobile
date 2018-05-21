@@ -37,6 +37,7 @@ public class Pacman extends GameElement{
         {
             if(y >= 0 && y <= 225)
             {
+
                 System.out.println("Le pacman va vers le haut !");
                 this.setPosition(new Vector2(this.getPosition().x, this.getPosition().y+1));
             }
@@ -91,6 +92,7 @@ public class Pacman extends GameElement{
         {
             this.setPosition(new Vector2(431, this.getPosition().y));
         }
+
 
     }
 }

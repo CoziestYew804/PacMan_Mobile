@@ -43,15 +43,11 @@ public class PacManGdx extends ApplicationAdapter {
 						this.gs.getMonde().getPacman().getPosition().y);
 		batch.end();
 
+
 				//Vector2 posPacman = this.gs.getMonde().getPacman().getPosition();
 
 		if(Gdx.input.isTouched())
 		{
-
-
-
-
-
 			this.gs.getMonde().getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
 			//float y = this.gs.getMonde().getPacman().getPosition().y;
 
@@ -64,6 +60,17 @@ public class PacManGdx extends ApplicationAdapter {
 						this.gs.getMonde().getPacman().getPosition().y
 				);
 			batch.end();
+			System.out.println("X : " + this.gs.getMonde().getPacman().getPosition().x + " Y : " + + this.gs.getMonde().getPacman().getPosition().y);
+
+			if(this.gs.getMonde().getPacman().getPosition().x == 431 && this.gs.getMonde().getPacman().getPosition().y == 255)
+			{
+				this.gs.getMonde().getPacman().setPosition(new Vector2(0, this.gs.getMonde().getPacman().getPosition().y));
+			}
+
+			if(this.gs.getMonde().getPacman().getPosition().x == 0 && this.gs.getMonde().getPacman().getPosition().y == 255)
+			{
+				this.gs.getMonde().getPacman().setPosition(new Vector2(431, this.gs.getMonde().getPacman().getPosition().y));
+			}
 		}
 	}
 	
