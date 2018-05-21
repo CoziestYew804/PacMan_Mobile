@@ -6,11 +6,15 @@ import java.util.Iterator;
 public class World implements Iterable<GameElement> {
     private Maze _maze;
     private Pacman _pacman;
+    private Ghost _blueGhost;
 
     public World()
     {
-        this._pacman = new Pacman(new Vector2(14, 14), this);
+        this._blueGhost = new BlueGhost(new Vector2(1, 1), this);
         this._maze = new Maze(this);
+        this._pacman = (Pacman) this.getMaze().get(14,17);
+        this._pacman.setPosition( new Vector2( (14*16 ), (30-17)*16));
+
     }
 
     public int getHeight() {
@@ -27,6 +31,9 @@ public class World implements Iterable<GameElement> {
 
     public Pacman getPacman() {
         return _pacman;
+    }
+    public Ghost getBlueGhost() {
+        return _blueGhost;
     }
 
     @Override

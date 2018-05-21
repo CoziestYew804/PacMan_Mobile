@@ -24,4 +24,9 @@ public class RedGhost extends Ghost {
     public Texture getTexture() {
         return TextureFactory.getInstance().getTexture(this.getClass());
     }
+
+    @Override
+    public void Move() {
+
+    }
 }

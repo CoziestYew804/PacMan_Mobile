@@ -48,7 +48,7 @@ public class PacManGdx extends ApplicationAdapter {
 
 
 			this.gs.getMonde().getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
-			float y = this.gs.getMonde().getPacman().getPosition().y;
+			//float y = this.gs.getMonde().getPacman().getPosition().y;
 
 
 

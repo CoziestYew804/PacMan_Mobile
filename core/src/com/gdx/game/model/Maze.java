@@ -8,6 +8,8 @@ import com.gdx.game.model.Block;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import static sun.misc.Version.println;
+
 public class Maze implements Iterable<GameElement> {
 	private MazeCOR _MazeCOR;
 	private World _world;
@@ -69,6 +71,7 @@ public class Maze implements Iterable<GameElement> {
 		this._height = _laby1.length;
 		this._width  = _laby1[0].length;
 		this._laby2 = new GameElement[this._height][this._width];
+		System.out.println(this.getWidth() + " " +this.getHeight());
 
 		_MazeCOR = new ExpertBlock();
 		MazeCOR dark = new ExpertDark();
@@ -78,8 +81,8 @@ public class Maze implements Iterable<GameElement> {
 
 		_MazeCOR.setSuivant(dark);
 		dark.setSuivant(inter);
-		inter.setSuivant(barriere);
-		barriere.setSuivant(pacman);
+		inter.setSuivant(pacman);
+		pacman.setSuivant(barriere);
 
 		int x = 0,y = 0;
 		for(int[] t : _laby1) {
@@ -95,6 +98,7 @@ public class Maze implements Iterable<GameElement> {
 			}
 			x++;
 		}
+		System.out.println(this.get(14,13));
 	}
 
 	public Maze(World w) {

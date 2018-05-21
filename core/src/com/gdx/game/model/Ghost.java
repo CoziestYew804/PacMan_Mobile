@@ -18,4 +18,6 @@ public abstract class Ghost extends GameElement {
 
     @Override
     public abstract Texture getTexture();
+
+    public abstract void Move();
 }
