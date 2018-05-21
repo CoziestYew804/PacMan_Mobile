@@ -17,7 +17,6 @@ public abstract class MazeCOR {
 
     public GameElement build (World w, int ElementType, int x, int y)
     {
-        System.out.println("Je suis dans la méthode ! ");
         GameElement ge = buildSpecifique(w, ElementType, x, y);
 
         if(ge != null) return ge;

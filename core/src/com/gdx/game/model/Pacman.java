@@ -26,7 +26,7 @@ public class Pacman extends GameElement{
         return TextureFactory.getInstance().getTexture(this.getClass());
     }
 
-    public void update(float f)
+    public void update(float dt)
     {
 
     }

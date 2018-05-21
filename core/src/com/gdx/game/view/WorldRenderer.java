@@ -45,10 +45,5 @@ public class WorldRenderer {
             );
         }
         this.spriteBatch.end();
-
-        if(Gdx.input.isTouched())
-        {
-            System.out.println("Wesh");
-        }
     }
 }

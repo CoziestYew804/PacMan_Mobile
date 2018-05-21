@@ -83,9 +83,7 @@ public class Maze implements Iterable<GameElement> {
 
 		int x = 0,y = 0;
 		for(int[] t : _laby1) {
-			System.out.println("t: "+t);
 			for(int elementType : t) {
-				System.out.println("elementType: "+elementType);
 
 				GameElement element = _MazeCOR.build (
 						this._world,
