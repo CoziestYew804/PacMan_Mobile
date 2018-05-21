@@ -101,6 +101,13 @@ public class PacManGdx extends ApplicationAdapter {
 
 
 
+			batch.begin();
+				batch.draw(
+						this.gs.getMonde().getPacman().getTexture(),
+						posPacman.x,
+						posPacman.y
+				);
+			batch.end();
 		}
 	}
 	
