@@ -37,7 +37,7 @@ public class PacManGdx extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		wut.drawMaze(batch);
-		Vector2 posPacman = this.gs.getMonde().getPacman().getPosition();
+		//Vector2 posPacman = this.gs.getMonde().getPacman().getPosition();
 
 		if(Gdx.input.isTouched())
 		{

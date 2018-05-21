@@ -10,10 +10,10 @@ public class World implements Iterable<GameElement> {
 
     public World()
     {
-        this._blueGhost = new BlueGhost(new Vector2(1, 1), this);
+        //this._blueGhost = new BlueGhost(new Vector2(1, 1), this);
         this._maze = new Maze(this);
-        this._pacman = (Pacman) this.getMaze().get(14,17);
-        this._pacman.setPosition( new Vector2( (14*16 ), (30-17)*16));
+        //this._pacman = (Pacman) this.getMaze().get(14,17);
+        //this._pacman.setPosition( new Vector2( (14*16 ), (30-17)*16));
 
     }
 
