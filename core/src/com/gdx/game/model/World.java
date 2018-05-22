@@ -9,7 +9,8 @@ public class World implements Iterable<GameElement> {
     private Maze _maze;
     private final Pacman _pacman;
     private Ghost _blueGhost;
-    public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
+   // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
+    public static Vector2 pacmanStartPos =  new Vector2( 14, 17);
     public World()
     {
         //this._blueGhost = new BlueGhost(new Vector2(1, 1), this);
@@ -44,71 +45,9 @@ public class World implements Iterable<GameElement> {
         return new WorldIterator(this);
     }
 
-    public void changeOrientationPacman(int x, int y) throws WallException {
-        if(x >= 150 && x <= 350)
-        {
-            if(y >= 0 && y <= 225)
-            {
-                System.out.println("Le pacman va vers le haut !");
-                this._pacman.setPosition(new Vector2(this._pacman.getPosition().x, this._pacman.getPosition().y+1));
-            }
-
-            else if (y > 225 && y <= 500)
-            {
-                System.out.println("Le pacman va vers le bas");
-                this._pacman.setPosition(new Vector2(this._pacman.getPosition().x, this._pacman.getPosition().y-1));
-            }
-        }
-
-        else if(x >=0 && x < 150)
-        {
-            System.out.println("Le pacman va vers la gauche");
-            this._pacman.setPosition(new Vector2(this._pacman.getPosition().x-1, this._pacman.getPosition().y));
-
-
-            if(x < 0)
-            {
-                this._pacman.setPosition(new Vector2(0,this._pacman.getPosition().y));
-            }
-        }
-
-        else
-        {
-            System.out.println("Le pacman va à droite");
-
-            this._pacman.setPosition(new Vector2(this._pacman.getPosition().x+1, this._pacman.getPosition().y));
-
-            if(x > 500)
-            {
-                this._pacman.setPosition(new Vector2(500, this._pacman.getPosition().y));
-            }
-        }
-
-        if(this._pacman.getPosition().y < 0)
-        {
-            this._pacman.setPosition(new Vector2(this._pacman.getPosition().x, 0));
-        }
-
-        if(this._pacman.getPosition().y > 480)
-        {
-            this._pacman.setPosition(new Vector2(this._pacman.getPosition().x, 480));
-        }
-
-        if(this._pacman.getPosition().x < 0)
-        {
-            this._pacman.setPosition(new Vector2(0, this._pacman.getPosition().y));
-        }
-
-        if(this._pacman.getPosition().x > 431)
-        {
-            this._pacman.setPosition(new Vector2(431, this._pacman.getPosition().y));
-        }
-
-
-
-
-    }
 }
+
+
 
 class WorldIterator implements Iterator<GameElement>
 {

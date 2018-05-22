@@ -27,7 +27,7 @@ public class PacManGdx extends ApplicationAdapter {
 		pacGomme = new Texture("core/assets/pellet.png");
 		pacPower = new Texture("core/assets/superpellet.png");
 		dark = new Texture("core/assets/dark.png");
-		//wut = new Maze(block, pacGomme, pacPower, dark);
+		//wut = new Maze(block, pacGomme, pacPower, dark);*/
 		wut = new Maze();
 		gs = new GameScreen();
 	}
@@ -39,8 +39,8 @@ public class PacManGdx extends ApplicationAdapter {
 		wut.drawMaze(batch);
 		batch.begin();
 			batch.draw(this.gs.getMonde().getPacman().getTexture(),
-						this.gs.getMonde().getPacman().getPosition().x,
-						this.gs.getMonde().getPacman().getPosition().y);
+						this.gs.getMonde().getPacman().getPosition().x*16,
+					(30-this.gs.getMonde().getPacman().getPosition().y)*16);
 		batch.end();
 
 
@@ -54,23 +54,10 @@ public class PacManGdx extends ApplicationAdapter {
 
 
 			batch.begin();
-				batch.draw(
-						this.gs.getMonde().getPacman().getTexture(),
-						this.gs.getMonde().getPacman().getPosition().x,
-						this.gs.getMonde().getPacman().getPosition().y
-				);
+			batch.draw(this.gs.getMonde().getPacman().getTexture(),
+					this.gs.getMonde().getPacman().getPosition().x*16,
+					(30-this.gs.getMonde().getPacman().getPosition().y)*16);
 			batch.end();
-			System.out.println("X : " + this.gs.getMonde().getPacman().getPosition().x + " Y : " + + this.gs.getMonde().getPacman().getPosition().y);
-
-			if(this.gs.getMonde().getPacman().getPosition().x == 431 && this.gs.getMonde().getPacman().getPosition().y == 255)
-			{
-				this.gs.getMonde().getPacman().setPosition(new Vector2(0, this.gs.getMonde().getPacman().getPosition().y));
-			}
-
-			if(this.gs.getMonde().getPacman().getPosition().x == 0 && this.gs.getMonde().getPacman().getPosition().y == 255)
-			{
-				this.gs.getMonde().getPacman().setPosition(new Vector2(431, this.gs.getMonde().getPacman().getPosition().y));
-			}
 		}
 	}
 	
