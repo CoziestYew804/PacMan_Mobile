@@ -6,10 +6,14 @@ import com.gdx.game.view.TextureFactory;
 
 public class Pacman extends GameElement{
     public static final float size=16;
+    private static final int SPEED = 16;
+    private Vector2 velocity;
     //public static final Vector2 StartPosition = new Vector2(14 , 17);
 
     public Pacman(Vector2 position, World monde) {
+
         super(position, monde);
+        velocity = new Vector2(0, 0);
     }
 
     @Override
@@ -27,30 +31,55 @@ public class Pacman extends GameElement{
         return TextureFactory.getInstance().getTexture(this.getClass());
     }
 
-    public void update(float dt)
+    /**
+     * Met à jour l'affichage du déplacement du pacman
+     * @param dt deltatime
+     * @param directory orientation du pacman : 1 = gauche, 2 = droite, 3 = haut, 4 = bas
+     */
+    public void update(float dt, int directory)
     {
+        velocity.add(0, SPEED);
+        velocity.scl(dt);
+        switch(directory)
+        {
+            case 1:
+                this.getPosition().add(-velocity.x,0);
+                break;
+            case 2:
+                this.getPosition().add(velocity.x,0);
+                break;
+            case 3:
+                this.getPosition().add(0,-velocity.y);
+                break;
+            case 4:
+                this.getPosition().add(0,velocity.y);
+                break;
+
+        }
+        velocity.scl(1/dt);
 
     }
     
     public void changeOrientationPacman(int x, int y)
     {
+
         if(x >= 150 && x <= 350)
         {
             if(y >= 0 && y <= 225)
             {
 
                 System.out.println("Le pacman va vers le haut !");
-                if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y+1).getClass() != Block.class) {
+                if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y-1).getClass() != Block.class) {
                     System.out.println("je bouge!");
-                    this.setPosition(new Vector2(this.getPosition().x, this.getPosition().y + 1));
+                    this.getPosition().add(0, -1);
                 }
             }
 
             else if (y > 225 && y <= 500)
             {
                 System.out.println("Le pacman va vers le bas");
-                if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y-1).getClass() != Block.class) {
-                    this.setPosition(new Vector2(this.getPosition().x, this.getPosition().y - 1));
+                if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y+1).getClass() != Block.class) {
+                    this.getPosition().add(0,1);
                 }
             }
         }
@@ -60,7 +89,7 @@ public class Pacman extends GameElement{
             System.out.println("Le pacman va vers la gauche");
             if(this.getMonde().getMaze().get((int)this.getPosition().x-1,(int)this.getPosition().y).getClass() != Block.class) {
                 System.out.println("je bouge!");
-                this.setPosition(new Vector2(this.getPosition().x - 1, this.getPosition().y));
+                this.getPosition().add(-1,0);
             }
             if(x < 0)
             {
@@ -72,7 +101,8 @@ public class Pacman extends GameElement{
         {
             System.out.println("Le pacman va à droite");
             if(this.getMonde().getMaze().get((int)this.getPosition().x+1,(int)this.getPosition().y).getClass() != Block.class) {
-                this.setPosition(new Vector2(this.getPosition().x + 1, this.getPosition().y));
+
+                this.getPosition().add(1,0);
             }
             if(x > 500)
             {

@@ -60,7 +60,8 @@ public class PacManGdx extends ApplicationAdapter {
 			batch.end();
 		}
 	}
-	
+
+
 	@Override
 	public void dispose () {
 		batch.dispose();
