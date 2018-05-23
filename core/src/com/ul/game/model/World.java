@@ -1,6 +1,9 @@
 package com.ul.game.model;
 
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.Ghost;
+import com.ul.game.model.elements.impl.Pacman;
 
 import java.util.Iterator;
 

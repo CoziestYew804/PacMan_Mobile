@@ -1,9 +1,9 @@
 package com.ul.game.model.MazeCor;
 
 import com.badlogic.gdx.math.Vector2;
-import com.ul.game.model.GameElement;
+import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.World;
-import com.ul.game.model.Barriere;
+import com.ul.game.model.elements.impl.Barriere;
 
 public class ExpertBarriere extends MazeCOR{
     @Override

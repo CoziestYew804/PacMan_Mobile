@@ -1,7 +1,8 @@
-package com.ul.game.model;
+package com.ul.game.model.elements;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.model.World;
 
 public abstract class GameElement {
     private Vector2 position;

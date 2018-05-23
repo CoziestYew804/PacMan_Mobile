@@ -1,7 +1,8 @@
 package com.ul.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.*;
 import com.ul.game.view.TextureFactory;
 import com.ul.game.model.MazeCor.*;
 

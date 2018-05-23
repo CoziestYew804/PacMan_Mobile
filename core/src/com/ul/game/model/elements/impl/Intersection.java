@@ -1,13 +1,15 @@
-package com.ul.game.model;
+package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.model.World;
+import com.ul.game.model.elements.impl.Dark;
 import com.ul.game.view.TextureFactory;
 
-public class Block extends GameElement{
+public class Intersection extends Dark {
     public static final float size=48;
 
-    public Block(Vector2 position, World monde) {
+    public Intersection(Vector2 position, World monde) {
         super(position, monde);
     }
 

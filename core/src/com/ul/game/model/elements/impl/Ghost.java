@@ -1,7 +1,9 @@
-package com.ul.game.model;
+package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.model.World;
+import com.ul.game.model.elements.GameElement;
 
 public abstract class Ghost extends GameElement {
 

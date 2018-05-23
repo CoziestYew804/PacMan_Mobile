@@ -1,8 +1,8 @@
 package com.ul.game.model.MazeCor;
 
 import com.badlogic.gdx.math.Vector2;
-import com.ul.game.model.GameElement;
-import com.ul.game.model.SuperGom;
+import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.SuperGom;
 import com.ul.game.model.World;
 
 public class ExpertPower extends MazeCOR{

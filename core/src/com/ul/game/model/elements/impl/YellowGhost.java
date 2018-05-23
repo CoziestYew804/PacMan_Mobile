@@ -1,13 +1,15 @@
-package com.ul.game.model;
+package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.model.World;
 import com.ul.game.view.TextureFactory;
 
-public class RedGhost extends Ghost {
+public class YellowGhost extends Ghost {
+
     public static final float size=16;
 
-    public RedGhost(Vector2 position, World monde) {
+    public YellowGhost(Vector2 position, World monde) {
         super(position, monde);
     }
     @Override

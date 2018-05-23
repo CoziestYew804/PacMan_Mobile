@@ -2,7 +2,8 @@ package com.ul.game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.ul.game.model.*;
+import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.*;
 
 import java.util.HashMap;
 
