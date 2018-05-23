@@ -43,19 +43,20 @@ public class WorldRenderer {
             this.spriteBatch.draw(
                     TextureFactory.getInstance().getTexture(element.getClass()),
                     element.getPosition().y * 16,
-                    (30-element.getPosition().x) * 16,
+                    (30 - element.getPosition().x) * 16,
                     16,
                     16
             );
 
         }
         this.spriteBatch.end();
-        if(Gdx.input.isTouched())
-        {
-            this.monde.getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
-            //float y = this.gs.getMonde().getPacman().getPosition().y;
+
+        if (Gdx.input.isTouched()) {
+
+                this.monde.getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
+                //float y = this.gs.getMonde().getPacman().getPosition().y;
 
         }
-        }
     }
+}
 

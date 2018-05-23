@@ -41,7 +41,7 @@ public class Maze implements Iterable<GameElement> {
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 5, 6, 7, 8, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
@@ -78,11 +78,13 @@ public class Maze implements Iterable<GameElement> {
 		MazeCOR inter = new ExpertIntersection();
 		MazeCOR barriere = new ExpertBarriere();
 		MazeCOR pacman = new ExpertPacman();
+		MazeCOR ghost = new ExpertGhost();
 
 		_MazeCOR.setSuivant(dark);
 		dark.setSuivant(inter);
 		inter.setSuivant(pacman);
 		pacman.setSuivant(barriere);
+		barriere.setSuivant(ghost);
 
 		int x = 0, y = 0;
 		for (int[] t : _laby1) {
