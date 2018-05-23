@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ul.game.PacManGdx;
 import com.ul.game.model.elements.GameElement;
-import com.ul.game.model.elements.impl.Pacman;
+import com.ul.game.model.elements.impl.*;
 import com.ul.game.view.TextureFactory;
 
 public class HomeScreen implements Screen {
@@ -35,6 +35,26 @@ public class HomeScreen implements Screen {
                     200,
                     200
             );
+        this.spriteBatch.draw(
+                TextureFactory.getInstance().getTexture(BlueGhost.class),
+                350,
+                200
+        );
+        this.spriteBatch.draw(
+                TextureFactory.getInstance().getTexture(RedGhost.class),
+                250,
+                200
+        );
+        this.spriteBatch.draw(
+                TextureFactory.getInstance().getTexture(YellowGhost.class),
+                300,
+                200
+        );
+        this.spriteBatch.draw(
+                TextureFactory.getInstance().getTexture(RoseGhost.class),
+                400,
+                200
+        );
         this.spriteBatch.end();
 
         if (Gdx.input.isTouched()) {
