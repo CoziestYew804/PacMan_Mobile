@@ -50,6 +50,12 @@ public class WorldRenderer {
 
         }
         this.spriteBatch.end();
+        if(Gdx.input.isTouched())
+        {
+            this.monde.getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
+            //float y = this.gs.getMonde().getPacman().getPosition().y;
+
+        }
         }
     }
 
