@@ -9,7 +9,8 @@ import com.ul.game.model.MazeCor.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Maze implements Iterable<GameElement> {
+public class Maze implements Iterable<GameElement>
+{
 	private MazeCOR _MazeCOR;
 	private World _world;
 	private int _width;
@@ -100,7 +101,7 @@ public class Maze implements Iterable<GameElement> {
 			}
 			x++;
 		}
-		System.out.println(this.get(14, 13));
+		//System.out.println(this.get(14, 13));
 	}
 
 	public Maze(World w) {
@@ -161,4 +162,50 @@ public class Maze implements Iterable<GameElement> {
 		}
 	}
 
+}
+
+class MazeIterator implements Iterator<GameElement>
+{
+	private Maze _maze;
+	int _i, _j;
+
+	public MazeIterator(Maze maze) { this._maze = maze; _i = _j = 0; }
+
+	@Override
+	public boolean hasNext() { return (_i < this._maze.getHeight()) && (_j < this._maze.getWidth()); }
+
+	@Override
+	public GameElement next() {
+		if(!this.hasNext()) throw new NoSuchElementException("No more game elements");
+		GameElement gameElement;
+		do {
+			gameElement = this._maze.get(_i,_j);
+			_j = (_j + 1) % this._maze.getWidth();
+			if(_j == 0)
+				_i++;
+		} while(gameElement == null
+				&& this.hasNext());
+		return gameElement;
+	}
+
+	/**
+	 * Removes from the underlying collection the last element returned
+	 * by this iterator (optional operation).  This method can be called
+	 * only once per call to {@link #next}.  The behavior of an iterator
+	 * is unspecified if the underlying collection is modified while the
+	 * iteration is in progress in any way other than by calling this
+	 * method.
+	 *
+	 * @throws UnsupportedOperationException if the {@code remove}
+	 *                                       operation is not supported by this iterator
+	 * @throws IllegalStateException         if the {@code next} method has not
+	 *                                       yet been called, or the {@code remove} method has already
+	 *                                       been called after the last call to the {@code next}
+	 *                                       method
+	 * @implSpec The default implementation throws an instance of
+	 * {@link UnsupportedOperationException} and performs no other action.
+	 */
+	public void remove() {
+
+	}
 }
