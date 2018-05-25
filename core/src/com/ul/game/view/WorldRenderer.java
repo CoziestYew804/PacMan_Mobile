@@ -39,7 +39,7 @@ public class WorldRenderer {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for (GameElement element : this.monde) {
-            System.out.println(element.getClass());
+            //System.out.println(element.getClass());
             this.spriteBatch.draw(
                     TextureFactory.getInstance().getTexture(element.getClass()),
                     element.getPosition().y * 16,

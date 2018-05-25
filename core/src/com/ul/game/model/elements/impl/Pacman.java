@@ -76,6 +76,7 @@ public class Pacman extends GameElement {
     
     public void changeOrientationPacman(int x, int y)
     {
+        float next = SPEED * Gdx.graphics.getDeltaTime();
 
         if(x >= 150 && x <= 350)
         {
@@ -83,18 +84,23 @@ public class Pacman extends GameElement {
             {
 
                 System.out.println("Le pacman va vers le haut !");
-                if(this.getMonde().getMaze().get((int)this.getPosition().x-1,(int)this.getPosition().y).getClass() != Block.class) {
-                    System.out.println("je bouge!");
-                    this.getPosition().add(- SPEED * Gdx.graphics.getDeltaTime(),0);
-                }
+
+
+                    if(this.getMonde().getMaze().get((int)(this.getPosition().x-0.5),(int)this.getPosition().y).getClass() != Block.class) {
+                        System.out.println("je bouge!");
+                        this.getPosition().add(- 0.5f,0);
+                        this.getPosition().add(- 0.5f,0);
+                    }
+
             }
 
             else if (y > 225 && y <= 500)
             {
                 System.out.println("Le pacman va vers le bas");
-                if(this.getMonde().getMaze().get((int)this.getPosition().x+1,(int)this.getPosition().y).getClass() != Block.class) {
+                if(this.getMonde().getMaze().get((int)(this.getPosition().x+next+1),(int)this.getPosition().y).getClass() != Block.class) {
 
-                    this.getPosition().add(SPEED * Gdx.graphics.getDeltaTime(),0);
+                    this.getPosition().add(next, 0);
+                    this.getPosition().add(1-next, 0);
                 }
             }
         }
@@ -102,9 +108,10 @@ public class Pacman extends GameElement {
         else if(x >=0 && x < 150)
         {
             System.out.println("Le pacman va vers la gauche");
-            if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y-1).getClass() != Block.class) {
+            if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)(this.getPosition().y-next)).getClass() != Block.class) {
                     System.out.println("je bouge!");
-                    this.getPosition().add(0, - SPEED * Gdx.graphics.getDeltaTime());
+                    this.getPosition().add(0, -next);
+                    this.getPosition().add(0, -(1-next));
             }
             if(x < 0)
             {
@@ -115,8 +122,9 @@ public class Pacman extends GameElement {
         else
         {
             System.out.println("Le pacman va à droite");
-            if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)this.getPosition().y+1).getClass() != Block.class) {
-                this.getPosition().add(0,SPEED* Gdx.graphics.getDeltaTime());
+            if(this.getMonde().getMaze().get((int)this.getPosition().x,(int)(this.getPosition().y+next+1)).getClass() != Block.class) {
+                this.getPosition().add(0,next);
+                this.getPosition().add(0,1-next);
             }
             if(x > 500)
             {
