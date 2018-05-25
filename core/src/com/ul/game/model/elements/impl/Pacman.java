@@ -19,7 +19,6 @@ public class Pacman extends GameElement {
     public Pacman(Vector2 position, World monde) {
 
         super(position, monde);
-        velocity = new Vector2(0, 0);
     }
 
     @Override
@@ -52,25 +51,7 @@ public class Pacman extends GameElement {
      */
     public void update(float dt)
     {
-        velocity.add(0, SPEED);
-        velocity.scl(dt);
-        switch(direction)
-        {
-            case 1:
-                this.getPosition().add(-velocity.x,0);
-                break;
-            case 2:
-                this.getPosition().add(velocity.x,0);
-                break;
-            case 3:
-                this.getPosition().add(0,-velocity.y);
-                break;
-            case 4:
-                this.getPosition().add(0,velocity.y);
-                break;
 
-        }
-        velocity.scl(1/dt);
 
     }
     
