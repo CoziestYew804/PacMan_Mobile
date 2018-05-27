@@ -39,8 +39,8 @@ public class BlueGhost extends Ghost {
         RandomMovingCOR right = new MovingRight();
 
         movingCOR.setSuivant(right);
-        right.setSuivant(left);
-        left.setSuivant(down);
+        right.setSuivant(down);
+        down.setSuivant(left);
 
         this.movingCOR.randomMove(this.getMonde(),this);
 

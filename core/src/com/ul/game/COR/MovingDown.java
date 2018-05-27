@@ -7,10 +7,19 @@ import com.ul.game.model.elements.impl.Ghost;
 public class MovingDown extends RandomMovingCOR {
     @Override
     public void move(World w, Ghost ghost) {
+        System.out.println("j'essaie bas");
         if(ghost.getNext(1*SPEED+1,0).getClass() != Block.class){
             System.out.println("Le ghost va vers le bas");
             ghost.getPosition().add(1*SPEED, 0);
             this.moved=true;
+        }
+        else {
+            System.out.println("j'essaie");
+            if(ghost.getPosition()!=ghost.getNext(1*SPEED+1,0).getPosition()) {
+                ghost.getPosition().set(ghost.getNext(1 * SPEED + 1, 0).getPosition());
+                ghost.getPosition().add(-1, 0);
+                this.moved = true;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import com.ul.game.view.TextureFactory;
 
 public class Pacman extends GameElement {
     public static final float size=16;
+    //private static final float SPEED = 2* Gdx.graphics.getDeltaTime();
     private static final float SPEED = 2* Gdx.graphics.getDeltaTime();
 
     // c'est temporaire
@@ -130,6 +131,7 @@ public class Pacman extends GameElement {
 
 
         }*/
+
 
         if(Gdx.input.justTouched()) {
             this.x = Gdx.input.getX();

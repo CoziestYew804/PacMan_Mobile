@@ -43,7 +43,8 @@ public class WorldRenderer {
             //System.out.println(element.getClass());
 
             this.spriteBatch.draw(
-                    TextureFactory.getInstance().getTexture(element.getClass()),
+                    //TextureFactory.getInstance().getTexture(element.getClass()),
+                    element.getTexture(),
                     element.getPosition().y * 16,
                     (30 - element.getPosition().x) * 16,
                     16,
