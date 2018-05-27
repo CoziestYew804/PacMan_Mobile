@@ -8,6 +8,7 @@ import com.ul.game.view.TextureFactory;
 
 public class Dark extends GameElement {
     public static final float size=48;
+    private boolean hasGom = true;
 
     public Dark(Vector2 position, World monde) {
         super(position, monde);
@@ -25,6 +26,16 @@ public class Dark extends GameElement {
 
     @Override
     public Texture getTexture() {
+
+        if(hasGom){return TextureFactory.getInstance().getTexture(Gom.class);}
         return TextureFactory.getInstance().getTexture(this.getClass());
+    }
+
+    public boolean hasGom() {
+        return hasGom;
+    }
+
+    public void setHasGom(boolean hasGom) {
+        this.hasGom = hasGom;
     }
 }

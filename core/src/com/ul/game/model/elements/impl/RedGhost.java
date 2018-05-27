@@ -5,8 +5,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.World;
 import com.ul.game.view.TextureFactory;
 
+import java.util.List;
+import java.util.Random;
+
 public class RedGhost extends Ghost {
     public static final float size=16;
+    private Vector2 currentDirection = new Vector2(-1,0);
 
     public RedGhost(Vector2 position, World monde) {
         super(position, monde);
@@ -27,7 +31,37 @@ public class RedGhost extends Ghost {
     }
 
     @Override
-    public void Move() {
+    public void move(float DeltaTime) {
+
+        bestChoiceMove();
+        /*if(!this.isNextABlock(currentDirection)) {
+            if (!this.isNextAnIntersection(currentDirection)) {
+                getPosition().add(currentDirection);
+            } else {
+                //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
+                getPosition().add(currentDirection);
+                this.setDirection(((Intersection)(this.getNext(currentDirection))).getBestPossibilitieTo(this.getMonde().getPacman()));
+                System.out.println("Changement de direction !!! :" + currentDirection);
+
+            }
+
+
+        }*/
+
+    }
+
+    public Vector2 getDirection() {
+        return currentDirection;
+    }
+
+    public void setDirection(Vector2 direction) {
+
+        this.currentDirection.set(direction);
+    }
+
+
+    @Override
+    public void changeOrientation() {
 
     }
 }

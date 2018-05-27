@@ -6,6 +6,7 @@ import com.ul.game.model.World;
 import com.ul.game.view.TextureFactory;
 
 public class YellowGhost extends Ghost {
+    private Vector2 currentDirection;
 
     public static final float size=16;
 
@@ -28,7 +29,21 @@ public class YellowGhost extends Ghost {
     }
 
     @Override
-    public void Move() {
+    public void move(float DeltaTime) {
+
+    }
+    public Vector2 getDirection() {
+        return currentDirection;
+    }
+
+    public void setDirection(Vector2 direction) {
+
+        this.currentDirection.set(direction);
+    }
+
+
+    @Override
+    public void changeOrientation() {
 
     }
 }

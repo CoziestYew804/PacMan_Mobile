@@ -12,6 +12,7 @@ public class WorldRenderer {
     private SpriteBatch spriteBatch;
     private World monde;
     private int ppuX, ppuY;
+    private float delta = Gdx.graphics.getDeltaTime()*10;
 
     public int getPpuX() {
         return ppuX;
@@ -36,6 +37,7 @@ public class WorldRenderer {
 
 
     public void render(float delta) {
+
         this.spriteBatch.begin();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -54,15 +56,16 @@ public class WorldRenderer {
         }
         this.spriteBatch.end();
 
-        moveThem(delta);
+        moveThem(this.delta);
 
 
     }
 
-    public void moveThem(float deltaTime){
+    public void moveThem(float delta){
 
-            this.monde.getPacman().changeOrientationPacman(deltaTime);
-            this.monde.getBlueGhost().Move();
+            this.monde.getPacman().move(delta);
+            this.monde.getBlueGhost().move(delta);
+            this.monde.getRedGhost().move(delta);
             //float y = this.gs.getMonde().getPacman().getPosition().y;
 
 

@@ -2,22 +2,25 @@ package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.MovableElement;
 import com.ul.game.view.TextureFactory;
 
-public class Pacman extends GameElement {
+public class Pacman extends MovableElement {
     public static final float size=16;
     //private static final float SPEED = 2* Gdx.graphics.getDeltaTime();
-    private static final float SPEED = 2* Gdx.graphics.getDeltaTime();
+    private static final float SPEED = 2 * Gdx.graphics.getDeltaTime();
 
     // c'est temporaire
-    private Vector2 direction;
+    //private Vector2 direction;
     private float x=-1;
     private float y=-1;
+    private Vector2 currentDirection = new Vector2(-1,0);
     // faudra enlever le x et y je penserais a comment faire
-    private Vector2 velocity;
+    //private Vector2 velocity;
     //public static final Vector2 StartPosition = new Vector2(14 , 17);
 
     public Pacman(Vector2 position, World monde) {
@@ -36,22 +39,42 @@ public class Pacman extends GameElement {
     }
 
     public Vector2 getDirection() {
-        return direction;
+        return currentDirection;
     }
 
     public void setDirection(Vector2 direction) {
-        this.direction.set(direction);
+
+        this.currentDirection.set(direction);
     }
 
-    public GameElement getNext (float x , float y){
+    /*public GameElement getNext (float x , float y){
 
         return this.getMonde().getMaze().get((int)(this.getPosition().x+x),(int)(this.getPosition().y+y));
-    }
+    }*/
 
 
     @Override
     public Texture getTexture() {
         return TextureFactory.getInstance().getTexture(this.getClass());
+    }
+
+    public void eat(){
+        if(getThis().getClass()==Dark.class)
+            if(((Dark)(getThis())).hasGom()) ((Dark)(getThis())).setHasGom(false);
+    }
+
+    @Override
+    public void move(float delta) {
+        changeOrientation();
+
+        if(!this.isNextABlock(currentDirection)) {
+            this.getPosition().mulAdd(currentDirection,delta);
+        }
+        else{
+
+            this.setPosition(this.getNext(currentDirection.sub(currentDirection)).getPosition());
+        }
+        eat();
     }
 
     /**
@@ -63,8 +86,9 @@ public class Pacman extends GameElement {
 
 
     }
-    
-    public void changeOrientationPacman(float deltaTime) {
+
+    @Override
+    public void changeOrientation() {
         /*if (Gdx.input.isTouched()) {
 
             int x=Gdx.input.getX();
@@ -133,7 +157,7 @@ public class Pacman extends GameElement {
         }*/
 
 
-        if(Gdx.input.justTouched()) {
+        /*if(Gdx.input.justTouched()) {
             this.x = Gdx.input.getX();
             this.y = Gdx.input.getY();
         }
@@ -178,7 +202,50 @@ public class Pacman extends GameElement {
                          this.getPosition().add(0,-1);
                      }
             }
+        }*/
+
+        //System.out.println(currentDirection);
+        if(Gdx.input.justTouched()) {
+            this.x = Gdx.input.getX();
+            this.y = Gdx.input.getY();
         }
+
+            if (x >= 150 && x <= 350) {
+
+                if (y >= 0 && y <= 225) {
+
+                    if(!this.isNextABlock(UP)){
+                        this.setDirection(UP);
+                    }
+                } else if (y > 225 && y <= 500) {
+
+                    if(!this.isNextABlock(DOWN)){
+                        this.setDirection(DOWN);
+                    }
+                    /*else {
+                        this.getPosition().set(this.getNext(1*SPEED+1,0).getPosition());
+                        this.getPosition().add(-1,0);
+                    }*/
+                }
+            }
+            else if (x >= 0 && x < 150) {
+
+                     if (!this.isNextABlock(LEFT)){
+                         this.setDirection(LEFT);
+                     }
+
+            } else {
+
+                     if(!this.isNextABlock(RIGHT)){
+                         this.setDirection(RIGHT);
+                     }
+                     /*else {
+                         this.getPosition().set(this.getNext(0,1*SPEED+1).getPosition());
+                         this.getPosition().add(0,-1);
+                     }*/
+            }
+        }
+
 
 
 }

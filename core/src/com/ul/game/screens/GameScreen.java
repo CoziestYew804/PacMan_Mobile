@@ -1,5 +1,6 @@
 package com.ul.game.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -13,9 +14,12 @@ public class GameScreen implements Screen {
     private World monde;
     private WorldRenderer renderer;
     private SpriteBatch batch;
+    private int score=0;
+    private Game game;
 
     public GameScreen(PacManGdx game) {
 
+        this.game = game;
         monde = new World();
         renderer = new WorldRenderer(monde);
 

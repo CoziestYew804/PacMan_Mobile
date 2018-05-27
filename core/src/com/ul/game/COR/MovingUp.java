@@ -9,11 +9,11 @@ public class MovingUp extends RandomMovingCOR {
 
     @Override
     public void move(World w, Ghost ghost) {
-        System.out.println("j'essaie haut");
-        if (ghost.getNext(-1 * SPEED, 0).getClass() != Block.class) {
+
+        if (ghost.getNext(ghost.getUP()).getClass() != Block.class) {
 
             System.out.println("Le ghost va vers le haut !");
-            ghost.getPosition().add(-1 * SPEED, 0);
+            ghost.getPosition().add(ghost.getUP());
             this.moved=true;
         }
     }

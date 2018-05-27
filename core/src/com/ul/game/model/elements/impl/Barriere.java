@@ -25,6 +25,6 @@ public class Barriere extends GameElement {
 
     @Override
     public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
+        return TextureFactory.getInstance().getTexture(Dark.class);
     }
 }

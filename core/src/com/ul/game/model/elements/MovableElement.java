@@ -1,19 +1,22 @@
 package com.ul.game.model.elements;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.World;
+import com.ul.game.model.elements.impl.Barriere;
+import com.ul.game.model.elements.impl.Block;
+import com.ul.game.model.elements.impl.Ghost;
+import com.ul.game.model.elements.impl.Intersection;
 
 public abstract class MovableElement extends GameElement{
 
-    public static final int  LEFT = 1;
-    public static final int  RIGHT = 2;
-    public static final int  UP = 3;
-    public static final int  DOWN = 4;
+    public static final Vector2  LEFT =  new Vector2(0,-1);
+    public static final Vector2  RIGHT = new Vector2(0,+1);
+    public static final Vector2  UP = new Vector2(-1,0);
+    public static final Vector2  DOWN = new Vector2(+1,0);
 
-    
 
-    public int currentDirection;
 
     //protected MovableElement(Vector2 position, World monde, int currentDirection) {
     protected MovableElement(Vector2 position, World monde) {
@@ -36,19 +39,36 @@ public abstract class MovableElement extends GameElement{
         return null;
     }
 
-    public int getCurrentDirection() {
-        return currentDirection;
+
+    public abstract void move(float DeltaTime);
+
+    public Vector2 getUP(){
+        return UP;
     }
 
-    public void setCurrentDirection(int direction) {
-        if(this.getPosition().x % 1 == 0 && this.getPosition().y % 1 == 0)
-        {
-            this.currentDirection = direction;
-        }
-
+    public Vector2 getDOWN(){
+        return DOWN;
     }
-    public GameElement getNext (float x , float y){
 
-        return this.getMonde().getMaze().get((int)(this.getPosition().x+x),(int)(this.getPosition().y+y));
+    public Vector2 getLEFT(){
+        return LEFT;
     }
+
+    public Vector2 getRIGHT(){
+        return RIGHT;
+    }
+
+
+    public abstract void changeOrientation();
+
+
+
+    public boolean isNextAnIntersection (Vector2 currentDirection){
+
+        return this.getNext(currentDirection).getClass()==Intersection.class;
+    }
+
+
+
+
 }
