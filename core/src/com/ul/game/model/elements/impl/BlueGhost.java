@@ -2,6 +2,7 @@ package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.COR.*;
 import com.ul.game.model.World;
 import com.ul.game.view.TextureFactory;
 
@@ -9,6 +10,7 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class BlueGhost extends Ghost {
     public static final float size=16;
+    RandomMovingCOR movingCOR;
 
     public BlueGhost(Vector2 position, World monde) {
         super(position, monde);
@@ -30,30 +32,17 @@ public class BlueGhost extends Ghost {
 
     @Override
     public void Move() {
-        int temp = random.nextInt(4 - 1 + 1) + 1;
-        switch(temp){
-            case  1:
-                this.setPosition(new Vector2(
-                        this.getPosition().x,
-                        this.getPosition().y+1));
-                        break;
-            case  2:
-                this.setPosition(new Vector2(
-                        this.getPosition().x,
-                        this.getPosition().y-1));
-                break;
-            case  3:
-                this.setPosition(new Vector2(
-                        this.getPosition().x+1,
-                        this.getPosition().y));
-                break;
-            case  4:
-                this.setPosition(new Vector2(
-                        this.getPosition().x-1,
-                        this.getPosition().y));
-                break;
-        }
 
+        movingCOR = new MovingUp();
+        RandomMovingCOR down = new MovingDown();
+        RandomMovingCOR left = new MovingLeft();
+        RandomMovingCOR right = new MovingRight();
+
+        movingCOR.setSuivant(right);
+        right.setSuivant(left);
+        left.setSuivant(down);
+
+        this.movingCOR.randomMove(this.getMonde(),this);
 
     }
 

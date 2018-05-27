@@ -15,9 +15,10 @@ public abstract class MovableElement extends GameElement{
 
     public int currentDirection;
 
-    protected MovableElement(Vector2 position, World monde, int currentDirection) {
+    //protected MovableElement(Vector2 position, World monde, int currentDirection) {
+    protected MovableElement(Vector2 position, World monde) {
         super(position, monde);
-        this.currentDirection = currentDirection;
+        //this.currentDirection = currentDirection;
     }
 
     @Override
@@ -45,5 +46,9 @@ public abstract class MovableElement extends GameElement{
             this.currentDirection = direction;
         }
 
+    }
+    public GameElement getNext (float x , float y){
+
+        return this.getMonde().getMaze().get((int)(this.getPosition().x+x),(int)(this.getPosition().y+y));
     }
 }

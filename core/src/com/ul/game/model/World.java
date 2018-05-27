@@ -2,6 +2,7 @@ package com.ul.game.model;
 
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.BlueGhost;
 import com.ul.game.model.elements.impl.Ghost;
 import com.ul.game.model.elements.impl.Pacman;
 
@@ -10,13 +11,14 @@ import java.util.Iterator;
 public class World implements Iterable<GameElement> {
     private Maze _maze;
     private final Pacman _pacman;
-    private Ghost _blueGhost;
+    private final BlueGhost _blueGhost;
    // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
     public static Vector2 pacmanStartPos =  new Vector2( 17, 14);
     public World()
     {
         this._maze = new Maze(this);
         _pacman = new Pacman(pacmanStartPos, this);
+        _blueGhost = (BlueGhost) this._maze.get(14,14);
 
     }
 

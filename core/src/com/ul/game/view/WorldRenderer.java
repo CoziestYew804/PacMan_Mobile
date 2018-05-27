@@ -34,12 +34,14 @@ public class WorldRenderer {
         this.spriteBatch = new SpriteBatch();
     }
 
+
     public void render(float delta) {
         this.spriteBatch.begin();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for (GameElement element : this.monde) {
             //System.out.println(element.getClass());
+
             this.spriteBatch.draw(
                     TextureFactory.getInstance().getTexture(element.getClass()),
                     element.getPosition().y * 16,
@@ -51,12 +53,18 @@ public class WorldRenderer {
         }
         this.spriteBatch.end();
 
-        if (Gdx.input.isTouched()) {
+        moveThem(delta);
 
-                this.monde.getPacman().changeOrientationPacman(Gdx.input.getX(), Gdx.input.getY());
-                //float y = this.gs.getMonde().getPacman().getPosition().y;
 
-        }
+    }
+
+    public void moveThem(float deltaTime){
+
+            this.monde.getPacman().changeOrientationPacman(deltaTime);
+            this.monde.getBlueGhost().Move();
+            //float y = this.gs.getMonde().getPacman().getPosition().y;
+
+
     }
 }
 

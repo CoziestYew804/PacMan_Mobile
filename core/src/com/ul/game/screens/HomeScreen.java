@@ -16,7 +16,7 @@ public class HomeScreen implements Screen {
 
     public HomeScreen(PacManGdx game){
 
-        this.game = game;
+         this.game = game;
          this.spriteBatch = new SpriteBatch();
     }
     @Override
@@ -25,7 +25,7 @@ public class HomeScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float deltaTime) {
 
         this.spriteBatch.begin();
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -56,6 +56,12 @@ public class HomeScreen implements Screen {
                 200
         );
         this.spriteBatch.end();
+
+
+
+
+
+
 
         if (Gdx.input.isTouched()) {
 
