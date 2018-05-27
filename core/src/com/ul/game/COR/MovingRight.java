@@ -14,5 +14,8 @@ public class MovingRight extends RandomMovingCOR {
             ghost.getPosition().add(0, 1 * SPEED);
             this.moved = true;
         }
+        else {
+        }
+
     }
 }

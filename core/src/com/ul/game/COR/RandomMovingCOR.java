@@ -9,7 +9,7 @@ public abstract class RandomMovingCOR {
 
         private RandomMovingCOR suivant;
         protected boolean moved=false;
-        protected static final float SPEED = 2* Gdx.graphics.getDeltaTime();
+        protected static final float SPEED = 4 * Gdx.graphics.getDeltaTime();
 
         public void setSuivant(RandomMovingCOR psuivant)
         {
