@@ -68,6 +68,11 @@ public abstract class MovableElement extends GameElement{
         return this.getNext(currentDirection).getClass()==Intersection.class;
     }
 
+    public boolean isAnIntersection ()
+    {
+        return this.getThis().getClass()==Intersection.class;
+    }
+
 
 
 

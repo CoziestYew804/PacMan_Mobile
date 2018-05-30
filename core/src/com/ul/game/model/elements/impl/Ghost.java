@@ -52,7 +52,7 @@ public abstract class Ghost extends MovableElement {
     public void bestChoiceMove(){
 
         if(!this.isNextABlock(this.getDirection())) {
-            if (!this.isNextAnIntersection(this.getDirection())) {
+            if (!this.isAnIntersection()) {
                 getPosition().add(this.getDirection());
             } else {
                 //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());

@@ -1,6 +1,7 @@
 package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -205,6 +206,8 @@ public class Pacman extends MovableElement {
         }*/
 
         //System.out.println(currentDirection);
+
+
         if(Gdx.input.justTouched()) {
             this.x = Gdx.input.getX();
             this.y = Gdx.input.getY();
@@ -222,10 +225,6 @@ public class Pacman extends MovableElement {
                     if(!this.isNextABlock(DOWN)){
                         this.setDirection(DOWN);
                     }
-                    /*else {
-                        this.getPosition().set(this.getNext(1*SPEED+1,0).getPosition());
-                        this.getPosition().add(-1,0);
-                    }*/
                 }
             }
             else if (x >= 0 && x < 150) {
@@ -239,11 +238,35 @@ public class Pacman extends MovableElement {
                      if(!this.isNextABlock(RIGHT)){
                          this.setDirection(RIGHT);
                      }
-                     /*else {
-                         this.getPosition().set(this.getNext(0,1*SPEED+1).getPosition());
-                         this.getPosition().add(0,-1);
-                     }*/
             }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.UP))
+        {
+            if(!this.isNextABlock(UP)){
+                this.setDirection(UP);
+            }
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN))
+        {
+            if(!this.isNextABlock(DOWN)){
+                this.setDirection(DOWN);
+            }
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
+        {
+            if(!this.isNextABlock(LEFT)){
+                this.setDirection(LEFT);
+            }
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+        {
+            if(!this.isNextABlock(RIGHT)){
+                this.setDirection(RIGHT);
+            }
+        }
         }
 
 
