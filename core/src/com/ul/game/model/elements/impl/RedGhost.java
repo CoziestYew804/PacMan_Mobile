@@ -30,7 +30,7 @@ public class RedGhost extends Ghost {
         return TextureFactory.getInstance().getTexture(this.getClass());
     }
 
-    public
+
 
     @Override
     public void move(float DeltaTime) {
@@ -50,6 +50,18 @@ public class RedGhost extends Ghost {
 
         }*/
 
+    }
+
+    public void start(float deltatime) {
+        this.currentDirection.set(UP);
+        this.move(deltatime);
+        this.currentDirection.set(RIGHT);
+        this.move(deltatime);
+        this.currentDirection.set(UP);
+        this.move(deltatime);
+        this.currentDirection.set(UP);
+        this.move(deltatime);
+        isOut = true;
     }
 
     public Vector2 getDirection() {

@@ -2,10 +2,7 @@ package com.ul.game.model;
 
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.elements.GameElement;
-import com.ul.game.model.elements.impl.BlueGhost;
-import com.ul.game.model.elements.impl.Ghost;
-import com.ul.game.model.elements.impl.Pacman;
-import com.ul.game.model.elements.impl.RedGhost;
+import com.ul.game.model.elements.impl.*;
 
 import java.util.Iterator;
 
@@ -13,7 +10,8 @@ public class World implements Iterable<GameElement> {
     private Maze _maze;
     private final Pacman _pacman;
     private final BlueGhost _blueGhost;
-    private final RedGhost _redGhost;
+    //private final RedGhost _redGhost;
+    //private final YellowGhost _yellowghost;
    // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
     public static Vector2 pacmanStartPos =  new Vector2( 17, 14);
     public World()
@@ -21,7 +19,8 @@ public class World implements Iterable<GameElement> {
         this._maze = new Maze(this);
         _pacman = new Pacman(pacmanStartPos, this);
         _blueGhost = (BlueGhost) this._maze.get(14,14);
-        _redGhost = (RedGhost) this._maze.get(14,12);
+        //_redGhost = (RedGhost) this._maze.get(14,12);
+        //_yellowghost = (YellowGhost) this._maze.get(14,15);
 
     }
 
@@ -43,9 +42,10 @@ public class World implements Iterable<GameElement> {
     public Ghost getBlueGhost() {
         return _blueGhost;
     }
-    public Ghost getRedGhost() {
-        return _redGhost;
-    }
+    //public Ghost getRedGhost() {
+    //    return _redGhost;
+    //}
+    //public Ghost getYellowGhost(){ return _yellowghost; }
 
     @Override
     public Iterator<GameElement> iterator() {

@@ -122,6 +122,8 @@ public class Maze implements Iterable<GameElement>
 		return _width;
 	}
 
+	public int getMap(int i, int j) { return this._laby1[j][i];}
+
 
 	@Override
 	public Iterator<GameElement> iterator() {

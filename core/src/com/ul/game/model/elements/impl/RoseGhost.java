@@ -44,6 +44,11 @@ public class RoseGhost extends Ghost {
 
     }
 
+    @Override
+    public void start(float deltatime) {
+
+    }
+
     public Vector2 getDirection() {
         return currentDirection;
     }

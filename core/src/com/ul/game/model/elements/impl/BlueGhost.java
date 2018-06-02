@@ -40,6 +40,12 @@ public class BlueGhost extends Ghost {
 
     }
 
+    @Override
+    public void start(float deltatime) {
+        for (int i = 0; i < 3; i++)
+        this.move(deltatime);
+    }
+
     public Vector2 getDirection() {
         return currentDirection;
     }

@@ -12,8 +12,16 @@ import java.util.Random;
 public abstract class Ghost extends MovableElement {
     private Vector2 currentDirection = new Vector2(-1,0);
 
+    protected boolean isOut;
+
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
+        isOut = false;
+    }
+
+    public boolean isOut()
+    {
+        return isOut;
     }
 
     @Override
@@ -26,6 +34,8 @@ public abstract class Ghost extends MovableElement {
     public abstract Texture getTexture();
 
     public abstract void move(float DeltaTime);
+
+    public abstract void start(float deltatime);
 
     public void randomMove(float delta){
 
