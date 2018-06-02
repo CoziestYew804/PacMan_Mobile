@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Ghost extends MovableElement {
-    private Vector2 currentDirection = new Vector2(-1,0);
-
+    private Vector2 currentDirection = new Vector2(-5,0);
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
     }
@@ -29,48 +28,61 @@ public abstract class Ghost extends MovableElement {
 
     public void randomMove(float delta){
 
-        if(!this.isNextABlock(this.getDirection())) {
+        if(!this.isNextABlock(this.getDirection()) && !this.isNextAGhostDoor(this.getDirection())) {
 
-                getPosition().mulAdd(this.getDirection(),delta);
-            } else if (this.getThis().getClass()==Intersection.class){
+                this.getPosition().mulAdd(this.getDirection(),delta);
+            } else if (this.isAnIntersection()){
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
                 //getPosition().mulAdd(this.getDirection(),delta);
                 //this.setPosition(this.getNext(this.getDirection()).getPosition());
-                System.out.println("Nombre de choix " + temp.size());
+               // System.out.println("Nombre de choix " + temp.size());
                 Vector2 directionAleatoire = temp.get(rand.nextInt(temp.size()));
-                System.out.println("Direction aleatoire " + directionAleatoire);
+                //System.out.println("Direction aleatoire " + directionAleatoire);
                 this.setDirection(directionAleatoire) ;
-                System.out.println("Changement de direction !!! :" + this.getDirection());
-                System.out.println(this.getPosition());
+                //System.out.println("Changement de direction !!! :" + this.getDirection());
+                //System.out.println(this.getPosition());
 
             }
 
 
         }
-
-
-
     public void bestChoiceMove(){
 
-        if(!this.isNextABlock(this.getDirection())) {
-            if (!this.isAnIntersection()) {
-                getPosition().add(this.getDirection());
-            } else {
+        if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
+                this.getPosition().add(this.getDirection());
+            //System.out.println("JE CONTINUE This to rouge !!! :" + this.getThis().getClass());
+            //System.out.println(" JE CONTINUE Next to rouge !!! :" + this.getNext(this.getDirection()));
+            //System.out.println("Je suis a cote d'un bloc ? " + this.isNextABlock(this.getDirection()));
+            //System.out.println(this.getDirection()+  "this ou bien "+ this.currentDirection );
+            }
+            else if(this.getThis().getClass() == Intersection.class){
                 //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
-                getPosition().add(this.getDirection());
-                this.setDirection(((Intersection)(this.getNext(this.getDirection()))).getBestPossibilitieTo(this.getMonde().getPacman()));
-                System.out.println("Changement de direction !!! :" + this.getDirection());
+                //getPosition().add(this.getDirection());
+                this.setDirection(((Intersection) this.getThis()).getBestPossibilitieTo(this.getMonde().getPacman()));
+                //this.getPosition().add(this.getDirection());
+                //System.out.println("Changement de direction rouge !!! :" + this.getDirection());
+                //System.out.println("Changement position rouge !!! :" + this.getPosition());
+                //System.out.println("This to rouge !!! :" + this.getThis().getClass());
+                //System.out.println("Next to rouge !!! :" + this.getNext(this.getDirection()));
 
             }
 
 
-        }
+
     }
 
-    public abstract Vector2 getDirection();
 
-    public abstract void setDirection(Vector2 direction);
+    public Vector2 getDirection(){
+        return this.currentDirection;
+    }
+
+    public void setDirection(Vector2 direction){
+        this.currentDirection= direction;
+    }
+
+
+
 
 
 }

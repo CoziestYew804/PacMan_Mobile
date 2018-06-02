@@ -66,6 +66,7 @@ public class WorldRenderer {
             this.monde.getPacman().move(delta);
             this.monde.getBlueGhost().move(delta);
             this.monde.getRedGhost().move(delta);
+            this.monde.getRoseGhost().move(delta);
             //float y = this.gs.getMonde().getPacman().getPosition().y;
 
 

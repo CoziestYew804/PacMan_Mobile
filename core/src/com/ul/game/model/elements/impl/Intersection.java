@@ -30,19 +30,22 @@ public class Intersection extends Dark {
     public List<Vector2> getPossibilities(){
         List<Vector2> possibilites = new ArrayList<Vector2>();
         for (Vector2 direction: possibleDirection) {
-            if(!this.isNextABlock(direction)){
-                if(!this.isNextAGhostDoor(direction)) {
+            if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
                     possibilites.add(direction);
-                }
             }
         }
 
         return possibilites;
     }
     public Vector2 getBestPossibilitieTo(GameElement element){
-        Vector2 temp =new Vector2(0,0);
+        Vector2 temp=new Vector2(0,0);
         for (Vector2 direction: possibleDirection) {
-            if(!this.isNextABlock(direction)){
+            if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
+               temp=direction;
+            }
+        }
+        for (Vector2 direction: possibleDirection) {
+            if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
                     if(element.getPosition().dst(this.getPosition().add(temp)) > element.getPosition().dst(this.getPosition().add(direction))){
                         temp=direction;
                 }
