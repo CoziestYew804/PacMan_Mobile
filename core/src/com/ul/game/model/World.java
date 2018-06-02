@@ -15,10 +15,10 @@ public class World implements Iterable<GameElement> {
     private final YellowGhost _yellowGhost;
    // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
     public static Vector2 pacmanStartPos =  new Vector2( 17, 14);
-    public static Vector2 redGhostStartingPos = new Vector2(14 , 13 );
+    public static Vector2 redGhostStartingPos = new Vector2(14 , 12 );
     public static Vector2 blueGhostStartingPos = new Vector2(14 , 14 );
-    public static Vector2 yellowGhostStartingPos = new Vector2(13 , 13 );
-    public static Vector2 pinkGhostStartingPos = new Vector2(13 , 14 );
+    public static Vector2 yellowGhostStartingPos = new Vector2(14 , 15 );
+    public static Vector2 pinkGhostStartingPos = new Vector2(14 , 13 );
     public World()
     {
         this._maze = new Maze(this);

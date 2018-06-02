@@ -90,10 +90,10 @@ public class WorldRenderer {
             if(k>0){
                 this.monde.getBlueGhost().move(delta);
             }
-            if(k>1){
+            if(k>50){
                 this.monde.getRedGhost().move(delta);
             }
-            if(k>2){
+            if(k>100){
                 this.monde.getPinkGhost().move(delta);
             }
             k++;
