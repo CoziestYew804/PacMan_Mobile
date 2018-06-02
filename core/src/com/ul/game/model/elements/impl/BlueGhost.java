@@ -13,7 +13,6 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class BlueGhost extends Ghost {
     public static final float size=16;
-    RandomMovingCOR movingCOR;
     private Vector2 currentDirection = new Vector2(-1,0);
 
     public BlueGhost(Vector2 position, World monde) {
@@ -36,15 +35,6 @@ public class BlueGhost extends Ghost {
 
     @Override
     public void move(float delta) {
-
-        movingCOR = new MovingUp();
-        RandomMovingCOR down = new MovingDown();
-        RandomMovingCOR left = new MovingLeft();
-        RandomMovingCOR right = new MovingRight();
-
-        movingCOR.setSuivant(right);
-        right.setSuivant(down);
-        down.setSuivant(left);
 
         randomMove(delta);
 

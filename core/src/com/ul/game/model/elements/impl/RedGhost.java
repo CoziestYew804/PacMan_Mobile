@@ -30,6 +30,8 @@ public class RedGhost extends Ghost {
         return TextureFactory.getInstance().getTexture(this.getClass());
     }
 
+    public
+
     @Override
     public void move(float DeltaTime) {
 

@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		config.title = "PacMan";
 		config.width = 28 * 16;
 		config.height = 31 * 16;
-		//config.foregroundFPS = 16;
+		config.foregroundFPS = 30;
 		
 		new LwjglApplication(new PacManGdx(), config);
 	}

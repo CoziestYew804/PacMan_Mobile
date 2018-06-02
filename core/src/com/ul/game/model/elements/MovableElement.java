@@ -59,7 +59,7 @@ public abstract class MovableElement extends GameElement{
     }
 
 
-    public abstract void changeOrientation();
+    public void changeOrientation(){};
 
 
 

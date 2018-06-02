@@ -66,14 +66,16 @@ public class Pacman extends MovableElement {
 
     @Override
     public void move(float delta) {
-        changeOrientation();
+        if(Gdx.input.isTouched()) {
+
+            changeOrientation(Gdx.input.getX(),Gdx.input.getY());
+        }
 
         if(!this.isNextABlock(currentDirection)) {
             this.getPosition().mulAdd(currentDirection,delta);
         }
         else{
-
-            this.setPosition(this.getNext(currentDirection.sub(currentDirection)).getPosition());
+            //this.setPosition(this.getNext(currentDirection.sub(currentDirection)).getPosition());
         }
         eat();
     }
@@ -88,8 +90,7 @@ public class Pacman extends MovableElement {
 
     }
 
-    @Override
-    public void changeOrientation() {
+    public void changeOrientation(int x, int y) {
         /*if (Gdx.input.isTouched()) {
 
             int x=Gdx.input.getX();
@@ -208,10 +209,7 @@ public class Pacman extends MovableElement {
         //System.out.println(currentDirection);
 
 
-        if(Gdx.input.justTouched()) {
-            this.x = Gdx.input.getX();
-            this.y = Gdx.input.getY();
-        }
+
 
             if (x >= 150 && x <= 350) {
 

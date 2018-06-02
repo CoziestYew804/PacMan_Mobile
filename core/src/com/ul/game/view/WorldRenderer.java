@@ -12,7 +12,7 @@ public class WorldRenderer {
     private SpriteBatch spriteBatch;
     private World monde;
     private int ppuX, ppuY;
-    private float delta = Gdx.graphics.getDeltaTime()*10;
+    private float delta = 1;
 
     public int getPpuX() {
         return ppuX;
@@ -46,7 +46,7 @@ public class WorldRenderer {
 
             this.spriteBatch.draw(
                     //TextureFactory.getInstance().getTexture(element.getClass()),
-                    element.getTexture(),
+                     element.getTexture(),
                     element.getPosition().y * 16,
                     (30 - element.getPosition().x) * 16,
                     16,

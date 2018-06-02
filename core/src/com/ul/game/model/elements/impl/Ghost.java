@@ -30,24 +30,26 @@ public abstract class Ghost extends MovableElement {
     public void randomMove(float delta){
 
         if(!this.isNextABlock(this.getDirection())) {
-            if (!this.isNextAnIntersection(this.getDirection())) {
+
                 getPosition().mulAdd(this.getDirection(),delta);
-            } else {
-                List<Vector2> temp = ((Intersection) this.getNext(this.getDirection())).getPossibilities();
+            } else if (this.getThis().getClass()==Intersection.class){
+                List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
                 //getPosition().mulAdd(this.getDirection(),delta);
-                this.setPosition(this.getNext(this.getDirection()).getPosition());
+                //this.setPosition(this.getNext(this.getDirection()).getPosition());
                 System.out.println("Nombre de choix " + temp.size());
                 Vector2 directionAleatoire = temp.get(rand.nextInt(temp.size()));
                 System.out.println("Direction aleatoire " + directionAleatoire);
                 this.setDirection(directionAleatoire) ;
                 System.out.println("Changement de direction !!! :" + this.getDirection());
+                System.out.println(this.getPosition());
 
             }
 
 
         }
-    }
+
+
 
     public void bestChoiceMove(){
 
