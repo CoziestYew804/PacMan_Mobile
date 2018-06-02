@@ -23,8 +23,4 @@ public class Barriere extends GameElement {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(Dark.class);
-    }
 }

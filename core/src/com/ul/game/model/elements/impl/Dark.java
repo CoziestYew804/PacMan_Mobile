@@ -24,12 +24,6 @@ public class Dark extends GameElement {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-
-        if(hasGom){return TextureFactory.getInstance().getTexture(Gom.class);}
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
 
     public boolean hasGom() {
         return hasGom;

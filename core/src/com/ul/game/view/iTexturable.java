@@ -3,5 +3,6 @@ package com.ul.game.view;
 import com.badlogic.gdx.graphics.Texture;
 
 public interface iTexturable {
-    public Texture getTexture();
+
+	Texture getTexture(float delta);
 }

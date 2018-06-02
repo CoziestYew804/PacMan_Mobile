@@ -10,8 +10,4 @@ public class SuperGom extends Gom{
         super(position, monde);
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
 }

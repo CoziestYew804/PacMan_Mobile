@@ -11,7 +11,8 @@ public class World implements Iterable<GameElement> {
     private final Pacman _pacman;
     private final BlueGhost _blueGhost;
     private final RedGhost _redGhost;
-    private final RoseGhost _roseGhost;
+    private final PinkGhost _pinkGhost;
+    private final YellowGhost _yellowGhost;
    // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
     public static Vector2 pacmanStartPos =  new Vector2( 17, 14);
     public World()
@@ -20,7 +21,8 @@ public class World implements Iterable<GameElement> {
         _pacman = new Pacman(pacmanStartPos, this);
         _blueGhost = (BlueGhost)(this._maze.get(14,14));
         _redGhost = (RedGhost)(this._maze.get(14,12));
-        _roseGhost = (RoseGhost)(this._maze.get(14,13));
+        _pinkGhost = (PinkGhost)(this._maze.get(14,13));
+        _yellowGhost = (YellowGhost)(this._maze.get(14,15));
 
     }
 
@@ -45,8 +47,11 @@ public class World implements Iterable<GameElement> {
     public RedGhost getRedGhost() {
         return _redGhost;
     }
-    public RoseGhost getRoseGhost() {
-        return _roseGhost;
+    public PinkGhost getPinkGhost() {
+        return _pinkGhost;
+    }
+    public YellowGhost getYellowGhost() {
+        return _yellowGhost;
     }
 
     @Override

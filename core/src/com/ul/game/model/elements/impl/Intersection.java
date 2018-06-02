@@ -66,8 +66,4 @@ public class Intersection extends Dark {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(Dark.class);
-    }
 }

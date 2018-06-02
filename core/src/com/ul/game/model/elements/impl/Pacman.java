@@ -9,6 +9,7 @@ import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.MovableElement;
 import com.ul.game.view.TextureFactory;
+import com.ul.game.view.TexturePacman;
 
 public class Pacman extends MovableElement {
     public static final float size=16;
@@ -20,6 +21,7 @@ public class Pacman extends MovableElement {
     private float x=-1;
     private float y=-1;
     private Vector2 currentDirection = new Vector2(-1,0);
+    //private TexturePacman texturePacman =new TexturePacman(this);
     // faudra enlever le x et y je penserais a comment faire
     //private Vector2 velocity;
     //public static final Vector2 StartPosition = new Vector2(14 , 17);
@@ -54,15 +56,13 @@ public class Pacman extends MovableElement {
     }*/
 
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
 
     public void eat(){
-        if(getThis().getClass()==Dark.class)
-            if(((Dark)(getThis())).hasGom()) ((Dark)(getThis())).setHasGom(false);
+        if(getThis() instanceof Pellet)
+            if(((Pellet)(getThis())).hasGom()) ((Dark)(getThis())).setHasGom(false);
     }
+
+
 
     @Override
     public void move(float delta) {
@@ -74,8 +74,10 @@ public class Pacman extends MovableElement {
         if(!this.isNextABlock(currentDirection)) {
             this.getPosition().mulAdd(currentDirection,delta);
         }
-        else{
-            //this.setPosition(this.getNext(currentDirection.sub(currentDirection)).getPosition());
+        else if(this.isNextABlock(currentDirection)){
+                this.setPosition(soustraire(this.getNext(currentDirection).getPosition(), currentDirection));
+
+
         }
         eat();
     }
@@ -237,7 +239,7 @@ public class Pacman extends MovableElement {
                          this.setDirection(RIGHT);
                      }
             }
-
+/*
         if(Gdx.input.isKeyPressed(Input.Keys.UP))
         {
             if(!this.isNextABlock(UP)){
@@ -264,7 +266,7 @@ public class Pacman extends MovableElement {
             if(!this.isNextABlock(RIGHT)){
                 this.setDirection(RIGHT);
             }
-        }
+        }*/
         }
 
 

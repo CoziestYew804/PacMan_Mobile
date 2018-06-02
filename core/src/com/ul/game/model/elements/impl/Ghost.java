@@ -11,8 +11,13 @@ import java.util.Random;
 
 public abstract class Ghost extends MovableElement {
     private Vector2 currentDirection = new Vector2(-5,0);
+    int etat=0;
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
+    }
+
+    public int getEtat() {
+        return this.etat;
     }
 
     @Override
@@ -21,8 +26,6 @@ public abstract class Ghost extends MovableElement {
     @Override
     public abstract float getHeight();
 
-    @Override
-    public abstract Texture getTexture();
 
     public abstract void move(float DeltaTime);
 
@@ -66,7 +69,9 @@ public abstract class Ghost extends MovableElement {
                 //System.out.println("This to rouge !!! :" + this.getThis().getClass());
                 //System.out.println("Next to rouge !!! :" + this.getNext(this.getDirection()));
 
-            }
+            }else{
+            this.setPosition(soustraire(this.getNext(currentDirection).getPosition(),currentDirection));
+        }
 
 
 

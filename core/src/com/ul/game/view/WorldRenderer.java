@@ -10,9 +10,11 @@ public class WorldRenderer {
 
 
     private SpriteBatch spriteBatch;
+    private TextureFactory texture;
     private World monde;
     private int ppuX, ppuY;
-    private float delta = 1;
+    private float delta = 0.1f;
+    private float delta2 = Gdx.graphics.getDeltaTime()*60;
 
     public int getPpuX() {
         return ppuX;
@@ -42,11 +44,9 @@ public class WorldRenderer {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for (GameElement element : this.monde) {
-            //System.out.println(element.getClass());
 
             this.spriteBatch.draw(
-                    //TextureFactory.getInstance().getTexture(element.getClass()),
-                     element.getTexture(),
+                    this.texture.getInstance(this.monde).getTexture(element.getClass(),delta),
                     element.getPosition().y * 16,
                     (30 - element.getPosition().x) * 16,
                     16,
@@ -66,7 +66,7 @@ public class WorldRenderer {
             this.monde.getPacman().move(delta);
             this.monde.getBlueGhost().move(delta);
             this.monde.getRedGhost().move(delta);
-            this.monde.getRoseGhost().move(delta);
+            this.monde.getPinkGhost().move(delta);
             //float y = this.gs.getMonde().getPacman().getPosition().y;
 
 

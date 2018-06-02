@@ -33,10 +33,6 @@ public class RedGhost extends Ghost {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
 
     public void moveOutOfHouse(){
             this.setDirection(sortir.get(etape));
@@ -47,7 +43,7 @@ public class RedGhost extends Ghost {
     }
 
     @Override
-    public void move(float DeltaTime) {
+    public void move(float deltaTime) {
 
         if(isInHouse){
             moveOutOfHouse();

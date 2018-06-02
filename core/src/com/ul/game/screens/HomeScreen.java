@@ -10,6 +10,7 @@ import com.ul.game.PacManGdx;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.MovableElement;
 import com.ul.game.model.elements.impl.*;
+import com.ul.game.view.TextureFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class HomeScreen implements Screen {
     private BlueGhost blue;
     private YellowGhost yellow;
     private RedGhost red;
-    private RoseGhost rose;
+    private PinkGhost rose;
     private List<MovableElement> elements = new ArrayList<MovableElement>(){};
     private Texture logo;
 
@@ -31,7 +32,7 @@ public class HomeScreen implements Screen {
          this.game = game;
          this.spriteBatch = new SpriteBatch();
          this.pacman= new Pacman(new Vector2(200,200),null);
-         this.rose= new RoseGhost(new Vector2(350,200),null);
+         this.rose= new PinkGhost(new Vector2(350,200),null);
          this.blue= new BlueGhost(new Vector2(250,200),null);
          this.yellow= new YellowGhost(new Vector2(400,200),null);
          this.red= new RedGhost(new Vector2(300,200),null);
@@ -66,8 +67,8 @@ public class HomeScreen implements Screen {
             //System.out.println(element.getClass());
 
             this.spriteBatch.draw(
-                    //TextureFactory.getInstance().getTexture(element.getClass()),
-                    element.getTexture(),
+                    TextureFactory.getInstance(null).getTexture(element.getClass(), 5),
+                    //element.getTexture(),
                     element.getPosition().x ,
                     ( element.getPosition().y) ,
                     20,

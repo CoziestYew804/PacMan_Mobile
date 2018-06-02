@@ -3,7 +3,6 @@ package com.ul.game.model;
 import com.badlogic.gdx.graphics.Texture;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.impl.*;
-import com.ul.game.view.TextureFactory;
 import com.ul.game.model.MazeCor.*;
 
 import java.util.Iterator;
@@ -16,22 +15,12 @@ public class Maze implements Iterable<GameElement>
 	private int _width;
 	private int _height;
 
-	Texture block = TextureFactory.getInstance().getTexture(Block.class);
-	Texture pacGomme = TextureFactory.getInstance().getTexture(Gom.class);
-	Texture pacPower = TextureFactory.getInstance().getTexture(SuperGom.class);
-	Texture dark = TextureFactory.getInstance().getTexture(Dark.class);
-	Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
-	Texture redGhost = TextureFactory.getInstance().getTexture(RedGhost.class);
-	Texture roseGhost = TextureFactory.getInstance().getTexture(RoseGhost.class);
-	Texture blueGhost = TextureFactory.getInstance().getTexture(BlueGhost.class);
-	Texture yellowGhost = TextureFactory.getInstance().getTexture(YellowGhost.class);
-
 	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes */
 	private int[][] _laby1 = new int[][]{
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 0, 0, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 0},
 			{0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0},
-			{0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0},
+			{0, 9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 9, 0},
 			{0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0},
 			{0, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 0},
 			{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0},
@@ -51,7 +40,7 @@ public class Maze implements Iterable<GameElement>
 			{0, 2, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 0, 0, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 0},
 			{0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0},
 			{0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0},
-			{0, 2, 1, 2, 0, 0, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 0, 0, 2, 1, 2, 0},
+			{0, 9, 1, 2, 0, 0, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 0, 0, 2, 1, 9, 0},
 			{0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0},
 			{0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0},
 			{0, 2, 1, 2, 1, 1, 2, 0, 0, 2, 1, 1, 2, 0, 0, 2, 1, 1, 2, 0, 0, 2, 1, 1, 2, 1, 2, 0},

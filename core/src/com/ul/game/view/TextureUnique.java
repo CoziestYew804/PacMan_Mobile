@@ -3,15 +3,15 @@ package com.ul.game.view;
 import com.badlogic.gdx.graphics.Texture;
 
 public class TextureUnique implements iTexturable {
+	private Texture texture;
 
-    private Texture _texture;
 
-    public TextureUnique (Texture texture)
-    {
-        _texture = texture;
-    }
+	public TextureUnique(String internalPath){
+		this.texture = new Texture(internalPath);
+	}
 
-    public Texture getTexture() {
-        return _texture;
-    }
+	@Override
+	public Texture getTexture(float delta) {
+		return this.texture;
+	}
 }

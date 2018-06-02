@@ -22,8 +22,5 @@ public class Gom extends Dark{
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
+
 }

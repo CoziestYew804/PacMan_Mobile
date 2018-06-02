@@ -31,10 +31,6 @@ public class YellowGhost extends Ghost {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
 
     @Override
     public void move(float DeltaTime) {

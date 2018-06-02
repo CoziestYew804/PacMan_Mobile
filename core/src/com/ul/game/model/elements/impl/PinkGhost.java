@@ -8,13 +8,13 @@ import com.ul.game.view.TextureFactory;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RoseGhost extends Ghost {
+public class PinkGhost extends Ghost {
     public static final float size=16;
     private Vector2 currentDirection = new Vector2(-1,0);
     private ArrayList<Vector2> sortir = new ArrayList<Vector2>();
     private int etape=0;
     private boolean isInHouse = true;
-    public RoseGhost(Vector2 position, World monde) {
+    public PinkGhost(Vector2 position, World monde) {
         super(position, monde);
         sortir.add(UP);
         sortir.add(UP);
@@ -30,10 +30,7 @@ public class RoseGhost extends Ghost {
         return size;
     }
 
-    @Override
-    public Texture getTexture() {
-        return TextureFactory.getInstance().getTexture(this.getClass());
-    }
+
 
     public void moveOutOfHouse(){
         this.setDirection(sortir.get(etape));
@@ -67,19 +64,6 @@ public class RoseGhost extends Ghost {
 
     }
 
-    @Override
-    public void start(float deltatime) {
-
-    }
-
-    public Vector2 getDirection() {
-        return currentDirection;
-    }
-
-    public void setDirection(Vector2 direction) {
-
-        this.currentDirection.set(direction);
-    }
 
 
     @Override

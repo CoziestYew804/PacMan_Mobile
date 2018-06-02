@@ -34,11 +34,9 @@ public abstract class MovableElement extends GameElement{
         return 0;
     }
 
-    @Override
-    public Texture getTexture() {
-        return null;
+    public Vector2 soustraire(Vector2 v, Vector2 v2){
+        return new Vector2(v.x-v2.x,v.y-v2.y);
     }
-
 
     public abstract void move(float DeltaTime);
 
