@@ -35,7 +35,7 @@ public abstract class Ghost extends MovableElement {
 
                 this.getPosition().mulAdd(this.getDirection(),delta);
             } else if (this.isAnIntersection()){
-                //this.setPosition(this.getThis().getPosition());
+                this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
                 //getPosition().mulAdd(this.getDirection(),delta);
