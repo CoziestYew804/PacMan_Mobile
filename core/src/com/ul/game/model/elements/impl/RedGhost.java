@@ -43,13 +43,13 @@ public class RedGhost extends Ghost {
     }
 
     @Override
-    public void move(float deltaTime) {
+    public void move(float delta) {
 
         if(isInHouse){
             moveOutOfHouse();
         }
         else{
-            bestChoiceMove();
+            bestChoiceMove(delta);
         }
         if(etape==3){
             isInHouse=false;

@@ -15,6 +15,7 @@ public class WorldRenderer {
     private int ppuX, ppuY;
     private float delta = 0.1f;
     private float delta2 = Gdx.graphics.getDeltaTime()*60;
+    int k= 0;
 
     public int getPpuX() {
         return ppuX;
@@ -54,6 +55,27 @@ public class WorldRenderer {
             );
 
         }
+        this.spriteBatch.draw(
+                this.texture.getInstance(this.monde).getTexture(this.monde.getBlueGhost().getClass(),delta),
+                this.monde.getBlueGhost().getPosition().y * 16,
+                (30 - this.monde.getBlueGhost().getPosition().x) * 16,
+                16,
+                16
+        );
+        this.spriteBatch.draw(
+                this.texture.getInstance(this.monde).getTexture(this.monde.getRedGhost().getClass(),delta),
+                this.monde.getRedGhost().getPosition().y * 16,
+                (30 - this.monde.getRedGhost().getPosition().x) * 16,
+                16,
+                16
+        );
+        this.spriteBatch.draw(
+                this.texture.getInstance(this.monde).getTexture(this.monde.getPinkGhost().getClass(),delta),
+                this.monde.getPinkGhost().getPosition().y * 16,
+                (30 - this.monde.getPinkGhost().getPosition().x) * 16,
+                16,
+                16
+        );
         this.spriteBatch.end();
 
         moveThem(this.delta);
@@ -63,10 +85,19 @@ public class WorldRenderer {
 
     public void moveThem(float delta){
 
+
             this.monde.getPacman().move(delta);
-            this.monde.getBlueGhost().move(delta);
-            this.monde.getRedGhost().move(delta);
-            this.monde.getPinkGhost().move(delta);
+            if(k>0){
+                this.monde.getBlueGhost().move(delta);
+            }
+            if(k>1){
+                this.monde.getRedGhost().move(delta);
+            }
+            if(k>2){
+                this.monde.getPinkGhost().move(delta);
+            }
+            k++;
+
             //float y = this.gs.getMonde().getPacman().getPosition().y;
 
 

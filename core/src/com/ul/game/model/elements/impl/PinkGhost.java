@@ -52,7 +52,7 @@ public class PinkGhost extends Ghost {
                 case 1:
                     randomMove(delta);
                 case 2:
-                    bestChoiceMove();
+                    bestChoiceMove(delta);
                 default:
                     break;
             }

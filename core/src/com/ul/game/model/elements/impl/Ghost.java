@@ -35,6 +35,7 @@ public abstract class Ghost extends MovableElement {
 
                 this.getPosition().mulAdd(this.getDirection(),delta);
             } else if (this.isAnIntersection()){
+                //this.setPosition(this.getThis().getPosition());
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
                 //getPosition().mulAdd(this.getDirection(),delta);
@@ -50,16 +51,18 @@ public abstract class Ghost extends MovableElement {
 
 
         }
-    public void bestChoiceMove(){
+    public void bestChoiceMove(float delta){
 
         if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
-                this.getPosition().add(this.getDirection());
+                //this.getPosition().add(this.getDirection());
+            this.getPosition().mulAdd(this.getDirection(),delta);
             //System.out.println("JE CONTINUE This to rouge !!! :" + this.getThis().getClass());
             //System.out.println(" JE CONTINUE Next to rouge !!! :" + this.getNext(this.getDirection()));
             //System.out.println("Je suis a cote d'un bloc ? " + this.isNextABlock(this.getDirection()));
             //System.out.println(this.getDirection()+  "this ou bien "+ this.currentDirection );
             }
-            else if(this.getThis().getClass() == Intersection.class){
+            else if(this.isAnIntersection()){
+                //this.setPosition(this.getThis().getPosition());
                 //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
                 //getPosition().add(this.getDirection());
                 this.setDirection(((Intersection) this.getThis()).getBestPossibilitieTo(this.getMonde().getPacman()));
@@ -70,7 +73,7 @@ public abstract class Ghost extends MovableElement {
                 //System.out.println("Next to rouge !!! :" + this.getNext(this.getDirection()));
 
             }else{
-            this.setPosition(soustraire(this.getNext(currentDirection).getPosition(),currentDirection));
+            //this.setPosition(soustraire(this.getNext(currentDirection).getPosition(),currentDirection));
         }
 
 
