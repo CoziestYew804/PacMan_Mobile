@@ -62,6 +62,7 @@ public abstract class Ghost extends MovableElement {
             //System.out.println(this.getDirection()+  "this ou bien "+ this.currentDirection );
             }
             else if(this.isAnIntersection()){
+            this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
                 //this.setPosition(this.getThis().getPosition());
                 //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
                 //getPosition().add(this.getDirection());
