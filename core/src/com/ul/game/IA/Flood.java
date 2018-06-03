@@ -20,7 +20,7 @@ public class Flood {
         this.world = world;
     }
 
-    public Vector2 getDirection(Vector2 origine, Vector2 target) {
+    public Vector2 getDirection(GridPoint2 origine, GridPoint2 target) {
 
         LinkedList<Wave> tsunami = new LinkedList<Wave>();
 
@@ -28,17 +28,19 @@ public class Flood {
 
         System.out.println(world.getMaze().getHeight());
 
-        GridPoint2 pos = new GridPoint2((int)origine.x, (int)origine.y);
-        GridPoint2 cible = new GridPoint2((int)target.x, (int)target.y);
+        //GridPoint2 pos = new GridPoint2((int)origine.x, (int)origine.y);
+        //GridPoint2 cible = new GridPoint2((int)target.x, (int)target.y);
 
-        tsunami.add(new Wave(pos, cible,world.getMaze()));
+        tsunami.add(new Wave(origine, target,world.getMaze()));
 
         boolean stop = false;
         Wave last;
 
         do{
+
             last = tsunami.pollFirst();
-            if(last == null )
+
+            if(last == null)
                 throw new NullPointerException("Target not in same maze");
 
 
@@ -48,7 +50,7 @@ public class Flood {
                             " Etat : " +
                             destroyed[last.getPosition().x][last.getPosition().y]);
             if(!destroyed[last.getPosition().x][last.getPosition().y]){
-                stop = last.flood(tsunami);
+                stop = stop || last.flood(tsunami);
                 destroyed[last.getPosition().x][last.getPosition().y] = true;
             }
         }while(!stop);

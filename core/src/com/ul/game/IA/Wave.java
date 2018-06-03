@@ -35,34 +35,59 @@ public class Wave {
             return true;
 
 
+        GridPoint2[] nextPos = {//up, right, down, left
+                new GridPoint2 (_origin.x, _origin.y +1),
+                new GridPoint2 (_origin.x+1, _origin.y),
+                new GridPoint2 (_origin.x, _origin.y -1),
+                new GridPoint2(_origin.x-1, _origin.y)
+        };
+
+        for(int i = 0; i < 4; i++){
+            //!\\Les cases vides autour -> ne pas rechercher en dehors du tableau
+            //Si ça dépasse la taille, revenir au début (tp de gauche à droite et inversement, ainsi que haut bas)
+            if(nextPos[i].x < 0)
+                nextPos[i].x = _maze.getWidth()-1;
+            if(nextPos[i].x > _maze.getWidth()-1)
+                nextPos[i].x = 0;
+
+            if (nextPos[i].y > _maze.getHeight()-1)
+                nextPos[i].y = 0;
+            if (nextPos[i].y < 0)
+                nextPos[i].y = _maze.getHeight()-1;
 
 
+            int type = _maze.getMap(nextPos[i].x, nextPos[i].y);
+            if(type != 0)
+                tsunami.addLast(new Wave(this, nextPos[i], _target, _maze));
+        }
+
+        /*
         //!\\Les cases vides autour -> ne pas rechercher en dehors du tableau
         //Si ça dépasse la taille, revenir au début (tp de gauche à droite et inversement, ainsi que haut bas)
         System.out.println( "la merde " + _origin.x +"    "+ _origin.y);
-        if(_origin.x-1 < 0)
+        if(_origin.x < 0)
         {
             _origin.x = _maze.getWidth()-1;
             System.out.println("Nouvelle valeur de X auparavant négative :" + _origin.x);
         }
 
 
-        if(_origin.x+1 > _maze.getWidth()-1)
+        if(_origin.x > _maze.getWidth()-1)
         {
-            _origin.x = 1;
+            _origin.x = 0;
             System.out.println("Nouvelle valeur de X auparavant trop élevée :" + _origin.x);
         }
 
 
-        if (_origin.y+1 > _maze.getHeight()-1)
+        if (_origin.y > _maze.getHeight()-1)
         {
-            _origin.y = 1;
+            _origin.y = 0;
             System.out.println("Nouvelle valeur de Y auparavant trop élevée :" + _origin.y);
 
         }
 
 
-        if (_origin.y-1 < 0)
+        if (_origin.y < 0)
         {
             _origin.y = _maze.getHeight()-1;
             System.out.println("Nouvelle valeur de Y auparavant négative :" + _origin.y);
@@ -85,7 +110,7 @@ public class Wave {
         if(_maze.getMap(down.x, down.y) != 0)
             tsunami.addLast(new Wave(down, _target, _maze));
 
-
+        */
         return false;
 
 
