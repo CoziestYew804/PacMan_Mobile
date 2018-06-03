@@ -6,19 +6,24 @@ import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Flood {
-    World world;
 
-    public int getDirection(Vector2 origine, Vector2 target) {
-        Stack<Wave> tsunami = new Stack<Wave>();
-        boolean destroyed[][] = new boolean[world.getMaze().getHeight()-1]
-                                            [world.getMaze().getWidth()-1];
+    public Vector2 getDirection(Vector2 origine, Vector2 target, World world) {
+
+        LinkedList<Wave> tsunami = new LinkedList<Wave>();
+
+        boolean destroyed[][] = new boolean[world.getMaze().getWidth()]
+                [world.getMaze().getHeight()];
+
         GridPoint2 pos = new GridPoint2((int)origine.x, (int)origine.y);
         GridPoint2 cible = new GridPoint2((int)target.x, (int)target.y);
 
-        tsunami.add(new Wave(null,world.getMaze(),pos, cible));
+        tsunami.add(new Wave(pos, cible,world.getMaze()));
 
         boolean stop = false;
         Wave last;
@@ -26,22 +31,37 @@ public class Flood {
         do{
             if(tsunami.size() == 0)
                 throw new NullPointerException("Target not in same maze");
-            last = tsunami.pop();
+            last = tsunami.pollFirst();
+            System.out.println(
+                    "X : " + last.getPosition().x +
+                            " Y : " + last.getPosition().y +
+                            " Etat : " +
+                            destroyed[last.getPosition().x][last.getPosition().y]);
             if(!destroyed[last.getPosition().x][last.getPosition().y]){
-                stop = stop || last.flood(tsunami);
+                stop = last.flood(tsunami);
                 destroyed[last.getPosition().x][last.getPosition().y] = true;
             }
         }while(!stop);
 
-        int nextDir = 0;
+        Vector2 nextDir = null;
 
         GridPoint2 tmp = last.getFirstSon().getPosition();
         Vector2 nextPos = new Vector2(tmp.x, tmp.y);
 
-        if(nextPos.y > origine.y)
-            nextDir = 0;
-        if(nextPos.x > origine.x)
-            nextDir = 1;
+        if(nextPos.y > origine.y) nextDir = new Vector2(0, +1);
+        else if (nextPos.y < origine.y) nextDir = new Vector2(0, -1);
+        else
+        {
+
+            if(nextPos.x > origine.x)
+                nextDir = new Vector2(+1, 0);
+            else if(nextPos.x < origine.x)
+                nextDir = new Vector2(-1, 0);
+
+                //n'est censé jamais arriver
+            else nextDir = new Vector2(0,0);
+
+        }
 
         return nextDir;
 

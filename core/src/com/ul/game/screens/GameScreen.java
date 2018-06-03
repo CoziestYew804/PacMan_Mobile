@@ -6,8 +6,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.ul.game.PacManGdx;
 import com.ul.game.model.World;
+import com.ul.game.model.elements.GameElement;
+import com.ul.game.model.elements.impl.Pellet;
 import com.ul.game.view.TextureFactory;
 import com.ul.game.view.WorldRenderer;
 
@@ -42,6 +45,7 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         this.renderer.render(delta);
+        this.analyzePosition();
     }
 
     @Override
@@ -68,5 +72,17 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
 
+    }
+
+    public void analyzePosition()
+    {
+        Vector2 currentPosition = this.monde.getPacman().getPosition();
+        //Test pour les pellets
+        int x = (int) currentPosition.x;
+        int y = (int) currentPosition.y;
+        GameElement element = this.monde.getMaze().get(x, y);
+        if(element != null && element instanceof Pellet){
+            this.getMonde().getMaze().eatPellet(y, x);
+            }
     }
 }

@@ -113,11 +113,19 @@ public class Maze implements Iterable<GameElement>
 
 	public int getMap(int i, int j) { return this._laby1[j][i];}
 
+	public void eatPellet(int x, int y) {
+		if(_laby2[y][x] instanceof Pellet)
+			_laby2[y][x] = null;
+	}
+
+
 
 	@Override
 	public Iterator<GameElement> iterator() {
 		return new MazeIterator(this);
 	}
+
+
 
 	class MazeIterator implements Iterator<GameElement> {
 
@@ -133,6 +141,8 @@ public class Maze implements Iterable<GameElement>
 		public boolean hasNext() {
 			return (_i < this._maze.getHeight()) && (_j < this._maze.getWidth());
 		}
+
+
 
 		@Override
 		public GameElement next() {

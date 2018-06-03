@@ -45,11 +45,11 @@ public abstract class GameElement {
 
     public boolean isNextABlock (Vector2 currentDirection){
 
-        return this.getNext(currentDirection).getClass()==Block.class;
+        return this.getNext(currentDirection) instanceof Block;
     }
     public boolean isNextAGhostDoor (Vector2 currentDirection){
 
-        return this.getNext(currentDirection).getClass()==Barriere.class;
+        return this.getNext(currentDirection) instanceof Barriere;
     }
 
 }
