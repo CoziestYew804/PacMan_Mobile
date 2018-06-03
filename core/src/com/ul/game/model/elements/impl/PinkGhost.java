@@ -44,15 +44,18 @@ public class PinkGhost extends Ghost {
 
         if(isInHouse){
             moveOutOfHouse();
+            if(etape==3){
+                isInHouse=false;
+            }
         }
-        else{
+        else if(etat==0){
             int randomNum = 1 + (int)(Math.random() * ((2 - 1) + 1));
             if(randomNum==1) randomMove(delta);
             if(randomNum==2) bestChoiceMove(delta);
+        }else if(etat==1){
+            runAway(delta);
         }
-        if(etape==3){
-            isInHouse=false;
-        }
+
 
 
     }

@@ -49,12 +49,14 @@ public class BlueGhost extends Ghost {
 
         if(isInHouse){
             moveOutOfHouse();
+            if(etape==3){
+                isInHouse=false;
+            }
         }
-        else{
+        else if(etat==0){
             randomMove(delta);
-        }
-        if(etape==3){
-            isInHouse=false;
+        }else if(etat==1){
+            runAway(delta);
         }
 
 

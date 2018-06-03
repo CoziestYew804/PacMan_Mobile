@@ -77,6 +77,28 @@ public abstract class Ghost extends MovableElement {
 
     }
 
+    public void runAway(float delta){
+
+        if(this.isAnIntersection()) {
+            if (!changed) {
+                this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
+                Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieToRunAway(this.getMonde().getPacman());
+                this.setDirection(bestChoice);
+                changed=true;
+            }
+            this.getPosition().mulAdd(this.getDirection(), delta);
+        }else if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
+
+            this.getPosition().mulAdd(this.getDirection(),delta);
+            changed=false;
+
+        }
+
+
+
+    }
+
+
 
     public Vector2 getDirection(){
         return this.currentDirection;

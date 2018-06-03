@@ -43,15 +43,17 @@ public class RedGhost extends Ghost {
 
     @Override
     public void move(float delta) {
-
+        
         if(isInHouse){
             moveOutOfHouse();
+            if(etape==3){
+                isInHouse=false;
+            }
         }
-        else{
+        else if(etat==0){
             bestChoiceMove(delta);
-        }
-        if(etape==3){
-            isInHouse=false;
+        }else if(etat==1){
+            runAway(delta);
         }
         /*if(!this.isNextABlock(currentDirection)) {
             if (!this.isNextAnIntersection(currentDirection)) {
