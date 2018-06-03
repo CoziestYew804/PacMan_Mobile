@@ -44,14 +44,14 @@ public class Intersection extends Dark {
                temp=direction;
             }
         }
-        for (Vector2 direction: possibleDirection) {
+        /*for (Vector2 direction: possibleDirection) {
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
                     if(element.getPosition().dst(this.getPosition().add(temp)) > element.getPosition().dst(this.getPosition().add(direction))){
                         temp=direction;
                 }
 
             }
-        }
+        }*/
 
         return temp;
     }

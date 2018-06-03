@@ -70,14 +70,14 @@ public class RedGhost extends Ghost {
 
     }
 
-    public Vector2 getDirection() {
+    /*public Vector2 getDirection() {
         return this.currentDirection;
     }
 
     public void setDirection(Vector2 direction) {
 
         this.currentDirection = direction;
-    }
+    }*/
 
 
     @Override

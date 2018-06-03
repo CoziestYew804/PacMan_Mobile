@@ -21,6 +21,7 @@ public class Pacman extends MovableElement {
     private float x=-1;
     private float y=-1;
     private Vector2 currentDirection = new Vector2(-1,0);
+    private Vector2 newDirection =new Vector2(-1,0);
     //private TexturePacman texturePacman =new TexturePacman(this);
     // faudra enlever le x et y je penserais a comment faire
     //private Vector2 velocity;
@@ -219,11 +220,13 @@ public class Pacman extends MovableElement {
 
                     if(!this.isNextABlock(UP)){
                         this.setDirection(UP);
+                        //this.newDirection=UP;
                     }
                 } else if (y > 225 && y <= 500) {
 
                     if(!this.isNextABlock(DOWN)){
                         this.setDirection(DOWN);
+                        //this.newDirection=DOWN;
                     }
                 }
             }
@@ -231,12 +234,14 @@ public class Pacman extends MovableElement {
 
                      if (!this.isNextABlock(LEFT)){
                          this.setDirection(LEFT);
+                         //this.newDirection=LEFT;
                      }
 
             } else {
 
                      if(!this.isNextABlock(RIGHT)){
                          this.setDirection(RIGHT);
+                         //this.newDirection=RIGHT;
                      }
             }
 /*

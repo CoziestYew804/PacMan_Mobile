@@ -35,6 +35,7 @@ public abstract class Ghost extends MovableElement {
 
                 this.getPosition().mulAdd(this.getDirection(),delta);
             } else if (this.isAnIntersection()){
+
                 this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
@@ -62,20 +63,25 @@ public abstract class Ghost extends MovableElement {
             //System.out.println(this.getDirection()+  "this ou bien "+ this.currentDirection );
             }
             else if(this.isAnIntersection()){
+            //this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+            //System.out.println(this.getPosition().getClass());
+            //System.out.println(this.getThis().getClass());
             this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
                 //this.setPosition(this.getThis().getPosition());
                 //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
                 //getPosition().add(this.getDirection());
-                this.setDirection(((Intersection) this.getThis()).getBestPossibilitieTo(this.getMonde().getPacman()));
+                //System.out.println("je vais faire disparaitre un bloc ?");
+                Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieTo(this.getMonde().getPacman());
+                this.setDirection(bestChoice);
                 //this.getPosition().add(this.getDirection());
                 //System.out.println("Changement de direction rouge !!! :" + this.getDirection());
                 //System.out.println("Changement position rouge !!! :" + this.getPosition());
                 //System.out.println("This to rouge !!! :" + this.getThis().getClass());
                 //System.out.println("Next to rouge !!! :" + this.getNext(this.getDirection()));
 
-            }else{
+            }//else{
             //this.setPosition(soustraire(this.getNext(currentDirection).getPosition(),currentDirection));
-        }
+        //}
 
 
 
