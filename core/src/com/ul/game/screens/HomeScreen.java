@@ -35,6 +35,7 @@ public class HomeScreen implements Screen {
          this.game = game;
          this.spriteBatch = new SpriteBatch();
          this.pacman= new Pacman(new Vector2(200,200), this.monde);
+         this.monde.getPacman().setDirection(MovableElement.LEFT);
          this.rose= new PinkGhost(new Vector2(350,200), this.monde);
          this.blue= new BlueGhost(new Vector2(250,200), this.monde);
          this.yellow= new YellowGhost(new Vector2(400,200), this.monde);
@@ -71,7 +72,7 @@ public class HomeScreen implements Screen {
             //System.out.println(element.getClass());
 
             this.spriteBatch.draw(
-                    TextureFactory.getInstance( this.monde).getTexture(element.getClass(), 5),
+                    TextureFactory.getInstance( this.monde).getTexture(element.getClass(), 0.1f),
                     //element.getTexture(),
                     element.getPosition().x ,
                     ( element.getPosition().y) ,

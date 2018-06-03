@@ -70,7 +70,7 @@ System.out.println(pacman.getDirection());
 			return right[this.step];
 		}
 
-		return down[this.step];
+		return left[this.step];
 
 	}
 }
