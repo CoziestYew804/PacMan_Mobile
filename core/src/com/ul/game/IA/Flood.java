@@ -38,9 +38,9 @@ public class Flood {
 
         do{
             last = tsunami.pollFirst();
-            if(last == null )
+            if(last == null ) {
                 throw new NullPointerException("Target not in same maze");
-
+            }
 
             System.out.println(
                             "X : " + last.getPosition().x +
