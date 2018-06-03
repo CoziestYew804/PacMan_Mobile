@@ -35,7 +35,7 @@ public abstract class Ghost extends MovableElement {
     this.isFrightened=true;}
 
     public void resolveCollisionPacman(){
-        if(this.getPosition().equals(this.getMonde().getPacman().getPosition())){
+        if(this.getExactPosition().equals(this.getMonde().getPacman().getExactPosition())){
             if(isFrightened){
                 this.getMonde().getPacman().eatGhost(this);
                 this.etat=0;

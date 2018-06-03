@@ -23,6 +23,8 @@ public abstract class GameElement {
         return position;
     }
 
+    public Vector2 getExactPosition() {return new Vector2((int)this.position.x,(int)this.position.y);}
+
     public void setPosition(Vector2 position) {
         this.position = position;
     }
