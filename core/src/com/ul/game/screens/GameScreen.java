@@ -11,6 +11,7 @@ import com.ul.game.PacManGdx;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.impl.Pellet;
+import com.ul.game.model.elements.impl.SuperPellet;
 import com.ul.game.view.TextureFactory;
 import com.ul.game.view.WorldRenderer;
 
@@ -81,8 +82,21 @@ public class GameScreen implements Screen {
         int x = (int) currentPosition.x;
         int y = (int) currentPosition.y;
         GameElement element = this.monde.getMaze().get(x, y);
-        if(element != null && element instanceof Pellet){
-            this.getMonde().getMaze().eatPellet(y, x);
+        if(element != null)
+        {
+            if (element instanceof Pellet){
+                this.getMonde().getMaze().eatPellet(y, x);
             }
+
+            if(element instanceof SuperPellet)
+            {
+                this.getMonde().getBlueGhost().isAfraid();
+                this.getMonde().getYellowGhost().isAfraid();
+                this.getMonde().getRedGhost().isAfraid();
+                this.getMonde().getPinkGhost().isAfraid();
+            }
+        }
+
+
     }
 }

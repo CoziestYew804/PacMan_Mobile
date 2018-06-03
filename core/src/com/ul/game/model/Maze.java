@@ -114,7 +114,6 @@ public class Maze implements Iterable<GameElement>
 	public int getMap(int i, int j) { return this._laby1[j][i];}
 
 	public void eatPellet(int x, int y) {
-		if(_laby2[y][x] instanceof Pellet)
 			_laby2[y][x] = null;
 	}
 

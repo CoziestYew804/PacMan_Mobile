@@ -26,6 +26,8 @@ public abstract class Ghost extends MovableElement {
     @Override
     public abstract float getHeight();
 
+    public void isAfraid() {this.etat = 1;}
+
 
     public abstract void move(float DeltaTime);
 

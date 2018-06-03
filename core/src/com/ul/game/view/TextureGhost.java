@@ -11,12 +11,13 @@ public class TextureGhost implements iTexturable{
 	private Texture[] textures;
 
 
-	public TextureGhost(Ghost ghost, String texutreAlive){
+	public TextureGhost(Ghost ghost, String textureAlive){
 		this.ghost = ghost;
 		textures = new Texture[]{
-				new Texture(texutreAlive),
-				new Texture("core/assets/ghostDead.png"),
-				new Texture("core/assets/ghostEscaping.png")
+				new Texture(textureAlive),
+                new Texture("core/assets/ghostEscaping.png"),
+				new Texture("core/assets/ghostDead.png")
+
 		};
 
 	}
