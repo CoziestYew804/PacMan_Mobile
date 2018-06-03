@@ -55,30 +55,10 @@ public class RedGhost extends Ghost {
         }else if(etat==1){
             runAway(delta);
         }
-        /*if(!this.isNextABlock(currentDirection)) {
-            if (!this.isNextAnIntersection(currentDirection)) {
-                getPosition().add(currentDirection);
-            } else {
-                //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
-                getPosition().add(currentDirection);
-                this.setDirection(((Intersection)(this.getNext(currentDirection))).getBestPossibilitieTo(this.getMonde().getPacman()));
-                System.out.println("Changement de direction !!! :" + currentDirection);
+        resolveCollisionPacman();
 
-            }
-
-
-        }*/
 
     }
-
-    /*public Vector2 getDirection() {
-        return this.currentDirection;
-    }
-
-    public void setDirection(Vector2 direction) {
-
-        this.currentDirection = direction;
-    }*/
 
 
     @Override

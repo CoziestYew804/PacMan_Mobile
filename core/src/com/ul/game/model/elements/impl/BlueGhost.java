@@ -1,16 +1,8 @@
 package com.ul.game.model.elements.impl;
-
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.ul.game.COR.*;
 import com.ul.game.model.World;
-import com.ul.game.view.TextureFactory;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
-import static com.badlogic.gdx.math.MathUtils.random;
 
 public class BlueGhost extends Ghost {
     public static final float size=16;
@@ -58,25 +50,10 @@ public class BlueGhost extends Ghost {
         }else if(etat==1){
             runAway(delta);
         }
-
+        resolveCollisionPacman();
 
     }
 
-
-    /*@Override
-    public void Move() {
-
-
-
-       /* }
-        else{
-            this.movingCOR.randomMove(this.getMonde(),this);
-        }
-
-
-
-
-    }*/
 
     @Override
     public void changeOrientation() {

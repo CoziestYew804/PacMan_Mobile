@@ -1,7 +1,9 @@
 package com.ul.game.model.elements.impl;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.controller.SoundController;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.MovableElement;
@@ -32,6 +34,17 @@ public abstract class Ghost extends MovableElement {
     public void isAfraid() {this.etat = 1;
     this.isFrightened=true;}
 
+    public void resolveCollisionPacman(){
+        if(this.getPosition().equals(this.getMonde().getPacman().getPosition())){
+            if(isFrightened){
+                this.getMonde().getPacman().eatGhost(this);
+                this.etat=0;
+            }else{
+                this.getMonde().setGameOver(true);
+                SoundController.getInstance().getDeadPacmanSound().play();
+            }
+        }
+    }
 
     public abstract void move(float DeltaTime);
 
@@ -56,6 +69,7 @@ public abstract class Ghost extends MovableElement {
             this.getPosition().mulAdd(this.getDirection(), delta);
             changed=false;
         }
+
 
 
         }
@@ -97,6 +111,7 @@ public abstract class Ghost extends MovableElement {
 
             }
         }
+
         timerScared=timerScared+0.5f;
         if(timerScared>1000){timerScared=0;etat=0;isFrightened=false;this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));}
     }

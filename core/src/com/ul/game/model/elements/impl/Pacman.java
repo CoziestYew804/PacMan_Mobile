@@ -57,12 +57,8 @@ public class Pacman extends MovableElement {
             if (!this.isNextABlock(currentDirection) && !this.isNextAGhostDoor(currentDirection)) {
                 this.getPosition().mulAdd(currentDirection, delta);
 
-
             } else if (this.isNextABlock(currentDirection)) {
                 this.setPosition(soustraire(this.getNext(currentDirection).getPosition(), currentDirection));
-
-
-
 
             }
             eat();
@@ -76,6 +72,12 @@ public class Pacman extends MovableElement {
     public void update(float dt)
     {
 
+
+    }
+
+    public void eatGhost(Ghost ghost){
+
+        this.getMonde().points=+500;
 
     }
 

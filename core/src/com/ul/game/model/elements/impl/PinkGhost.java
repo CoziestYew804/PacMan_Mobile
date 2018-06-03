@@ -55,9 +55,7 @@ public class PinkGhost extends Ghost {
         }else if(etat==1){
             runAway(delta);
         }
-
-
-
+        resolveCollisionPacman();
     }
 
 

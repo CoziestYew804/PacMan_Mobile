@@ -3,6 +3,7 @@ package com.ul.game.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ul.game.controller.SoundController;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.World;
 
@@ -41,45 +42,47 @@ public class WorldRenderer {
 
     public void render(float delta) {
 
-        this.spriteBatch.begin();
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        for (GameElement element : this.monde) {
+        if(!this.monde.isGameOver()) {
+            this.spriteBatch.begin();
+            Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            for (GameElement element : this.monde) {
 
+                this.spriteBatch.draw(
+                        this.texture.getInstance(this.monde).getTexture(element.getClass(), delta),
+                        element.getPosition().y * 16,
+                        (30 - element.getPosition().x) * 16,
+                        16,
+                        16
+                );
+
+            }
             this.spriteBatch.draw(
-                    this.texture.getInstance(this.monde).getTexture(element.getClass(),delta),
-                    element.getPosition().y * 16,
-                    (30 - element.getPosition().x) * 16,
+                    this.texture.getInstance(this.monde).getTexture(this.monde.getBlueGhost().getClass(), delta),
+                    this.monde.getBlueGhost().getPosition().y * 16,
+                    (30 - this.monde.getBlueGhost().getPosition().x) * 16,
                     16,
                     16
             );
+            this.spriteBatch.draw(
+                    this.texture.getInstance(this.monde).getTexture(this.monde.getRedGhost().getClass(), delta),
+                    this.monde.getRedGhost().getPosition().y * 16,
+                    (30 - this.monde.getRedGhost().getPosition().x) * 16,
+                    16,
+                    16
+            );
+            this.spriteBatch.draw(
+                    this.texture.getInstance(this.monde).getTexture(this.monde.getPinkGhost().getClass(), delta),
+                    this.monde.getPinkGhost().getPosition().y * 16,
+                    (30 - this.monde.getPinkGhost().getPosition().x) * 16,
+                    16,
+                    16
+            );
+            this.spriteBatch.end();
+
+            moveThem(this.delta);
 
         }
-        this.spriteBatch.draw(
-                this.texture.getInstance(this.monde).getTexture(this.monde.getBlueGhost().getClass(),delta),
-                this.monde.getBlueGhost().getPosition().y * 16,
-                (30 - this.monde.getBlueGhost().getPosition().x) * 16,
-                16,
-                16
-        );
-        this.spriteBatch.draw(
-                this.texture.getInstance(this.monde).getTexture(this.monde.getRedGhost().getClass(),delta),
-                this.monde.getRedGhost().getPosition().y * 16,
-                (30 - this.monde.getRedGhost().getPosition().x) * 16,
-                16,
-                16
-        );
-        this.spriteBatch.draw(
-                this.texture.getInstance(this.monde).getTexture(this.monde.getPinkGhost().getClass(),delta),
-                this.monde.getPinkGhost().getPosition().y * 16,
-                (30 - this.monde.getPinkGhost().getPosition().x) * 16,
-                16,
-                16
-        );
-        this.spriteBatch.end();
-
-        moveThem(this.delta);
-
 
     }
 
@@ -98,7 +101,7 @@ public class WorldRenderer {
             }
             k++;
 
-            //float y = this.gs.getMonde().getPacman().getPosition().y;
+
 
 
     }

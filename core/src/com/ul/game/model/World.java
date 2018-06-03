@@ -19,6 +19,18 @@ public class World implements Iterable<GameElement> {
     public static Vector2 blueGhostStartingPos = new Vector2(14 , 14 );
     public static Vector2 yellowGhostStartingPos = new Vector2(14 , 15 );
     public static Vector2 pinkGhostStartingPos = new Vector2(14 , 13 );
+    private boolean GameOver=false;
+    public int points=0;
+
+    public boolean isGameOver() {
+        return GameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        GameOver = gameOver;
+    }
+
+
     public World()
     {
         this._maze = new Maze(this);
