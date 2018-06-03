@@ -98,7 +98,7 @@ public abstract class Ghost extends MovableElement {
             }
         }
         timerScared=timerScared+0.5f;
-        if(timerScared>1000){timerScared=0;etat=0;isFrightened=false;}
+        if(timerScared>1000){timerScared=0;etat=0;isFrightened=false;this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));}
     }
 
 
