@@ -12,6 +12,7 @@ import java.util.Random;
 public abstract class Ghost extends MovableElement {
     private Vector2 currentDirection = new Vector2(-5,0);
     int etat=0;
+    protected boolean changed=false;
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
     }
@@ -33,57 +34,44 @@ public abstract class Ghost extends MovableElement {
 
     public void randomMove(float delta){
 
-        if(!this.isNextABlock(this.getDirection()) && !this.isNextAGhostDoor(this.getDirection())) {
 
-                this.getPosition().mulAdd(this.getDirection(),delta);
-            } else if (this.isAnIntersection()){
-
-                this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+        if (this.isAnIntersection()){
+            if(!changed) {
+                this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
-                //getPosition().mulAdd(this.getDirection(),delta);
-                //this.setPosition(this.getNext(this.getDirection()).getPosition());
-               // System.out.println("Nombre de choix " + temp.size());
                 Vector2 directionAleatoire = temp.get(rand.nextInt(temp.size()));
-                //System.out.println("Direction aleatoire " + directionAleatoire);
-                this.setDirection(directionAleatoire) ;
-                //System.out.println("Changement de direction !!! :" + this.getDirection());
-                //System.out.println(this.getPosition());
-
+                this.setDirection(directionAleatoire);
+                this.getPosition().mulAdd(this.getDirection(), delta);
+                changed=true;
             }
+            this.getPosition().mulAdd(this.getDirection(), delta);
+
+        }
+        else if (!this.isNextABlock(this.getDirection()) && !this.isNextAGhostDoor(this.getDirection())) {
+
+            this.getPosition().mulAdd(this.getDirection(), delta);
+            changed=false;
+        }
 
 
         }
     public void bestChoiceMove(float delta){
 
-        if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
-                //this.getPosition().add(this.getDirection());
-            this.getPosition().mulAdd(this.getDirection(),delta);
-            //System.out.println("JE CONTINUE This to rouge !!! :" + this.getThis().getClass());
-            //System.out.println(" JE CONTINUE Next to rouge !!! :" + this.getNext(this.getDirection()));
-            //System.out.println("Je suis a cote d'un bloc ? " + this.isNextABlock(this.getDirection()));
-            //System.out.println(this.getDirection()+  "this ou bien "+ this.currentDirection );
-            }
-            else if(this.isAnIntersection()){
-            //this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
-            //System.out.println(this.getPosition().getClass());
-            //System.out.println(this.getThis().getClass());
-            this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
-                //this.setPosition(this.getThis().getPosition());
-                //((Intersection) this.getNext(currentDirection)).getBestPossibilitieTo(this.getMonde().getPacman());
-                //getPosition().add(this.getDirection());
-                //System.out.println("je vais faire disparaitre un bloc ?");
+        if(this.isAnIntersection()) {
+            if (!changed) {
+                this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
                 Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieTo(this.getMonde().getPacman());
                 this.setDirection(bestChoice);
-                //this.getPosition().add(this.getDirection());
-                //System.out.println("Changement de direction rouge !!! :" + this.getDirection());
-                //System.out.println("Changement position rouge !!! :" + this.getPosition());
-                //System.out.println("This to rouge !!! :" + this.getThis().getClass());
-                //System.out.println("Next to rouge !!! :" + this.getNext(this.getDirection()));
+                changed=true;
+            }
+            this.getPosition().mulAdd(this.getDirection(), delta);
+        }else if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
 
-            }//else{
-            //this.setPosition(soustraire(this.getNext(currentDirection).getPosition(),currentDirection));
-        //}
+            this.getPosition().mulAdd(this.getDirection(),delta);
+            changed=false;
+
+            }
 
 
 
