@@ -47,11 +47,40 @@ public class Intersection extends Dark {
             }
         }
         for (Vector2 direction: possibleDirection) {
-            cible=new Vector2(element.getPosition());
-            maPosition=new Vector2(this.getPosition());
+            cible=new Vector2(element.getExactPosition());
+            maPosition=new Vector2(this.getExactPosition());
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
-                    if(cible.dst(maPosition.add(temp)) > cible.dst(maPosition.add(direction))){
+                /*    if(cible.dst(maPosition.add(temp)) >= cible.dst(maPosition.add(direction))){
                         temp=direction;
+                }*/
+                if(getDistance(cible,maPosition.add(temp)) > getDistance(cible,maPosition.add(direction))){
+                    temp=direction;
+                }
+
+            }
+        }
+
+        return temp;
+    }
+
+    public Vector2 getBestPossibilitieTo(Vector2 vector){
+        Vector2 temp=new Vector2(0,0);
+        Vector2 cible;
+        Vector2 maPosition;
+        for (Vector2 direction: possibleDirection) {
+            if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
+                temp=direction;
+            }
+        }
+        for (Vector2 direction: possibleDirection) {
+            cible=new Vector2(vector);
+            maPosition=new Vector2(this.getExactPosition());
+            if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
+                /*if(cible.dst(maPosition.add(temp)) >= cible.dst(maPosition.add(direction))){
+                    temp=direction;
+                }*/
+                if(getDistance(cible,maPosition.add(temp)) > getDistance(cible,maPosition.add(direction))){
+                    temp=direction;
                 }
 
             }
@@ -70,17 +99,25 @@ public class Intersection extends Dark {
             }
         }
         for (Vector2 direction: possibleDirection) {
-            cible=new Vector2(element.getPosition());
-            maPosition=new Vector2(this.getPosition());
+            cible=new Vector2(element.getExactPosition());
+            maPosition=new Vector2(this.getExactPosition());
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
-                if(cible.dst(maPosition.add(temp)) < cible.dst(maPosition.add(direction))){
+                /*f(cible.dst(maPosition.add(temp)) <= cible.dst(maPosition.add(direction))){
+                    temp=direction;
+                }*/
+                if(getDistance(cible,maPosition.add(temp)) < getDistance(cible,maPosition.add(direction))){
                     temp=direction;
                 }
-
             }
         }
 
         return temp;
+    }
+
+    public double getDistance(Vector2 position1, Vector2 position2) {
+        double diffX = position1.x - position2.x;
+        double diffY = position1.y - position2.y;
+        return Math.sqrt((diffX * diffX) + (diffY * diffY));
     }
 
     @Override

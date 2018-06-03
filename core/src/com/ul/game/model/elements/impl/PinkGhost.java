@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class PinkGhost extends Ghost {
     public static final float size=16;
+    public static Vector2 StartingPos = new Vector2(14 , 13 );
     private Vector2 currentDirection = new Vector2(-1,0);
     private ArrayList<Vector2> sortir = new ArrayList<Vector2>();
     private int etape=0;
@@ -55,10 +56,19 @@ public class PinkGhost extends Ghost {
         }else if(etat==1){
             runAway(delta);
         }
+        else if(etat==2){
+            getBackToHouse(delta);
+        }
         resolveCollisionPacman();
     }
 
+    public  Vector2 getStartingPos() {
+        return StartingPos;
+    }
 
+    public  void setStartingPos(Vector2 startingPos) {
+        StartingPos = startingPos;
+    }
 
     @Override
     public void changeOrientation() {

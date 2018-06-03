@@ -17,6 +17,7 @@ public abstract class Ghost extends MovableElement {
     float timerScared=0;
     boolean isFrightened=false;
     protected boolean changed=false;
+    //public  Vector2 StartingPos;
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
     }
@@ -31,6 +32,10 @@ public abstract class Ghost extends MovableElement {
     @Override
     public abstract float getHeight();
 
+    public abstract  Vector2 getStartingPos();
+
+    public abstract void setStartingPos(Vector2 startingPos);
+
     public void isAfraid() {this.etat = 1;
     this.isFrightened=true;}
 
@@ -38,7 +43,8 @@ public abstract class Ghost extends MovableElement {
         if(this.getExactPosition().equals(this.getMonde().getPacman().getExactPosition())){
             if(isFrightened){
                 this.getMonde().getPacman().eatGhost(this);
-                this.etat=0;
+                this.etat=2;
+                SoundController.getInstance().getEatingGhostSound().play();
             }else{
                 this.getMonde().setGameOver(true);
                 SoundController.getInstance().getDeadPacmanSound().play();
@@ -114,6 +120,24 @@ public abstract class Ghost extends MovableElement {
 
         timerScared=timerScared+0.5f;
         if(timerScared>1000){timerScared=0;etat=0;isFrightened=false;this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));}
+    }
+
+    public void getBackToHouse(float delta){
+
+        if(this.isAnIntersection()) {
+            if (!changed) {
+                this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
+                Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieTo(this.getStartingPos());
+                this.setDirection(bestChoice);
+                changed=true;
+            }
+            this.getPosition().mulAdd(this.getDirection(), delta);
+        }else if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
+
+            this.getPosition().mulAdd(this.getDirection(),delta);
+            changed=false;
+
+        }
     }
 
 

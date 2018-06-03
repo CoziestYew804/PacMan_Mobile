@@ -31,6 +31,16 @@ public class YellowGhost extends Ghost {
         return size;
     }
 
+    @Override
+    public Vector2 getStartingPos() {
+        return null;
+    }
+
+    @Override
+    public void setStartingPos(Vector2 startingPos) {
+
+    }
+
 
     @Override
     public void move(float DeltaTime) {

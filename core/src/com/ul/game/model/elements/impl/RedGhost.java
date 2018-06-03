@@ -13,6 +13,16 @@ import java.util.Random;
 public class RedGhost extends Ghost {
     public static final float size=16;
     private boolean isInHouse=true;
+
+    public  Vector2 getStartingPos() {
+        return StartingPos;
+    }
+
+    public  void setStartingPos(Vector2 startingPos) {
+        StartingPos = startingPos;
+    }
+
+    public static Vector2 StartingPos = new Vector2(14 , 12 );
     private ArrayList<Vector2> sortir = new ArrayList<Vector2>();
     private Vector2 currentDirection;
     private int etape=0;
@@ -54,6 +64,9 @@ public class RedGhost extends Ghost {
             bestChoiceMove(delta);
         }else if(etat==1){
             runAway(delta);
+        }
+        else if(etat==2){
+            getBackToHouse(delta);
         }
         resolveCollisionPacman();
 
