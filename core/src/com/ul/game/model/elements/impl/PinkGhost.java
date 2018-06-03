@@ -49,14 +49,6 @@ public class PinkGhost extends Ghost {
         else{
             int randomNum = 1 + (int)(Math.random() * ((2 - 1) + 1));
             System.out.println(randomNum + " le pink a  eu ");
-            /*switch (randomNum){
-                case 1:
-                    randomMove(delta);
-                case 2:
-                    bestChoiceMove(delta);
-                default:
-                    randomMove(delta);
-            }*/
             if(randomNum==1) randomMove(delta);
             if(randomNum==2) bestChoiceMove(delta);
         }

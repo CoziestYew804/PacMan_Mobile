@@ -72,7 +72,7 @@ public class Pacman extends MovableElement {
             changeOrientation(Gdx.input.getX(),Gdx.input.getY());
         }
 
-        if(!this.isNextABlock(currentDirection)) {
+        if(!this.isNextABlock(currentDirection)&&!this.isNextAGhostDoor(currentDirection)) {
             this.getPosition().mulAdd(currentDirection,delta);
         }
         else if(this.isNextABlock(currentDirection)){
