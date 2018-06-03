@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.PacManGdx;
+import com.ul.game.controller.SoundController;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.MovableElement;
@@ -48,6 +49,7 @@ public class HomeScreen implements Screen {
          this.elements.add(yellow);
          this.elements.add(blue);
          this.elements.add(red);
+        SoundController.getInstance().getBeginningMusic().play();
 
 
     }

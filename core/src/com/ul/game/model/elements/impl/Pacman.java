@@ -1,6 +1,8 @@
 package com.ul.game.model.elements.impl;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.controller.SoundController;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.MovableElement;
 
@@ -39,6 +41,7 @@ public class Pacman extends MovableElement {
     public void eat(){
         if(getThis() instanceof Pellet)
             if(((Pellet)(getThis())).hasGom()) ((Dark)(getThis())).setHasGom(false);
+        SoundController.getInstance().getEatingPelletSound().play();
     }
 
 
@@ -53,8 +56,12 @@ public class Pacman extends MovableElement {
 
             if (!this.isNextABlock(currentDirection) && !this.isNextAGhostDoor(currentDirection)) {
                 this.getPosition().mulAdd(currentDirection, delta);
+
+
             } else if (this.isNextABlock(currentDirection)) {
                 this.setPosition(soustraire(this.getNext(currentDirection).getPosition(), currentDirection));
+
+
 
 
             }
