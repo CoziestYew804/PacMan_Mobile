@@ -85,7 +85,12 @@ public class GameScreen implements Screen {
     public void analyzePosition()
     {
         Vector2 currentPosition = this.monde.getPacman().getPosition();
+        System.out.println(currentPosition.y);
 
+        if(currentPosition.y <= 0)
+            this.monde.getPacman().setPosition(new Vector2(this.monde.getPacman().getPosition().x, this.monde.getMaze().getWidth()-1));
+        if(currentPosition.y >= this.monde.getMaze().getWidth()-1)
+            this.monde.getPacman().setPosition(new Vector2(this.monde.getPacman().getPosition().x, 0));
         //Test pour les pellets
         int x = (int) currentPosition.x;
         int y = (int) currentPosition.y;
@@ -102,7 +107,7 @@ public class GameScreen implements Screen {
         if(element != null)
         {
             if (element instanceof Pellet){
-                this.getMonde().getMaze().eatPellet(y, x);
+                //this.getMonde().getMaze().eatPellet(y, x);
                 score++;
             }
 
