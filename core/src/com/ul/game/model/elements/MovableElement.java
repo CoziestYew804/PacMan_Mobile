@@ -68,7 +68,7 @@ public abstract class MovableElement extends GameElement{
 
     public boolean isAnIntersection ()
     {
-        return this.getThis().getClass()==Intersection.class;
+        return this.getThis() instanceof Intersection;
     }
 
 
