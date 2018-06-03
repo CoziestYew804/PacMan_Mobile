@@ -81,7 +81,7 @@ public class WorldRenderer {
             this.spriteBatch.draw(
                     this.texture.getInstance(this.monde).getTexture(this.monde.getYellowGhost().getClass(), delta),
                     this.monde.getYellowGhost().getPosition().y * 16,
-                    (30 - this.monde.getYellowGhost().getPosition().x) * 16,
+                    (30 - this.monde.getPinkGhost().getPosition().x) * 16,
                     16,
                     16
             );
@@ -106,9 +106,9 @@ public class WorldRenderer {
             if(k>100){
                 this.monde.getPinkGhost().move(delta);
             }
-            if(k>150){
-                this.monde.getYellowGhost().move(delta);
-            }
+        if(k>150){
+            this.monde.getYellowGhost().move(delta);
+        }
             k++;
 
 

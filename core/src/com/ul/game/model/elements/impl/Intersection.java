@@ -55,9 +55,6 @@ public class Intersection extends Dark {
             cible=new Vector2(element.getExactPosition());
             maPosition=new Vector2(this.getExactPosition());
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
-                /*    if(cible.dst(maPosition.add(temp)) >= cible.dst(maPosition.add(direction))){
-                        temp=direction;
-                }*/
                 if(getDistance(cible,maPosition.add(temp)) > getDistance(cible,maPosition.add(direction))){
                     temp=direction;
                 }
@@ -83,9 +80,6 @@ public class Intersection extends Dark {
             cible=new Vector2(vector);
             maPosition=new Vector2(this.getExactPosition());
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)&&!this.isNextABlock(temp)&&!this.isNextAGhostDoor(temp)){
-                /*if(cible.dst(maPosition.add(temp)) >= cible.dst(maPosition.add(direction))){
-                    temp=direction;
-                }*/
                 if(getDistance(cible,maPosition.add(temp)) > getDistance(cible,maPosition.add(direction))){
                     temp=direction;
                 }
