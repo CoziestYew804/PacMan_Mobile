@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ul.game.PacManGdx;
 import com.ul.game.model.World;
+import com.ul.game.view.TextureFactory;
 import com.ul.game.view.WorldRenderer;
 
 public class GameScreen implements Screen {
@@ -22,6 +23,7 @@ public class GameScreen implements Screen {
         this.game = game;
         monde = new World();
         renderer = new WorldRenderer(monde);
+        TextureFactory.reset(this.monde);
 
 
     }
