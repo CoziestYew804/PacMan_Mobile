@@ -107,7 +107,7 @@ public class GameScreen implements Screen {
         if(element != null)
         {
             if (element instanceof Pellet){
-                //this.getMonde().getMaze().eatPellet(y, x);
+                this.getMonde().getMaze().eatPellet(y, x);
                 score++;
             }
 

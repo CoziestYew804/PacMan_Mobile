@@ -55,7 +55,7 @@ public class YellowGhost extends Ghost {
             Flood f = new Flood(this.getMonde());
             GridPoint2 currGP = new GridPoint2((int)this.getPosition().x,(int)this.getPosition().y);
             GridPoint2 gpPac = new GridPoint2((int)pac.getPosition().x, (int)pac.getPosition().y);
-            this.setDirection(f.getDirection(currGP, gpPac));
+            //this.setDirection(f.getDirection(currGP, gpPac));
 
         }
 

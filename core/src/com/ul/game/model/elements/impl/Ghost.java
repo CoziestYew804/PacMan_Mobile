@@ -55,8 +55,7 @@ public abstract class Ghost extends MovableElement {
     public abstract void move(float DeltaTime);
 
     public void randomMove(float delta){
-
-
+        teleport();
         if (this.isAnIntersection()){
             if(!changed) {
                 this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
@@ -67,6 +66,7 @@ public abstract class Ghost extends MovableElement {
                 this.getPosition().mulAdd(this.getDirection(), delta);
                 changed=true;
             }
+
             this.getPosition().mulAdd(this.getDirection(), delta);
 
         }
@@ -80,7 +80,7 @@ public abstract class Ghost extends MovableElement {
 
         }
     public void bestChoiceMove(float delta){
-
+        teleport();
         if(this.isAnIntersection()) {
             if (!changed) {
                 this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
@@ -101,7 +101,8 @@ public abstract class Ghost extends MovableElement {
     }
 
     public void runAway(float delta){
-      if(timerScared<=1000){
+        teleport();
+        if(timerScared<=1000){
             if (this.isAnIntersection()) {
                 if (!changed) {
                     this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
@@ -123,7 +124,7 @@ public abstract class Ghost extends MovableElement {
     }
 
     public void getBackToHouse(float delta){
-
+        teleport();
         if(this.isAnIntersection()) {
             if (!changed) {
                 this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
@@ -148,6 +149,15 @@ public abstract class Ghost extends MovableElement {
 
     public void setDirection(Vector2 direction){
         this.currentDirection= direction;
+    }
+
+    public void teleport() {
+        if (this.getPosition().y <= 0) {
+            this.setPosition(new Vector2(this.getExactPosition().x, this.getMonde().getMaze().getWidth() - 1));
+        }
+        if (this.getPosition().y >= this.getMonde().getMaze().getWidth() - 1) {
+            this.setPosition(new Vector2(this.getExactPosition().x, 0));
+        }
     }
 
 
