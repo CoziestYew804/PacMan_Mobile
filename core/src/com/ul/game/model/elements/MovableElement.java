@@ -59,11 +59,14 @@ public abstract class MovableElement extends GameElement{
 
     public void changeOrientation(){};
 
+    public boolean isNextAGhost (Vector2 currentDirection){
 
+        return this.getNext(currentDirection) instanceof Ghost;
+    }
 
     public boolean isNextAnIntersection (Vector2 currentDirection){
 
-        return this.getNext(currentDirection).getClass()==Intersection.class;
+        return this.getNext(currentDirection) instanceof Intersection;
     }
 
     public boolean isAnIntersection ()

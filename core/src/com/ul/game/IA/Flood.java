@@ -13,12 +13,20 @@ import java.util.Stack;
 
 public class Flood {
 
-    public Vector2 getDirection(Vector2 origine, Vector2 target, World world) {
+    protected World world;
+
+    public Flood(World world)
+    {
+        this.world = world;
+    }
+
+    public Vector2 getDirection(Vector2 origine, Vector2 target) {
 
         LinkedList<Wave> tsunami = new LinkedList<Wave>();
 
-        boolean destroyed[][] = new boolean[world.getMaze().getWidth()]
-                [world.getMaze().getHeight()];
+        boolean destroyed[][] = new boolean[world.getMaze().getWidth()][world.getMaze().getHeight()];
+
+        System.out.println(world.getMaze().getHeight());
 
         GridPoint2 pos = new GridPoint2((int)origine.x, (int)origine.y);
         GridPoint2 cible = new GridPoint2((int)target.x, (int)target.y);
@@ -29,11 +37,13 @@ public class Flood {
         Wave last;
 
         do{
-            if(tsunami.size() == 0)
-                throw new NullPointerException("Target not in same maze");
             last = tsunami.pollFirst();
+            if(last == null )
+                throw new NullPointerException("Target not in same maze");
+
+
             System.out.println(
-                    "X : " + last.getPosition().x +
+                            "X : " + last.getPosition().x +
                             " Y : " + last.getPosition().y +
                             " Etat : " +
                             destroyed[last.getPosition().x][last.getPosition().y]);

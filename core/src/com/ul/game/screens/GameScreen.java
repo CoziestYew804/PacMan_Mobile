@@ -10,8 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.ul.game.PacManGdx;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
-import com.ul.game.model.elements.impl.Pellet;
-import com.ul.game.model.elements.impl.SuperPellet;
+import com.ul.game.model.elements.impl.*;
 import com.ul.game.view.TextureFactory;
 import com.ul.game.view.WorldRenderer;
 
@@ -48,7 +47,7 @@ public class GameScreen implements Screen {
         this.renderer.render(delta);
         this.analyzePosition();
         if(this.monde.isGameOver()){
-            this.game.setScreen(new GameOverScreen(this.game));
+            this.game.setScreen(new GameOverScreen(this.game, this));
         }
     }
 
@@ -68,6 +67,11 @@ public class GameScreen implements Screen {
 
     }
 
+    public int getScore()
+    {
+        return score;
+    }
+
     @Override
     public void hide() {
 
@@ -81,22 +85,40 @@ public class GameScreen implements Screen {
     public void analyzePosition()
     {
         Vector2 currentPosition = this.monde.getPacman().getPosition();
+
         //Test pour les pellets
         int x = (int) currentPosition.x;
         int y = (int) currentPosition.y;
         GameElement element = this.monde.getMaze().get(x, y);
+
+        if(this.monde.getPacman().isNextAGhost(this.monde.getPacman().getDirection()))
+        {
+            System.out.println("WESH");
+        }
+
+
+
+
         if(element != null)
         {
             if (element instanceof Pellet){
                 this.getMonde().getMaze().eatPellet(y, x);
+                score++;
             }
 
             if(element instanceof SuperPellet)
             {
-                this.getMonde().getBlueGhost().isAfraid();
-                this.getMonde().getYellowGhost().isAfraid();
-                this.getMonde().getRedGhost().isAfraid();
-                this.getMonde().getPinkGhost().isAfraid();
+
+                this.monde.getYellowGhost().isAfraid();
+                this.monde.getBlueGhost().isAfraid();
+                this.monde.getRedGhost().isAfraid();
+                this.monde.getPinkGhost().isAfraid();
+                score += 3;
+            }
+
+            if(element instanceof Intersection)
+            {
+
             }
         }
 

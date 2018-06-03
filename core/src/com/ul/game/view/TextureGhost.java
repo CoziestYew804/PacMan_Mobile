@@ -17,7 +17,6 @@ public class TextureGhost implements iTexturable{
 				new Texture(textureAlive),
                 new Texture("core/assets/ghostEscaping.png"),
 				new Texture("core/assets/ghostDead.png")
-
 		};
 
 	}

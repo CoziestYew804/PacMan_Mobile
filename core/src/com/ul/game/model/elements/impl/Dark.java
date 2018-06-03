@@ -32,4 +32,6 @@ public class Dark extends GameElement {
     public void setHasGom(boolean hasGom) {
         this.hasGom = hasGom;
     }
+
+
 }
