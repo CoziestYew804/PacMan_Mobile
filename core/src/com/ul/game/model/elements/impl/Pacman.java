@@ -218,13 +218,13 @@ public class Pacman extends MovableElement {
 
                 if (y >= 0 && y <= 225) {
 
-                    if(!this.isNextABlock(UP)){
+                    if(!this.isNextABlock(UP)&&!this.isNextAGhostDoor(UP)){
                         this.setDirection(UP);
                         //this.newDirection=UP;
                     }
                 } else if (y > 225 && y <= 500) {
 
-                    if(!this.isNextABlock(DOWN)){
+                    if(!this.isNextABlock(DOWN)&&!this.isNextAGhostDoor(DOWN)){
                         this.setDirection(DOWN);
                         //this.newDirection=DOWN;
                     }
@@ -232,14 +232,14 @@ public class Pacman extends MovableElement {
             }
             else if (x >= 0 && x < 150) {
 
-                     if (!this.isNextABlock(LEFT)){
+                     if (!this.isNextABlock(LEFT)&&!this.isNextAGhostDoor(LEFT)){
                          this.setDirection(LEFT);
                          //this.newDirection=LEFT;
                      }
 
             } else {
 
-                     if(!this.isNextABlock(RIGHT)){
+                     if(!this.isNextABlock(RIGHT)&&!this.isNextAGhostDoor(RIGHT)){
                          this.setDirection(RIGHT);
                          //this.newDirection=RIGHT;
                      }
