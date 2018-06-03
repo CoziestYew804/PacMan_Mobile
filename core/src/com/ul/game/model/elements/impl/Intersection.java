@@ -14,8 +14,9 @@ import static com.ul.game.model.elements.MovableElement.RIGHT;
 
 public class Intersection extends Dark {
     public static final float size=48;
-
+    public boolean hasSuperGom= true;
    public boolean hasGom=true;
+
 
     List<Vector2> possibleDirection = new ArrayList<Vector2>(){
 
@@ -141,7 +142,9 @@ public class Intersection extends Dark {
         }
         return false;
     }
-    public void setHasGom(boolean hasGom) {
-        this.hasGom = hasGom;
+    public void setHasGom(boolean hasSuperGom) {
+        this.hasGom = hasSuperGom;
     }
+
+
 }

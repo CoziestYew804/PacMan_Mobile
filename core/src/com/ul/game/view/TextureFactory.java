@@ -19,6 +19,10 @@ public class TextureFactory {
 				new TextureUnique("core/assets/dark.png")
 		);
 		textures.put(
+				IntersectionWithSuperPellet.class,
+				new TextureSuperPellet(.7f)
+		);
+		textures.put(
 				IntersectionWithPellet.class,
 				new TextureUnique("core/assets/pellet.png")
 		);
