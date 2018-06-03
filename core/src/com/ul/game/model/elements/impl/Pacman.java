@@ -51,9 +51,6 @@ public class Pacman extends MovableElement {
             this.changeOrientation(Gdx.input.getX(), Gdx.input.getY());
         }
 
-        /*if (isAnIntersection()) {
-            System.out.println("vaffanculo");*/
-            this.getMonde().getMaze().get((int) (this.getPosition().x), (int) (this.getPosition().y));
             if (!this.isNextABlock(currentDirection) && !this.isNextAGhostDoor(currentDirection)) {
                 this.getPosition().mulAdd(currentDirection, delta);
             } else if (this.isNextABlock(currentDirection)) {
@@ -82,11 +79,17 @@ public class Pacman extends MovableElement {
                 if (y >= 0 && y <= 225) {
 
                     if(!this.isNextABlock(UP)&&!this.isNextAGhostDoor(UP)){
+                        if(isAnIntersection()){
+                            this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                        }
                         this.setDirection(UP);
                     }
                 } else if (y > 225 && y <= 500) {
 
                     if(!this.isNextABlock(DOWN)&&!this.isNextAGhostDoor(DOWN)){
+                        if(isAnIntersection()){
+                            this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                        }
                         this.setDirection(DOWN);
                     }
                 }
@@ -94,12 +97,18 @@ public class Pacman extends MovableElement {
             else if (x >= 0 && x < 150) {
 
                      if (!this.isNextABlock(LEFT)&&!this.isNextAGhostDoor(LEFT)){
+                         if(isAnIntersection()){
+                             this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                         }
                          this.setDirection(LEFT);
                      }
 
             } else {
 
                      if(!this.isNextABlock(RIGHT)&&!this.isNextAGhostDoor(RIGHT)){
+                         if(isAnIntersection()){
+                             this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                         }
 
                          this.setDirection(RIGHT);
                      }
