@@ -1,6 +1,7 @@
 package com.ul.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.impl.*;
 import com.ul.game.model.MazeCor.*;
@@ -116,7 +117,9 @@ public class Maze implements Iterable<GameElement>
 	public void eatPellet(int x, int y) {
 			_laby2[y][x] = null;
 	}
-
+	public void eatPelletIntersection(int x, int y) {
+		_laby2[y][x] = new Intersection(new Vector2(y,x),this._world);
+	}
 
 
 	@Override

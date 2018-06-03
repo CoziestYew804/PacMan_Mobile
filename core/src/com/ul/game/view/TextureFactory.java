@@ -16,6 +16,10 @@ public class TextureFactory {
     	textures = new HashMap<Class<?>, iTexturable>();
 		textures.put(
 				Intersection.class,
+				new TextureUnique("core/assets/dark.png")
+		);
+		textures.put(
+				IntersectionWithPellet.class,
 				new TextureUnique("core/assets/pellet.png")
 		);
 		textures.put(

@@ -40,8 +40,6 @@ public class Pacman extends MovableElement {
 
 
     public void eat(){
-        if(getThis() instanceof Pellet)
-            if(((Pellet)(getThis())).hasGom()) ((Dark)(getThis())).setHasGom(false);
         SoundController.getInstance().getEatingPelletSound().play();
     }
 

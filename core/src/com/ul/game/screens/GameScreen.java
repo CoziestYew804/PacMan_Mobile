@@ -101,13 +101,14 @@ public class GameScreen implements Screen {
             System.out.println("WESH");
         }
 
-
-
-
         if(element != null)
         {
             if (element instanceof Pellet){
                 this.getMonde().getMaze().eatPellet(y, x);
+                score++;
+            }
+            if (element instanceof Intersection){
+                this.getMonde().getMaze().eatPelletIntersection(y, x);
                 score++;
             }
 
