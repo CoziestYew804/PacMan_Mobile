@@ -10,7 +10,7 @@ public class PacManGdx extends Game implements ApplicationListener {
 
 	@Override
 	public void create() {
-		setScreen(new GameScreen(this));
+		setScreen(new HomeScreen(this));
 	}
 
 

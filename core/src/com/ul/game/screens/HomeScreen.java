@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.PacManGdx;
+import com.ul.game.model.World;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.elements.MovableElement;
 import com.ul.game.model.elements.impl.*;
@@ -26,17 +27,20 @@ public class HomeScreen implements Screen {
     private PinkGhost rose;
     private List<MovableElement> elements = new ArrayList<MovableElement>(){};
     private Texture logo;
+    private World monde;
 
     public HomeScreen(PacManGdx game){
 
+        this.monde = new World();
          this.game = game;
          this.spriteBatch = new SpriteBatch();
-         this.pacman= new Pacman(new Vector2(200,200),null);
-         this.rose= new PinkGhost(new Vector2(350,200),null);
-         this.blue= new BlueGhost(new Vector2(250,200),null);
-         this.yellow= new YellowGhost(new Vector2(400,200),null);
-         this.red= new RedGhost(new Vector2(300,200),null);
+         this.pacman= new Pacman(new Vector2(200,200), this.monde);
+         this.rose= new PinkGhost(new Vector2(350,200), this.monde);
+         this.blue= new BlueGhost(new Vector2(250,200), this.monde);
+         this.yellow= new YellowGhost(new Vector2(400,200), this.monde);
+         this.red= new RedGhost(new Vector2(300,200), this.monde);
          logo = new Texture("core/assets/logo.png");
+
 
          this.elements.add(pacman);
          this.elements.add(rose);
@@ -67,7 +71,7 @@ public class HomeScreen implements Screen {
             //System.out.println(element.getClass());
 
             this.spriteBatch.draw(
-                    TextureFactory.getInstance(null).getTexture(element.getClass(), 5),
+                    TextureFactory.getInstance( this.monde).getTexture(element.getClass(), 5),
                     //element.getTexture(),
                     element.getPosition().x ,
                     ( element.getPosition().y) ,
