@@ -53,7 +53,7 @@ public class BlueGhost extends Ghost {
                 isInHouse=false;
             }
         }
-        else if(etat==0){
+        else if(etat==0&&!isFrightened){
             randomMove(delta);
         }else if(etat==1){
             runAway(delta);

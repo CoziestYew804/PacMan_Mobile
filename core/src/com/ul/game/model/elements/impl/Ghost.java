@@ -12,6 +12,8 @@ import java.util.Random;
 public abstract class Ghost extends MovableElement {
     private Vector2 currentDirection = new Vector2(-5,0);
     int etat=0;
+    float timerScared=0;
+    boolean isFrightened=false;
     protected boolean changed=false;
     public Ghost(Vector2 position, World monde) {
         super(position, monde);
@@ -27,7 +29,8 @@ public abstract class Ghost extends MovableElement {
     @Override
     public abstract float getHeight();
 
-    public void isAfraid() {this.etat = 1;}
+    public void isAfraid() {this.etat = 1;
+    this.isFrightened=true;}
 
 
     public abstract void move(float DeltaTime);
@@ -78,24 +81,24 @@ public abstract class Ghost extends MovableElement {
     }
 
     public void runAway(float delta){
+      if(timerScared<=1000){
+            if (this.isAnIntersection()) {
+                if (!changed) {
+                    this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
+                    Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieToRunAway(this.getMonde().getPacman());
+                    this.setDirection(bestChoice);
+                    changed = true;
+                }
+                this.getPosition().mulAdd(this.getDirection(), delta);
+            } else if (!this.isNextABlock(this.getDirection()) && !this.isNextAGhostDoor(this.getDirection())) {
 
-        if(this.isAnIntersection()) {
-            if (!changed) {
-                this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
-                Vector2 bestChoice = ((Intersection) this.getThis()).getBestPossibilitieToRunAway(this.getMonde().getPacman());
-                this.setDirection(bestChoice);
-                changed=true;
+                this.getPosition().mulAdd(this.getDirection(), delta);
+                changed = false;
+
             }
-            this.getPosition().mulAdd(this.getDirection(), delta);
-        }else if(!this.isNextABlock(this.getDirection())&& !this.isNextAGhostDoor(this.getDirection())) {
-
-            this.getPosition().mulAdd(this.getDirection(),delta);
-            changed=false;
-
         }
-
-
-
+        timerScared=timerScared+0.5f;
+        if(timerScared>1000){timerScared=0;etat=0;isFrightened=false;}
     }
 
 
