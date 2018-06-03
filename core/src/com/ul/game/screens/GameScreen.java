@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     private int score=0;
     private Game game;
 
-    public GameScreen(PacManGdx game) {
+    public GameScreen(Game game) {
 
         this.game = game;
         monde = new World();
@@ -47,6 +47,9 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         this.renderer.render(delta);
         this.analyzePosition();
+        if(this.monde.isGameOver()){
+            this.game.setScreen(new GameOverScreen(this.game));
+        }
     }
 
     @Override

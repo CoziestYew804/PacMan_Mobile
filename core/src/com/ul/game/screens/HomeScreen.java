@@ -1,5 +1,6 @@
 package com.ul.game.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -20,7 +21,7 @@ import java.util.List;
 public class HomeScreen implements Screen {
 
     private SpriteBatch spriteBatch;
-    private PacManGdx game;
+    private Game game;
     private Pacman pacman;
     private BlueGhost blue;
     private YellowGhost yellow;
@@ -30,7 +31,7 @@ public class HomeScreen implements Screen {
     private Texture logo;
     private World monde;
 
-    public HomeScreen(PacManGdx game){
+    public HomeScreen(Game game){
 
         this.monde = new World();
          this.game = game;
@@ -93,6 +94,7 @@ public class HomeScreen implements Screen {
 
         if (Gdx.input.isTouched()) {
 
+            this.spriteBatch.dispose();
             GameScreen screen = new GameScreen(game);
             game.setScreen(screen);
             //float y = this.gs.getMonde().getPacman().getPosition().y;
