@@ -34,24 +34,27 @@ public class Wave {
         if(_origin.equals(_target))//->.equals test bien les positions?
             return true;
 
+
+
+
         //!\\Les cases vides autour -> ne pas rechercher en dehors du tableau
         //Si ça dépasse la taille, revenir au début (tp de gauche à droite et inversement, ainsi que haut bas)
         System.out.println( "la merde " + _origin.x +"    "+ _origin.y);
-        if(_origin.x <= 0)
+        if(_origin.x-1 < 0)
         {
             _origin.x = _maze.getWidth()-1;
             System.out.println("Nouvelle valeur de X auparavant négative :" + _origin.x);
         }
 
 
-        if(_origin.x > _maze.getWidth()-1)
+        if(_origin.x+1 > _maze.getWidth()-1)
         {
             _origin.x = 1;
             System.out.println("Nouvelle valeur de X auparavant trop élevée :" + _origin.x);
         }
 
 
-        if (_origin.y > _maze.getHeight()-1)
+        if (_origin.y+1 > _maze.getHeight()-1)
         {
             _origin.y = 1;
             System.out.println("Nouvelle valeur de Y auparavant trop élevée :" + _origin.y);
@@ -59,13 +62,11 @@ public class Wave {
         }
 
 
-        if (_origin.y <= 0)
+        if (_origin.y-1 < 0)
         {
             _origin.y = _maze.getHeight()-1;
             System.out.println("Nouvelle valeur de Y auparavant négative :" + _origin.y);
         }
-
-
 
         GridPoint2 up = new GridPoint2 (_origin.x, _origin.y +1);
         GridPoint2 right = new GridPoint2 (_origin.x+1, _origin.y);
@@ -83,6 +84,7 @@ public class Wave {
             tsunami.addLast(new Wave(up, _target, _maze ));
         if(_maze.getMap(down.x, down.y) != 0)
             tsunami.addLast(new Wave(down, _target, _maze));
+
 
         return false;
 

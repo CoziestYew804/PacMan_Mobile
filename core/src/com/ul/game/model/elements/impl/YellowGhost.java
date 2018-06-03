@@ -1,15 +1,16 @@
 package com.ul.game.model.elements.impl;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Vector2;
+import com.ul.game.IA.Flood;
 import com.ul.game.model.World;
 import com.ul.game.view.TextureFactory;
 
 import java.util.ArrayList;
 
 public class YellowGhost extends Ghost {
-    private Vector2 currentDirection;
-
+    private Vector2 currentDirection = new Vector2(-1, 0);
     public static final float size=16;
     private ArrayList<Vector2> sortir = new ArrayList<Vector2>();
     private int etape=0;
@@ -37,6 +38,13 @@ public class YellowGhost extends Ghost {
 
         if(isInHouse){
             moveOutOfHouse();
+        }
+        else
+        {
+            Pacman pac = this.getMonde().getPacman();
+            Flood f = new Flood(this.getMonde());
+            this.setDirection(f.getDirection(this.getPosition(), pac.getPosition()));
+
         }
 
         if(etape==3){
