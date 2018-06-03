@@ -49,7 +49,6 @@ public class Wave {
                 nextPos[i].x = _maze.getWidth()-1;
             if(nextPos[i].x > _maze.getWidth()-1)
                 nextPos[i].x = 0;
-
             if (nextPos[i].y > _maze.getHeight()-1)
                 nextPos[i].y = 0;
             if (nextPos[i].y < 0)

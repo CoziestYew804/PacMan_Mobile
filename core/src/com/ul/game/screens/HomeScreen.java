@@ -2,6 +2,7 @@ package com.ul.game.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -92,7 +93,7 @@ public class HomeScreen implements Screen {
 
 
 
-        if (Gdx.input.isTouched()) {
+        if ((Gdx.input.isTouched()) || (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) ){
 
             this.spriteBatch.dispose();
             GameScreen screen = new GameScreen(game);

@@ -1,5 +1,6 @@
 package com.ul.game.model.elements.impl;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import com.ul.game.controller.SoundController;
@@ -48,6 +49,46 @@ public class Pacman extends MovableElement {
 
     @Override
     public void move(float delta) {
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+        {
+            if (!this.isNextABlock(LEFT)&&!this.isNextAGhostDoor(LEFT)){
+                if(isAnIntersection()){
+                    this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                }
+                this.setDirection(LEFT);
+            }
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+            if(!this.isNextABlock(RIGHT)&&!this.isNextAGhostDoor(RIGHT)){
+                if(isAnIntersection()){
+                    this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                }
+
+                this.setDirection(RIGHT);
+            }
+        }
+
+
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            if(!this.isNextABlock(DOWN)&&!this.isNextAGhostDoor(DOWN)){
+                if(isAnIntersection()){
+                    this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                }
+                this.setDirection(DOWN);
+            }
+        }
+
+
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)){
+            if(!this.isNextABlock(UP)&&!this.isNextAGhostDoor(UP)){
+                if(isAnIntersection()){
+                    this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
+                }
+                this.setDirection(UP);
+            }
+        }
 
         if (Gdx.input.isTouched()) {
 
