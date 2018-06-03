@@ -37,7 +37,6 @@ public class RedGhost extends Ghost {
     public void moveOutOfHouse(){
             this.setDirection(sortir.get(etape));
             this.getPosition().add(this.getDirection());
-        System.out.println(this.etape + " je suis a l'etape");
             this.etape+=1;
 
     }

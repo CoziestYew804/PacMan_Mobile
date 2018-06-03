@@ -62,7 +62,7 @@ public class Maze implements Iterable<GameElement>
 		this._height = _laby1.length;
 		this._width = _laby1[0].length;
 		this._laby2 = new GameElement[this._height][this._width];
-		System.out.println(this.getWidth() + " " + this.getHeight());
+		//System.out.println(this.getWidth() + " " + this.getHeight());
 
 		_MazeCOR = new ExpertBlock();
 		MazeCOR dark = new ExpertDark();

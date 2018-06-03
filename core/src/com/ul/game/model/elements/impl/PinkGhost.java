@@ -35,7 +35,6 @@ public class PinkGhost extends Ghost {
     public void moveOutOfHouse(){
         this.setDirection(sortir.get(etape));
         this.getPosition().add(this.getDirection());
-        System.out.println(this.etape + " je suis a l'etape");
         this.etape+=1;
 
     }
@@ -48,7 +47,6 @@ public class PinkGhost extends Ghost {
         }
         else{
             int randomNum = 1 + (int)(Math.random() * ((2 - 1) + 1));
-            System.out.println(randomNum + " le pink a  eu ");
             if(randomNum==1) randomMove(delta);
             if(randomNum==2) bestChoiceMove(delta);
         }

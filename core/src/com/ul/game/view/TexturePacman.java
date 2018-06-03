@@ -53,10 +53,10 @@ public class TexturePacman implements iTexturable {
 			if(this.step > 2) this.step = 0;
 		}
 
-System.out.println(pacman.getDirection());
-		System.out.println(UP==pacman.getDirection());
-		System.out.println(DOWN==pacman.getDirection());
-		System.out.println(LEFT==pacman.getDirection());System.out.println(RIGHT==pacman.getDirection());
+//System.out.println(pacman.getDirection());
+		//System.out.println(UP==pacman.getDirection());
+		//System.out.println(DOWN==pacman.getDirection());
+		//System.out.println(LEFT==pacman.getDirection());System.out.println(RIGHT==pacman.getDirection());
 
 
 		if(pacman.getDirection().equals(UP)){
