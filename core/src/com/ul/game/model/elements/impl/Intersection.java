@@ -9,15 +9,18 @@ import com.ul.game.view.TextureFactory;
 
 import java.util.*;
 
+import static com.ul.game.model.elements.MovableElement.LEFT;
+import static com.ul.game.model.elements.MovableElement.RIGHT;
+
 public class Intersection extends Dark {
     public static final float size=48;
     List<Vector2> possibleDirection = new ArrayList<Vector2>(){
 
         {
             add( new Vector2(0,-1));
-            add( new Vector2(0,+1));
+            add( new Vector2(0,1));
             add( new Vector2(-1,0));
-            add( new Vector2(+1,0));
+            add( new Vector2(1,0));
         }
     };
 
@@ -43,7 +46,9 @@ public class Intersection extends Dark {
         Vector2 maPosition;
         for (Vector2 direction: possibleDirection) {
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
-               temp=direction;
+                if(direction.equals(RIGHT) || direction.equals(LEFT)){
+                    temp=direction;
+                }
             }
         }
         for (Vector2 direction: possibleDirection) {
@@ -69,7 +74,9 @@ public class Intersection extends Dark {
         Vector2 maPosition;
         for (Vector2 direction: possibleDirection) {
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
-                temp=direction;
+                if(direction.equals(RIGHT) || direction.equals(LEFT)){
+                    temp=direction;
+                }
             }
         }
         for (Vector2 direction: possibleDirection) {
@@ -95,8 +102,9 @@ public class Intersection extends Dark {
         Vector2 maPosition;
         for (Vector2 direction: possibleDirection) {
             if(!this.isNextABlock(direction)&&!this.isNextAGhostDoor(direction)){
+                if(direction.equals(RIGHT) || direction.equals(LEFT)){
                 temp=direction;
-            }
+            }}
         }
         for (Vector2 direction: possibleDirection) {
             cible=new Vector2(element.getExactPosition());
