@@ -96,10 +96,6 @@ public class GameScreen implements Screen {
         int y = (int) currentPosition.y;
         GameElement element = this.monde.getMaze().get(x, y);
 
-        if(this.monde.getPacman().isNextAGhost(this.monde.getPacman().getDirection()))
-        {
-            System.out.println("WESH");
-        }
 
         if(element != null)
         {
@@ -107,7 +103,7 @@ public class GameScreen implements Screen {
                 this.getMonde().getMaze().eatPellet(y, x);
                 score++;
             }
-            if (element instanceof Intersection){
+            if (element instanceof IntersectionWithPellet){
                 this.getMonde().getMaze().eatPelletIntersection(y, x);
                 score++;
             }
@@ -119,13 +115,21 @@ public class GameScreen implements Screen {
                 this.monde.getBlueGhost().isAfraid();
                 this.monde.getRedGhost().isAfraid();
                 this.monde.getPinkGhost().isAfraid();
+                this.getMonde().getMaze().eatSuperPellet(y,x);
                 score += 3;
             }
 
-            if(element instanceof Intersection)
+            if(element instanceof IntersectionWithSuperPellet)
             {
 
+                this.monde.getYellowGhost().isAfraid();
+                this.monde.getBlueGhost().isAfraid();
+                this.monde.getRedGhost().isAfraid();
+                this.monde.getPinkGhost().isAfraid();
+                this.getMonde().getMaze().eatSuperPelletIntersection(y,x);
+                score += 3;
             }
+
         }
 
 
