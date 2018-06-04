@@ -45,7 +45,7 @@ public class TextureFactory {
 
 		textures.put(
 				Barriere.class,
-				new TextureUnique("core/assets/pellet.png")
+				new TextureUnique("core/assets/dark.png")
 		);
 		textures.put(
 				SuperPellet.class,

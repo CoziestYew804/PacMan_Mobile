@@ -12,6 +12,7 @@ public class ExpertDark extends MazeCOR {
     public GameElement buildSpecifique(World w, int ElementType, int x, int y) {
         if (ElementType == 1) return new Pellet(new Vector2(x, y), w);
         if (ElementType == 9) return new SuperPellet(new Vector2(x, y), w);
+        if (ElementType == 6) return new Dark(new Vector2(x, y), w);
         return null;
     }
 }
