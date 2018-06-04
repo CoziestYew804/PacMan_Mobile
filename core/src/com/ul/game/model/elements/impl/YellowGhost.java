@@ -9,6 +9,9 @@ import com.ul.game.view.TextureFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Fantôme jaune (plus court chemin avec parcours en largeur)
+ */
 public class YellowGhost extends Ghost {
     private Vector2 currentDirection = new Vector2(-1, 0);
     public static final float size=16;

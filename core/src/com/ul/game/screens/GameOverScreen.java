@@ -18,6 +18,11 @@ public class GameOverScreen implements Screen {
     private Game game;
     private GameScreen gs;
 
+    /**
+     * Ecran de fin de jeu
+     * @param game jeu actuel pour récupérer le score
+     * @param gs Ecran de jeu
+     */
     public GameOverScreen(Game game, GameScreen gs){
         this.gs = gs;
         gameOverLogo = new Texture("core/assets/gameover_04.jpg");

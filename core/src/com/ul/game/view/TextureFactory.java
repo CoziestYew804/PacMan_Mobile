@@ -7,9 +7,13 @@ import com.ul.game.model.elements.impl.*;
 
 import java.util.HashMap;
 
+/**
+ * Classe gérant les textures
+ */
 public class TextureFactory {
     static private TextureFactory instance = null;
 
+    //Fait le lien entre une classe et sa texture
     private HashMap<Class<?>, iTexturable> textures;
 
     private TextureFactory(World world){
@@ -85,6 +89,12 @@ public class TextureFactory {
         instance = new TextureFactory(world);
     }
 
+
+	/**
+	 * C'est un singleton
+	 * @param world
+	 * @return
+	 */
 	public static TextureFactory getInstance(World world) {
 		if (instance == null) {
 			instance = new TextureFactory(world);

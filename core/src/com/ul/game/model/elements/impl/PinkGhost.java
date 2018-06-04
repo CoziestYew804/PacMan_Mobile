@@ -8,6 +8,9 @@ import com.ul.game.view.TextureFactory;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Fantome rose (Minimise la distance en x et y entre le pacman et lui
+ */
 public class PinkGhost extends Ghost {
     public static final float size=16;
     public static Vector2 StartingPos = new Vector2(14 , 13 );

@@ -9,6 +9,9 @@ import com.ul.game.model.MazeCor.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Labyrinthe de jeu
+ */
 public class Maze implements Iterable<GameElement>
 {
 	private MazeCOR _MazeCOR;
@@ -58,13 +61,15 @@ public class Maze implements Iterable<GameElement>
 	public Maze() {
 	}
 
-
+	/**
+	 * Initialisation du labyrinthe grâce à la chaine de responsabilité
+	 */
 	private void init() {
 		this._height = _laby1.length;
 		this._width = _laby1[0].length;
 		this._laby2 = new GameElement[this._height][this._width];
-		//System.out.println(this.getWidth() + " " + this.getHeight());
 
+		//Construction de la chaîne de responsabilité
 		_MazeCOR = new ExpertBlock();
 		MazeCOR dark = new ExpertDark();
 		MazeCOR inter = new ExpertIntersection();
@@ -78,7 +83,9 @@ public class Maze implements Iterable<GameElement>
 		pacman.setSuivant(barriere);
 		barriere.setSuivant(ghost);
 
+
 		int x = 0, y = 0;
+		//On parcourt le labyrinthe et on le construit
 		for (int[] t : _laby1) {
 			for (int elementType : t) {
 
@@ -114,17 +121,36 @@ public class Maze implements Iterable<GameElement>
 
 	public int getMap(int i, int j) { return this._laby1[j][i];}
 
+	/**
+	 * Efface la texture du pellet quand il est mangé
+	 * @param x Coordonnée x du pellet
+	 * @param y Coordonnée y du pellet
+	 */
 	public void eatPellet(int x, int y) {
 			_laby2[y][x] = null;
 	}
+
+	/**
+	 * Efface la texture du pellet situé sur une intersection quand il est mangé
+	 * @param x Coordonnée x du pellet
+	 * @param y Coordonnée y du pellet
+	 */
 	public void eatPelletIntersection(int x, int y) {
 		_laby2[y][x] = new Intersection(new Vector2(y,x),this._world);
 	}
-
+	/**
+	 * Efface la texture du super-pellet situé sur une intersection quand il est mangé
+	 * @param x Coordonnée x du super-pellet
+	 * @param y Coordonnée y du super-pellet
+	 */
 	public void eatSuperPelletIntersection(int x, int y) {
 		_laby2[y][x] = new Intersection(new Vector2(y,x),this._world);
 	}
-
+	/**
+	 * Efface la texture du super-pellet quand il est mangé
+	 * @param x Coordonnée x du super-pellet
+	 * @param y Coordonnée y du super-pellet
+	 */
 	public void eatSuperPellet(int x, int y) {
 		_laby2[y][x] = null;
 	}
@@ -136,7 +162,9 @@ public class Maze implements Iterable<GameElement>
 	}
 
 
-
+	/**
+	 * Fait le lien entre les coordonées du labyrinthe et les GameElement
+	 */
 	class MazeIterator implements Iterator<GameElement> {
 
 		private Maze _maze;
@@ -155,6 +183,9 @@ public class Maze implements Iterable<GameElement>
 
 
 		@Override
+		/**
+		 * Récupère l'élément devant nouss
+		 */
 		public GameElement next() {
 			if (!this.hasNext()) throw new NoSuchElementException("No more game elements");
 			GameElement gameElement;

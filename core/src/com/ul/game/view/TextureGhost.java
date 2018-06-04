@@ -13,6 +13,12 @@ public class TextureGhost implements iTexturable{
 
 	public TextureGhost(Ghost ghost, String textureAlive){
 		this.ghost = ghost;
+		/**
+		 * Différente textures d'un fantome
+		 * textureAlive : Fantôme en vie
+		 * ghostEscaping : Fantôme effayé
+		 * ghostDead: fantôme mort
+		 */
 		textures = new Texture[]{
 				new Texture(textureAlive),
                 new Texture("core/assets/ghostEscaping.png"),

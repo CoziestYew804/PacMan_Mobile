@@ -17,7 +17,9 @@ public class Intersection extends Dark {
     public boolean hasSuperGom= true;
    public boolean hasGom=true;
 
-
+    /*
+    Directions possible pour une intersection
+     */
     List<Vector2> possibleDirection = new ArrayList<Vector2>(){
 
         {
@@ -34,6 +36,10 @@ public class Intersection extends Dark {
         super(position, monde);
     }
 
+    /**
+     * Possibilités de directions pour cette intersection
+     * @return La liste des possibilités
+     */
     public List<Vector2> getPossibilities(){
         List<Vector2> possibilites = new ArrayList<Vector2>();
         for (Vector2 direction: possibleDirection) {
@@ -44,6 +50,12 @@ public class Intersection extends Dark {
 
         return possibilites;
     }
+
+    /**
+     * Récupère la meilleure direction parmis toutes les possibilitées disponibles
+     * @param element Element cible
+     * @return La meilleure direction
+     */
     public Vector2 getBestPossibilitieTo(GameElement element){
         Vector2 temp=new Vector2(0,0);
         Vector2 cible;
@@ -68,7 +80,11 @@ public class Intersection extends Dark {
 
         return temp;
     }
-
+    /**
+     * Récupère la meilleure direction parmis toutes les possibilitées disponibles en fonction d'une position cible
+     * @param vector Position cible
+     * @return La meilleure direction
+     */
     public Vector2 getBestPossibilitieTo(Vector2 vector){
         Vector2 temp=new Vector2(0,0);
         Vector2 cible;
@@ -94,6 +110,11 @@ public class Intersection extends Dark {
         return temp;
     }
 
+    /**
+     * Récupère la meilleure possibilité de parcours pour s'éloigner du pacman
+     * @param element L'élément à fuir (pacman)
+     * @return La meilleure direction
+     */
     public Vector2 getBestPossibilitieToRunAway(GameElement element){
         Vector2 temp=new Vector2(0,0);
         Vector2 cible;
@@ -120,6 +141,12 @@ public class Intersection extends Dark {
         return temp;
     }
 
+    /**
+     * Calcule la distance entre deux éléments
+     * @param position1 Position actuelle
+     * @param position2 Position cible
+     * @return Distance
+     */
     public double getDistance(Vector2 position1, Vector2 position2) {
         double diffX = position1.x - position2.x;
         double diffY = position1.y - position2.y;

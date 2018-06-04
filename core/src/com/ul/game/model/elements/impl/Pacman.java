@@ -7,7 +7,9 @@ import com.ul.game.controller.SoundController;
 import com.ul.game.model.World;
 import com.ul.game.model.elements.MovableElement;
 
-
+/**
+ * Le pacman, célèbre héros que l'on ne présente plus !
+ */
 public class Pacman extends MovableElement {
     public static final float size=16;
     private float x=-1;
@@ -46,10 +48,14 @@ public class Pacman extends MovableElement {
 
 
     @Override
+    /**
+     * Déplacement du pacman en prenant compte du deltatime
+     */
     public void move(float delta) {
-
+        //Si la touche LEFT a été préssée
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
         {
+            //Si le pacman n'est pas devant un block ou la maison des fantomes
             if (!this.isNextABlock(LEFT)&&!this.isNextAGhostDoor(LEFT)){
                 if(isAnIntersection()){
                     this.setPosition(new Vector2((int)this.getPosition().x,(int)this.getPosition().y));
@@ -57,7 +63,7 @@ public class Pacman extends MovableElement {
                 this.setDirection(LEFT);
             }
         }
-
+        //Si la touche RIGHT a été préssée
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             if(!this.isNextABlock(RIGHT)&&!this.isNextAGhostDoor(RIGHT)){
                 if(isAnIntersection()){
@@ -68,7 +74,7 @@ public class Pacman extends MovableElement {
             }
         }
 
-
+        //Si la touche DOWN a été préssée
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             if(!this.isNextABlock(DOWN)&&!this.isNextAGhostDoor(DOWN)){
                 if(isAnIntersection()){
@@ -78,7 +84,7 @@ public class Pacman extends MovableElement {
             }
         }
 
-
+        //Si la touche UP a été préssée
         if (Gdx.input.isKeyPressed(Input.Keys.UP)){
             if(!this.isNextABlock(UP)&&!this.isNextAGhostDoor(UP)){
                 if(isAnIntersection()){
@@ -87,7 +93,7 @@ public class Pacman extends MovableElement {
                 this.setDirection(UP);
             }
         }
-
+        //Si l'écran a été touché
         if (Gdx.input.isTouched()) {
 
             this.changeOrientation(Gdx.input.getX(), Gdx.input.getY());
@@ -104,15 +110,6 @@ public class Pacman extends MovableElement {
         }
 
 
-    /**
-     * Met à jour l'affichage du déplacement du pacman
-     * @param dt deltatime
-     */
-    public void update(float dt)
-    {
-
-
-    }
 
     public void eatGhost(Ghost ghost){
 
@@ -120,6 +117,11 @@ public class Pacman extends MovableElement {
 
     }
 
+    /**
+     * Change la direction du pacman quand l'écran est touché
+     * @param x Coordonnée x de la touche
+     * @param y Coordonnée y de la touche
+     */
     public void changeOrientation(int x, int y) {
 
             if (x >= 150 && x <= 350) {

@@ -21,6 +21,10 @@ public class GameScreen implements Screen {
     private int score=0;
     private Game game;
 
+    /**
+     * Ecran de jeu
+     * @param game Partie
+     */
     public GameScreen(Game game) {
 
         this.game = game;
@@ -82,11 +86,14 @@ public class GameScreen implements Screen {
 
     }
 
+    /**
+     * Analyse la position actuelle du pacman et éxécute une méthode en fonction de lélément sur lequel le pacman est
+     */
     public void analyzePosition()
     {
         Vector2 currentPosition = this.monde.getPacman().getPosition();
-        System.out.println(currentPosition.y);
 
+        //Telepoortation
         if(currentPosition.y <= 0)
             this.monde.getPacman().setPosition(new Vector2(this.monde.getPacman().getPosition().x, this.monde.getMaze().getWidth()-1));
         if(currentPosition.y >= this.monde.getMaze().getWidth()-1)
@@ -99,15 +106,17 @@ public class GameScreen implements Screen {
 
         if(element != null)
         {
+            //Si l'élément est sur un pellet
             if (element instanceof Pellet){
                 this.getMonde().getMaze().eatPellet(y, x);
                 score++;
             }
+            //Si le pacman est sur une intersection avec pellet
             if (element instanceof IntersectionWithPellet){
                 this.getMonde().getMaze().eatPelletIntersection(y, x);
                 score++;
             }
-
+            //Si le pacman est sur un super pellet
             if(element instanceof SuperPellet)
             {
 
@@ -118,7 +127,7 @@ public class GameScreen implements Screen {
                 this.getMonde().getMaze().eatSuperPellet(y,x);
                 score += 3;
             }
-
+            // Si le pacman est sur une intersection
             if(element instanceof IntersectionWithSuperPellet)
             {
 

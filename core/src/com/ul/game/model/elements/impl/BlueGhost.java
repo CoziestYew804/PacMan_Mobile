@@ -12,8 +12,15 @@ public class BlueGhost extends Ghost {
     private int etape=0;
     private boolean isInHouse = true;
 
+    /**
+     * Constructeur du Fantome bleu (déplacement aléatoire
+     * @param position Position initiale du fantôme
+     * @param monde Monde du jeu
+     */
     public BlueGhost(Vector2 position, World monde) {
         super(position, monde);
+
+        //Étapes de sortie de la maison
         sortir.add(UP);
         sortir.add(UP);
         sortir.add(UP);
@@ -29,7 +36,9 @@ public class BlueGhost extends Ghost {
     }
 
 
-
+    /**
+     * Méthode permettant au fantôme de sortir de la maison
+     */
     public void moveOutOfHouse(){
         this.setDirection(sortir.get(etape));
         this.getPosition().add(this.getDirection());
@@ -38,22 +47,34 @@ public class BlueGhost extends Ghost {
     }
 
     @Override
+    /**
+     * Méthode de déplacement
+     */
     public void move(float delta) {
 
         if(isInHouse){
+            //Sortie de la maison
             moveOutOfHouse();
             if(etape==3){
                 isInHouse=false;
             }
         }
+
+        //Si le fantôme est en dehors de la maison et est dans un état normal d'un point de vue émotionnel et santé
         else if(etat==0&&!isFrightened){
+            //Mouvement aléatoire
             randomMove(delta);
+        //Si le fantôme est effrayé
         }else if(etat==1){
+            //Il fuit le pacman
             runAway(delta);
         }
+        //Si le fantôme est mort (RIP d'ailleurs)
         else if(etat==2){
+            //On rentre à la maison !
             getBackToHouse(delta);
         }
+
         resolveCollisionPacman();
 
     }

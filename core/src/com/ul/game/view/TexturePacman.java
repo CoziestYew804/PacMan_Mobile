@@ -5,7 +5,9 @@ import com.ul.game.model.elements.impl.Pacman;
 
 import static com.ul.game.model.elements.MovableElement.*;
 
-
+/**
+ * *Textures du pacman
+ */
 public class TexturePacman implements iTexturable {
 	private Pacman pacman;
 	private float deltaT = 0.0f, seuil;
@@ -18,24 +20,36 @@ public class TexturePacman implements iTexturable {
 		this.pacman = pacman;
 		this.seuil = seuil;
 
+		/**
+		 * Textures du pacman quand il va vers le haut
+		 */
 		up = new Texture[]{
 				new Texture("core/assets/pacmanUp-2.png"),
 				new Texture("core/assets/pacmanUp.png"),
 				new Texture("core/assets/pacman-3.png")
 		};
 
+		/**
+		 * Textures du pacman quand il va vers la droite
+		 */
 		right = new Texture[]{
 				new Texture("core/assets/pacmanRight-2.png"),
 				new Texture("core/assets/pacmanRight.png"),
 				new Texture("core/assets/pacman-3.png")
 		};
 
+		/**
+		 * Textures du pacman quand il va vers le bas
+		 */
 		down = new Texture[]{
 				new Texture("core/assets/pacmanDown-2.png"),
 				new Texture("core/assets/pacmanDown.png"),
 				new Texture("core/assets/pacman-3.png")
 		};
 
+		/**
+		 * Textures du pacman quand il va vers la gauche
+		 */
 		left = new Texture[]{
 				new Texture("core/assets/pacmanLeft-2.png"),
 				new Texture("core/assets/pacmanLeft.png"),
@@ -52,11 +66,6 @@ public class TexturePacman implements iTexturable {
 			this.step++;
 			if(this.step > 2) this.step = 0;
 		}
-
-//System.out.println(pacman.getDirection());
-		//System.out.println(UP==pacman.getDirection());
-		//System.out.println(DOWN==pacman.getDirection());
-		//System.out.println(LEFT==pacman.getDirection());System.out.println(RIGHT==pacman.getDirection());
 
 
 		if(pacman.getDirection().equals(UP)){

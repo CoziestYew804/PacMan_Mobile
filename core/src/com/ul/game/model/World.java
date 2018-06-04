@@ -6,6 +6,10 @@ import com.ul.game.model.elements.impl.*;
 
 import java.util.Iterator;
 
+
+/**
+ * Monde de jeu
+ */
 public class World implements Iterable<GameElement> {
     private Maze _maze;
     private final Pacman _pacman;
@@ -14,6 +18,8 @@ public class World implements Iterable<GameElement> {
     private final PinkGhost _pinkGhost;
     private final YellowGhost _yellowGhost;
    // public static Vector2 pacmanStartPos =  new Vector2( (14*16 ), (30-17)*16);
+
+    //Position initiale des éléments déplacables du jeu
     public static Vector2 pacmanStartPos =  new Vector2( 17, 14);
     public static Vector2 redGhostStartingPos = new Vector2(14 , 12 );
     public static Vector2 blueGhostStartingPos = new Vector2(14 , 14 );

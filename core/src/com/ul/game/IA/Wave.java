@@ -13,6 +13,13 @@ public class Wave {
     Maze _maze;
     GridPoint2 _origin, _target;
 
+    /**
+     * Constructeur de Wave
+     * @param father Vague père
+     * @param origin Position actuelle
+     * @param target Position du Pacman
+     * @param maze Labyrinthe du jeu
+     */
     public Wave(Wave father, GridPoint2 origin, GridPoint2 target, Maze maze)
     {
         this._father = father;
@@ -21,30 +28,42 @@ public class Wave {
         this._target = target;
     }
 
+    /**
+     * Même constructeur mais sans Father
+     * @param origin
+     * @param target
+     * @param maze
+     */
     public Wave(GridPoint2 origin, GridPoint2 target, Maze maze)
     {
         this(null, origin, target, maze);
     }
 
+
     public GridPoint2 getPosition(){ return _origin; }
     public Wave getFather(){ return _father; }
 
+    /**
+     * Méthode qui vérifie si le pacman a été trouvé
+     * @param tsunami Liste de vague actuelle et modifiée dans la méthode
+     * @return true si le pacman a été trouvé
+     */
     public boolean flood(LinkedList<Wave> tsunami)
     {
-        if(_origin.equals(_target))//->.equals test bien les positions?
+        //Si le pacman est trouvé
+        if(_origin.equals(_target))
             return true;
 
-
-        GridPoint2[] nextPos = {//up, right, down, left
+        //cases autour de la position actuelle
+        GridPoint2[] nextPos = {
                 new GridPoint2 (_origin.x, _origin.y +1),
                 new GridPoint2 (_origin.x+1, _origin.y),
                 new GridPoint2 (_origin.x, _origin.y -1),
                 new GridPoint2(_origin.x-1, _origin.y)
         };
 
+        //Vérifie si les cases ne sont pas en dehors du tableau
         for(int i = 0; i < 4; i++){
-            //!\\Les cases vides autour -> ne pas rechercher en dehors du tableau
-            //Si ça dépasse la taille, revenir au début (tp de gauche à droite et inversement, ainsi que haut bas)
             if(nextPos[i].x < 0)
                 nextPos[i].x = _maze.getWidth()-1;
             if(nextPos[i].x > _maze.getWidth()-1)
@@ -56,65 +75,18 @@ public class Wave {
 
 
             int type = _maze.getMap(nextPos[i].x, nextPos[i].y);
+            //Si le type n'est pas un block
             if(type != 0)
                 tsunami.addLast(new Wave(this, nextPos[i], _target, _maze));
         }
 
-        /*
-        //!\\Les cases vides autour -> ne pas rechercher en dehors du tableau
-        //Si ça dépasse la taille, revenir au début (tp de gauche à droite et inversement, ainsi que haut bas)
-        System.out.println( "la merde " + _origin.x +"    "+ _origin.y);
-        if(_origin.x < 0)
-        {
-            _origin.x = _maze.getWidth()-1;
-            System.out.println("Nouvelle valeur de X auparavant négative :" + _origin.x);
-        }
-
-
-        if(_origin.x > _maze.getWidth()-1)
-        {
-            _origin.x = 0;
-            System.out.println("Nouvelle valeur de X auparavant trop élevée :" + _origin.x);
-        }
-
-
-        if (_origin.y > _maze.getHeight()-1)
-        {
-            _origin.y = 0;
-            System.out.println("Nouvelle valeur de Y auparavant trop élevée :" + _origin.y);
-
-        }
-
-
-        if (_origin.y < 0)
-        {
-            _origin.y = _maze.getHeight()-1;
-            System.out.println("Nouvelle valeur de Y auparavant négative :" + _origin.y);
-        }
-
-        GridPoint2 up = new GridPoint2 (_origin.x, _origin.y +1);
-        GridPoint2 right = new GridPoint2 (_origin.x+1, _origin.y);
-        GridPoint2 down = new GridPoint2 (_origin.x, _origin.y -1);
-        GridPoint2 left = new GridPoint2(_origin.x-1, _origin.y);
-
-        System.out.println( "la merde  left " + left.x +"    "+ left.y);
-
-        //on vérifie si c'est un chemin ou une intersection ou la porte des fantomes
-        if(_maze.getMap(left.x, left.y) != 0)
-            tsunami.addLast(new Wave(left, _target, _maze));
-        if(_maze.getMap(right.x, right.y) != 0)
-            tsunami.addLast(new Wave(right, _target, _maze ));
-        if(_maze.getMap(up.x, up.y) != 0)
-            tsunami.addLast(new Wave(up, _target, _maze ));
-        if(_maze.getMap(down.x, down.y) != 0)
-            tsunami.addLast(new Wave(down, _target, _maze));
-
-        */
+        //Pacman non trouvé
         return false;
 
 
     }
 
+    //Récupère le premier fils
     public Wave getFirstSon()
     {
         Wave son = this;

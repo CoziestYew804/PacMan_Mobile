@@ -19,6 +19,9 @@ import com.ul.game.view.TextureFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Ecran d'accueil
+ */
 public class HomeScreen implements Screen {
 
     private SpriteBatch spriteBatch;

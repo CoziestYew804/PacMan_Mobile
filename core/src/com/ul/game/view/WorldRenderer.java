@@ -7,6 +7,9 @@ import com.ul.game.controller.SoundController;
 import com.ul.game.model.elements.GameElement;
 import com.ul.game.model.World;
 
+/**
+ * Classe qui va positionner les élément sur le gamescreen
+ */
 public class WorldRenderer {
 
 
@@ -39,7 +42,10 @@ public class WorldRenderer {
         this.spriteBatch = new SpriteBatch();
     }
 
-
+    /**
+     * Positionne les éléments sur le gamescreen
+     * @param delta deltatime pour animations
+     */
     public void render(float delta) {
 
         if(!this.monde.isGameOver()) {
@@ -47,7 +53,7 @@ public class WorldRenderer {
             Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             for (GameElement element : this.monde) {
-
+                //Dessine les éléments
                 this.spriteBatch.draw(
                         this.texture.getInstance(this.monde).getTexture(element.getClass(), delta),
                         element.getPosition().y * 16,
@@ -57,6 +63,8 @@ public class WorldRenderer {
                 );
 
             }
+
+            //Dessine le fantôme bleu
             this.spriteBatch.draw(
                     this.texture.getInstance(this.monde).getTexture(this.monde.getBlueGhost().getClass(), delta),
                     this.monde.getBlueGhost().getPosition().y * 16,
@@ -64,6 +72,8 @@ public class WorldRenderer {
                     16,
                     16
             );
+
+            //Dessine le fantôme rouge
             this.spriteBatch.draw(
                     this.texture.getInstance(this.monde).getTexture(this.monde.getRedGhost().getClass(), delta),
                     this.monde.getRedGhost().getPosition().y * 16,
@@ -71,6 +81,8 @@ public class WorldRenderer {
                     16,
                     16
             );
+
+            //Dessine le fantôme rose
             this.spriteBatch.draw(
                     this.texture.getInstance(this.monde).getTexture(this.monde.getPinkGhost().getClass(), delta),
                     this.monde.getPinkGhost().getPosition().y * 16,
@@ -78,6 +90,8 @@ public class WorldRenderer {
                     16,
                     16
             );
+
+            //Dessine le fantôme jaune
             this.spriteBatch.draw(
                     this.texture.getInstance(this.monde).getTexture(this.monde.getYellowGhost().getClass(), delta),
                     this.monde.getYellowGhost().getPosition().y * 16,
@@ -87,16 +101,23 @@ public class WorldRenderer {
             );
             this.spriteBatch.end();
 
+            //Ordonne aux éléments déplacables de se déplacer
             moveThem(this.delta);
 
         }
 
     }
 
+    /**
+     * Méthode gérant le déplacement des éléments déplaçables
+     * @param delta deltatime pour les animations
+     */
     public void moveThem(float delta){
 
 
             this.monde.getPacman().move(delta);
+
+            //les fantômes se déplacent chacun leur tour
             if(k>0){
                 this.monde.getBlueGhost().move(delta);
             }

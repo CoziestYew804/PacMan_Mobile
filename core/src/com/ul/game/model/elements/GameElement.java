@@ -6,6 +6,9 @@ import com.ul.game.model.World;
 import com.ul.game.model.elements.impl.Barriere;
 import com.ul.game.model.elements.impl.Block;
 
+/**
+ * Element du jeu
+ */
 public abstract class GameElement {
     private Vector2 position;
     private World monde;
@@ -45,13 +48,25 @@ public abstract class GameElement {
         return this.getMonde().getMaze().get((int)(this.getPosition().x+currentDirection.x),(int)(this.getPosition().y+currentDirection.y));
     }
 
+    /**
+     * Vérifie si l'élement est devant un block
+     * @param currentDirection Direction de l'élément
+     * @return Si l'element est devant un block
+     */
     public boolean isNextABlock (Vector2 currentDirection){
 
         return this.getNext(currentDirection) instanceof Block;
     }
+
+    /**
+     * Vérifie si l'élement est devant la porte des fantômes
+     * @param currentDirection Direction de l'élément
+     * @return Si l'element est devant la porte des fantomes
+     */
     public boolean isNextAGhostDoor (Vector2 currentDirection){
 
         return this.getNext(currentDirection) instanceof Barriere;
     }
+
 
 }

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Fantôme rouge (Choisit soit la stratégie du fantôme bleu soit la stratégie du fantôme rose
+ */
 public class RedGhost extends Ghost {
     public static final float size=16;
     private boolean isInHouse=true;

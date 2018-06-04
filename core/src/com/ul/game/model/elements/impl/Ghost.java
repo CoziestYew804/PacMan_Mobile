@@ -39,12 +39,17 @@ public abstract class Ghost extends MovableElement {
     public void isAfraid() {this.etat = 1;
     this.isFrightened=true;}
 
+    /**
+     * Colisions avec le Pacman
+     */
     public void resolveCollisionPacman(){
         if(this.getExactPosition().equals(this.getMonde().getPacman().getExactPosition())){
+            //Si le fantôme est effrayé
             if(isFrightened){
                 this.getMonde().getPacman().eatGhost(this);
                 this.etat=2;
                 SoundController.getInstance().getEatingGhostSound().play();
+            //S'il est normal
             }else{
                 this.getMonde().setGameOver(true);
                 SoundController.getInstance().getDeadPacmanSound().play();
@@ -54,13 +59,20 @@ public abstract class Ghost extends MovableElement {
 
     public abstract void move(float DeltaTime);
 
+    /**
+     * Mouvement aléatoire (concerne le fantôme bleu et le fantôme rose
+     * @param delta
+     */
     public void randomMove(float delta){
         teleport();
+        //Si le fantôme est sur une intersection
         if (this.isAnIntersection()){
+            //Si le fantôme n'a pas changé de direction
             if(!changed) {
                 this.setPosition(new Vector2((int) this.getPosition().x, (int) this.getPosition().y));
                 List<Vector2> temp = ((Intersection) this.getThis()).getPossibilities();
                 Random rand = new Random();
+                //On choisit une nouvelle dirction
                 Vector2 directionAleatoire = temp.get(rand.nextInt(temp.size()));
                 this.setDirection(directionAleatoire);
                 this.getPosition().mulAdd(this.getDirection(), delta);
@@ -70,6 +82,7 @@ public abstract class Ghost extends MovableElement {
             this.getPosition().mulAdd(this.getDirection(), delta);
 
         }
+        //Si le fantome n'est pas devant un block
         else if (!this.isNextABlock(this.getDirection()) && !this.isNextAGhostDoor(this.getDirection())) {
 
             this.getPosition().mulAdd(this.getDirection(), delta);
@@ -151,6 +164,9 @@ public abstract class Ghost extends MovableElement {
         this.currentDirection= direction;
     }
 
+    /**
+     * Téléportation
+     */
     public void teleport() {
         if (this.getPosition().y <= 0) {
             this.setPosition(new Vector2(this.getExactPosition().x, this.getMonde().getMaze().getWidth() - 1));
